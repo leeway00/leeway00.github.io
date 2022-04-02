@@ -12,7 +12,7 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 remote_theme             : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "contrast" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "dirt2" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "en-US"
@@ -30,7 +30,7 @@ masthead_title           : # overrides the website title displayed in the masthe
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
 comments:
-  provider               : # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
+  provider               : facebook # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
   disqus:
     shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
@@ -108,24 +108,12 @@ author:
   location         : "Somewhere"
   email            :
   links:
-    - label: "Email"
+    - label: "Personal Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: "mailto:your.name@email.com"
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      # url: "https://your-website.com"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      # url: "https://twitter.com/"
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      # url: "https://facebook.com/"
+      url: "younghun@gmail.com"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://leeway00@github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      # url: "https://instagram.com/"
     - label: "linkedin"
       icon: "fab fa-fw fa-linkedin"
       url: "https://linkedin.com/in/younghunlee"
@@ -158,6 +146,7 @@ include:
   - .htaccess
   - _pages
   - _data_science/_pages
+  - math_stat
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"
@@ -294,9 +283,26 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments: # true
+      comments: true
       share: true
       related: true
+      mathjax: true
+      sidebar:
+        nav: "_posts"
+  
+  - scope:
+      path: "/math_stat/_posts"
+      type: posts
+    values:
+      layout: single2
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
+      mathjax: true
+      sidebar:
+        nav: "/math_stat"
 
   # _pages
   - scope:
@@ -305,5 +311,3 @@ defaults:
     values:
       layout: single
       author_profile: true
-
-
