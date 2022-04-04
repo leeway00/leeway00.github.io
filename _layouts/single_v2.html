@@ -37,10 +37,13 @@ layout: default
           {% if page.title %}<h1 id="page-title" class="page__title p-name" itemprop="headline">
             <a href="{{ page.url | absolute_url }}" class="u-url" itemprop="url">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</a>
           </h1>{% endif %}
-          {% include page__meta.html %}
-          <h4 class="page__meta-header">{{}}</h4>{% include posts__taxonomy.html}
         </header>
       {% endunless %}
+
+      <header class="page__meta">
+        {% include page__taxonomy.html %}<h5></h5>
+      </header>
+      
 
       <section class="page__content e-content" itemprop="text">
         {% if page.toc %}
