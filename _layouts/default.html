@@ -19,9 +19,12 @@
     {% include_cached browser-upgrade.html %}
     {% include_cached masthead.html %}
 
+    {% include text-expand.html %}
+
     <div class="initial-content">
       {{ content }}
     </div>
+    
 
     {% if site.search == true %}
       <div class="search-content">
@@ -41,4 +44,4 @@
   </body>
 </html>
 
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script> -->
