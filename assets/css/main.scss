@@ -24,12 +24,12 @@ html {
   @include breakpoint($x-large) {font-size: 16px;}
 }
 
+// LateX font sizes, currently using katex with $,$$ delimiters
 .MathJax {
   font-size: 100% !important;
   }
-
 .katex {
-  font-size: 80% !important;
+  font-size: 95% !important;
   }
 
 

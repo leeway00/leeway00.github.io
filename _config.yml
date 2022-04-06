@@ -16,11 +16,11 @@ minimal_mistakes_skin    : "dirt2" # "air", "aqua", "contrast", "dark", "dirt", 
 
 # Site Settings
 locale                   : "en-US"
-title                    : "나는 이지❤️"
+title                    : "Hun's Blog"
 title_separator          : "-"
-subtitle                 : # site tagline that appears below site title in masthead
+subtitle                 : "Math, Stats, and Finance" # site tagline that appears below site title in masthead
 name                     : "Younghun Lee"
-description              : "An amazing website."
+description              : "Blog nebie"
 url                      : "https://leeway00.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog" ##찾아보자!!
 repository               : # "leeway00/leeway00" GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -211,7 +211,7 @@ incremental: false
 
 # Markdown Processing
 kramdown:
-  input: GFM
+  input: GFMKatex
   hard_wrap: false
   auto_ids: true
   footnote_nr: 1
@@ -219,7 +219,7 @@ kramdown:
   toc_levels: 1..6
   smart_quotes: lsquo,rsquo,ldquo,rdquo
   enable_coderay: false
-  math_engine: mathjax
+  math_engine: katex
 
 
 # Sass/SCSS
