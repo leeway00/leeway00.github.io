@@ -1,21 +1,40 @@
 source "https://rubygems.org"
 
-gem 'jekyll', '~> 4.2', '>= 4.2.1'
+gem 'jekyll', '~> 4.2', '>= 4.1.1'
+gem 'bundler'
+gem 'kramdown'
+gem 'rack-jekyll'
+gem 'rack'
+gem 'puma'
 
+
+# If you want to use GitHub Pages, remove the "gem "jekyll"" above and
+# uncomment the line below. To upgrade, run `bundle update github-pages`.
+# gem "github-pages", group: :jekyll_plugins
+
+# Plugins
 group :jekyll_plugins do
-    # gem "github-pages", "202"    
-    gem 'jekyll-paginate', '~> 1.1'
+    # gem 'devlopr', '~> 0.4.5'
+    gem 'jgd', '~> 1.12'
     gem 'jekyll-feed', '~> 0.16.0'
-    gem 'jekyll-sitemap', '~> 1.4'
-    gem 'jekyll-gist', '~> 1.1'
+    gem 'jekyll-paginate', '~> 1.1.0'
+    gem 'jekyll-gist', '~> 1.5.0'
+    gem 'jekyll-seo-tag', '~> 2.6.1'
+    gem 'jekyll-sitemap', '~> 1.4.0'
+    gem 'jekyll-admin', '~> 0.11.0'
+    gem 'jekyll-include-cache'
     gem 'kramdown-math-katex'
-
-
-    gem "jekyll-include-cache"
-    gem "webrick", "~> 1.7"
-    gem "kramdown-parser-gfm"
-    gem "kramdown"  #, "~> 2.0"
     gem 'execjs'
 end
 
-# gem 'kramdown-math-sskatex'
+
+# Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
+# and associated library.
+install_if -> { RUBY_PLATFORM =~ %r!mingw|mswin|java! } do
+  gem "tzinfo", "~> 1.2"
+  gem "tzinfo-data"
+end
+
+# Performance-booster for watching directories on Windows
+gem "wdm", "~> 0.1.1", :install_if => Gem.win_platform?
+gem "webrick", "~> 1.7"
