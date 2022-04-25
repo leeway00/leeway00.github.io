@@ -7,6 +7,8 @@
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
+@import "hun_adjustments";
+
 // 수정 Reference: https://evenharder.github.io/blog/jekyll-change-fonts/
 
 // https://mmistakes.github.io/minimal-mistakes/docs/stylesheets/#customizing
@@ -24,12 +26,16 @@ html {
   @include breakpoint($x-large) {font-size: 16px;}
 }
 
+.page__content p li ol {
+  font-size: 80%;
+}
+
 // LateX font sizes, currently using katex with $,$$ delimiters
 .MathJax {
   font-size: 100% !important;
   }
 .katex {
-  font-size: 95% !important;
+  font-size: 80% !important;
   }
 
 
@@ -65,4 +71,5 @@ html {
   width: 100%;
   border-bottom: 1px solid #bcbcbc;
 }
+
 

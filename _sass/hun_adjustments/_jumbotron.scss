@@ -1,0 +1,26 @@
+.jumbotron-heading {
+    font-size: 30px;
+
+    @include breakpoint($medium) {
+        font-size: 15px;
+    }
+
+    @include breakpoint($large) {
+        font-size: 20px;
+    }
+
+    @include breakpoint($x-large) {
+        font-size: 25px;
+    }
+}
+
+.author-profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.lead {
+    font-size: 1.30rem !important;
+    font-weight: 600;
+}

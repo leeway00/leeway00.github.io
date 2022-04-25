@@ -20,6 +20,7 @@ title                    : "Hun's Blog"
 title_separator          : "-"
 subtitle                 : "Math, Stats, and Finance" # site tagline that appears below site title in masthead
 name                     : "Younghun Lee"
+typewrite-text           : "Quantitative Finance"
 description              : "Blog nebie"
 url                      : "https://leeway00.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog" ##찾아보자!!
@@ -107,6 +108,7 @@ author:
   bio              : "I am an **amazing** person."
   location         : "Somewhere"
   email            :
+  author_logo      : "profile.png"
   links:
     - label: "Personal Email"
       icon: "fas fa-fw fa-envelope-square"
