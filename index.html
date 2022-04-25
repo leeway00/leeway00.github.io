@@ -147,7 +147,7 @@
           <nav id="site-nav" class="greedy-nav">
             <a class="site-title" href="/">
               Hun's Blog
-              <span class="site-subtitle">Math, Stats, and Finance</span>
+              <span class="site-subtitle">Powered by Yobi Isi❤️</span>
             </a>
             <ul class="visible-links">
               <li class="masthead__menu-item">
@@ -219,50 +219,28 @@
       <script>
         $(document).ready(function () {
           $("#typewriteText").typewrite({
-            actions: [{ type: "Quantitative Finance" }],
+            actions: [{ type: "Math, Stats, and Finance!" }],
           });
         });
       </script>
       <!-- Changes:
 1. 220406 uncommented the github star, fork 
 /assets/images/
+
+background-color: var(--main-background-color) !important;
+
 -->
 
       <style>
         /* change cover_img in config.yml */
         .jumbotron {
-          background-color: var(--main-background-color) !important;
           background-image: url("/assets/images/hero_ferrari.jpeg");
-          text-align: center;
-          background-attachment: fixed;
-          background-size: cover;
-          height: 75vh;
-          background-origin: content-box;
-          background-position-y: bottom;
-          margin: auto;
-        }
-
-        .author-profile-img {
-          margin-top: 20vh;
-          padding-bottom: 1vh;
-        }
-
-        .jumbotron-btns {
-          display: block;
-          margin-top: 50px;
-        }
-
-        .jumbotron-heading,
-        .lead {
-          color: #fff;
-          text-shadow: 0px 0px 5px #000000, 1px 1px 5px #000000,
-            2px 2px 5px #000000;
         }
       </style>
 
       <!-- home hero section -->
       <div class="jumbotron">
-        <img class="author-profile-img" src="/assets/images/profile.png" />
+        <img class="author-profile-img" src="/assets/images/profile_yh.png" />
         <p class="jumbotron-heading">Hi, I am Younghun Lee !</p>
         <script>
           $(document).ready(function () {
@@ -271,101 +249,63 @@
             });
           });
         </script>
-
-        <p class="lead" id="typewriteText"></p>
+        <p class="lead" id="typewriteText">
+          Statistics and Machine Learning in Finance
+        </p>
 
         <div class="jumbotron-btns">
-          <a href="https://leeway00.github.io/get-started">
-            <button class="btn btn-md btn-warning">
-              <strong>Get Started</strong>
-            </button>
-          </a>
-          <a id="olvy-target">
-            <button class="btn btn-md btn-default">
-              <strong>What's New</strong>
-            </button>
-          </a>
-        </div>
-      </div>
+          <!-- <a href="https://leeway00.github.io/get-started">
+      <button class="btn btn-md btn-warning"> <strong>Get Started</strong> </button>
+    </a>
+    <a id="olvy-target">
+      <button class="btn btn-md btn-default"> <strong>What's New</strong> </button>
+    </a>
+    <a href="https://www.linkedin.com/in/">
+      <button class="btn btn-md btn-default"><i class="fab fa-fw fa-linkedin"></i>LinkedIn</button>
+    </a> -->
 
-      <div id="main" role="main">
-        <div class="sidebar sticky">
-          <div itemscope itemtype="https://schema.org/Person" class="h-card">
-            <div class="author__content">
-              <h3 class="author__name p-name" itemprop="name">
-                <a
-                  class="u-url"
-                  rel="me"
-                  href="https://leeway00.github.io/"
-                  itemprop="url"
-                  >Younghun Lee</a
-                >
-              </h3>
+          <!-- 
+<button class="btn btn-md btn-default">
+  <i class="fas fa-fw fa-map-marker-alt" > <strong itemprop="name" class="p-locality">Somewhere</strong> </button>
+ -->
 
-              <div class="author__bio p-note" itemprop="description">
-                <p>I am an <strong>amazing</strong> person.</p>
-              </div>
-            </div>
+          <a
+            href="mailto:leeyh0920@gmail.com"
+            rel="nofollow noopener noreferrer me"
+            ><button class="btn btn-md btn-default">
+              <i class="fas fa-fw fa-envelope-square"></i
+              ><strong>Personal Email</strong>
+            </button></a
+          >
 
-            <div class="author__urls-wrapper">
-              <button class="btn btn--inverse">Follow</button>
-              <ul class="author__urls social-icons">
-                <li
-                  itemprop="homeLocation"
-                  itemscope
-                  itemtype="https://schema.org/Place"
-                >
-                  <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i>
-                  <span itemprop="name" class="p-locality">Somewhere</span>
-                </li>
+          <a
+            href="https://leeway00@github.com/"
+            rel="nofollow noopener noreferrer me"
+            ><button class="btn btn-md btn-default">
+              <i class="fab fa-fw fa-github"></i><strong>GitHub</strong>
+            </button></a
+          >
 
-                <li>
-                  <a
-                    href="leeyh0920@gmail.com"
-                    rel="nofollow noopener noreferrer me"
-                    ><i
-                      class="fas fa-fw fa-envelope-square"
-                      aria-hidden="true"
-                    ></i
-                    ><span class="label">Personal Email</span></a
-                  >
-                </li>
+          <a
+            href="https://linkedin.com/in/younghunlee"
+            rel="nofollow noopener noreferrer me"
+            ><button class="btn btn-md btn-default">
+              <i class="fab fa-fw fa-linkedin"></i><strong>linkedin</strong>
+            </button></a
+          >
 
-                <li>
-                  <a
-                    href="https://leeway00@github.com/"
-                    rel="nofollow noopener noreferrer me"
-                    ><i class="fab fa-fw fa-github" aria-hidden="true"></i
-                    ><span class="label">GitHub</span></a
-                  >
-                </li>
-
-                <li>
-                  <a
-                    href="https://linkedin.com/in/younghunlee"
-                    rel="nofollow noopener noreferrer me"
-                    ><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i
-                    ><span class="label">linkedin</span></a
-                  >
-                </li>
-
-                <!--
+          <!--
   <li>
     <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
       <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
     </a>
   </li>
 -->
-              </ul>
-            </div>
-          </div>
         </div>
+      </div>
 
+      <div id="main" role="main">
         <div class="archive">
-          <h1 id="page-title" class="page__title">
-            Statistics and Machine Learning in Finance
-          </h1>
-
           <h3 class="archive__subtitle">Recent posts</h3>
 
           <div class="entries-list">
