@@ -1,44 +1,23 @@
 <!-- Changes:
 1. 220406 uncommented the github star, fork 
 /assets/images/{{site.hero_cover_img}}
+
+background-color: var(--main-background-color) !important;
+
 -->
 {% capture overlay_img_path %}{{ page.header.overlay_image | relative_url }}{% endcapture %}
 
 <style>
   /* change cover_img in config.yml */
   .jumbotron {
-    background-color: var(--main-background-color) !important;
     background-image: url('{{page.header.hero_cover_img}}');
-    text-align: center;
-    background-attachment: fixed;
-    background-size: cover;
-    height: 75vh;
-    background-origin: content-box;
-    background-position-y: bottom;
-    margin: auto;
-  }
-
-  .author-profile-img {
-    margin-top: 20vh;
-    padding-bottom: 1vh;
-  }
-
-  .jumbotron-btns {
-    display: block;
-    margin-top: 50px;
-  }
-
-  .jumbotron-heading,
-  .lead {
-    color: #fff;
-    text-shadow: 0px 0px 5px #000000, 1px 1px 5px #000000, 2px 2px 5px #000000;
   }
 </style>
 
 
 <!-- home hero section -->
 <div class="jumbotron">
-  <img class="author-profile-img" src="/assets/images/profile.png" />
+  <img class="author-profile-img" src="/assets/images/{{site.author.author_logo}}" />
   <p class="jumbotron-heading">Hi, I am {{site.author.name}} !</p>
   <script>
     $(document).ready(function () {
@@ -47,15 +26,18 @@
       });
     });
   </script>
-  
-  <p class="lead" id="typewriteText"></p>
+  <p class="lead" id="typewriteText">{{page.title}}</p>
 
   <div class="jumbotron-btns">
-    <a href="{{site.url}}{{site.baseurl}}/get-started">
+    <!-- <a href="{{site.url}}{{site.baseurl}}/get-started">
       <button class="btn btn-md btn-warning"> <strong>Get Started</strong> </button>
     </a>
     <a id="olvy-target">
       <button class="btn btn-md btn-default"> <strong>What's New</strong> </button>
     </a>
+    <a href="https://www.linkedin.com/in/{{ author.linkedin }}">
+      <button class="btn btn-md btn-default"><i class="fab fa-fw fa-linkedin"></i>LinkedIn</button>
+    </a> -->
+    {% include author-profile_v2.html %}
   </div>
 </div>

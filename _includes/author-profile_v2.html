@@ -1,0 +1,251 @@
+{% assign author = page.author | default: page.authors[0] | default: site.author %}
+{% assign author = site.data.authors[author] | default: author %}
+
+
+<!-- {% if author.location %}
+<button class="btn btn-md btn-default">
+  <i class="fas fa-fw fa-map-marker-alt" > <strong itemprop="name" class="p-locality">{{
+  author.location }}</strong> </button>
+{% endif %} -->
+
+{% if author.links %}
+{% for link in author.links %}
+{% if link.label and link.url %}
+<a href="{{ link.url }}" rel="nofollow noopener noreferrer me"><button class="btn btn-md btn-default">
+  <i
+    class="{{ link.icon | default: 'fas fa-link' }}"></i><strong>{{ link.label }}</strong> </button></a>
+{% endif %}
+{% endfor %}
+{% endif %}
+
+{% if author.uri %}
+
+<a href="{{ author.uri }}" itemprop="url" rel="me">
+  <button class="btn btn-md btn-default">
+    <i class="fas fa-fw fa-link"></i><strong>{{
+      site.data.ui-text[site.locale].website_label | default: "Website" }}</strong> </button>
+</a>
+
+{% endif %}
+
+{% if author.email %}
+
+<a href="mailto:{{ author.email }}" rel="me" class="u-email">
+  <meta itemprop="email" content="{{ author.email }}" />
+  <button class="btn btn-md btn-default">
+    <i class="fas fa-fw fa-envelope-square"></i><strong>{{
+      site.data.ui-text[site.locale].email_label | default: "Email" }}</strong> </button>
+</a>
+
+{% endif %}
+
+{% if author.keybase %}
+
+<a href="https://keybase.io/{{ author.keybase }}">
+  <button class="btn btn-md btn-default">
+    <i class="fab fa-fw fa-keybase"></i><strong>Keybase</strong> </button>
+</a>
+
+{% endif %}
+
+{% if author.twitter %}
+
+<a href="https://twitter.com/{{ author.twitter }}">
+  <button class="btn btn-md btn-default">
+    <i class="fab fa-fw fa-twitter-square"></i> <strong>Twitter</strong> </button>
+</a>
+
+{% endif %}
+
+{% if author.facebook %}
+
+<a href="https://www.facebook.com/{{ author.facebook }}">
+  <button class="btn btn-md btn-default">
+    <i class="fab fa-fw fa-facebook-square"></i><strong>Facebook</strong> </button>
+</a>
+
+{% endif %}
+
+{% if author.linkedin %}
+
+<a href="https://www.linkedin.com/in/{{ author.linkedin }}">
+  <button class="btn btn-md btn-default">
+    <i class="fab fa-fw fa-linkedin"></i><strong>LinkedIn</strong></button>
+</a>
+
+{% endif %}
+
+{% if author.xing %}
+
+<a href="https://www.xing.com/profile/{{ author.xing }}">
+  <button class="btn btn-md btn-default">
+    <i class="fab fa-fw fa-xing-square"></i><strong>XING</strong> </button>
+</a>
+
+{% endif %}
+
+{% if author.instagram %}
+
+<a href="https://instagram.com/{{ author.instagram }}">
+  <button class="btn btn-md btn-default">
+    <i class="fab fa-fw fa-instagram"></i><strong>Instagram</strong> </button>
+</a>
+
+{% endif %}
+
+{% if author.tumblr %}
+
+<a href="https://{{ author.tumblr }}.tumblr.com">
+  <button class="btn btn-md btn-default">
+    <i class="fab fa-fw fa-tumblr-square"></i><strong>Tumblr</strong> </button>
+</a>
+
+{% endif %}
+
+{% if author.bitbucket %}
+
+<a href="https://bitbucket.org/{{ author.bitbucket }}">
+  <button class="btn btn-md btn-default">
+    <i class="fab fa-fw fa-bitbucket"></i><strong>Bitbucket</strong> </button>
+</a>
+
+{% endif %}
+
+{% if author.github %}
+
+<a href="https://github.com/{{ author.github }}">
+  <button class="btn btn-md btn-default">
+    <i class="fab fa-fw fa-github"></i><strong>GitHub</strong> </button>
+</a>
+
+{% endif %}
+
+{% if author.gitlab %}
+
+<a href="https://gitlab.com/{{ author.gitlab }}">
+  <button class="btn btn-md btn-default">
+    <i class="fab fa-fw fa-gitlab"></i><strong>GitLab</strong> </button>
+</a>
+
+{% endif %}
+
+{% if author.stackoverflow %}
+
+<a href="https://stackoverflow.com/users/{{ author.stackoverflow }}" itemprop="sameAs"
+  rel="nofollow noopener noreferrer me">
+  <button class="btn btn-md btn-default">
+    <i class="fab fa-fw fa-stack-overflow"></i><strong>Stack Overflow</strong> </button>
+</a>
+
+{% endif %}
+
+{% if author.lastfm %}
+
+<a href="https://last.fm/user/{{ author.lastfm }}">
+  <button class="btn btn-md btn-default">
+    <i class="fab fa-fw fa-lastfm-square"></i><strong>Last.fm</strong> </button>
+</a>
+
+{% endif %}
+
+{% if author.dribbble %}
+
+<a href="https://dribbble.com/{{ author.dribbble }}">
+  <button class="btn btn-md btn-default">
+    <i class="fab fa-fw fa-dribbble"></i><strong>Dribbble</strong> </button>
+</a>
+
+{% endif %}
+
+{% if author.pinterest %}
+
+<a href="https://www.pinterest.com/{{ author.pinterest }}">
+  <button class="btn btn-md btn-default">
+    <i class="fab fa-fw fa-pinterest"></i><strong>Pinterest</strong> </button>
+</a>
+
+{% endif %}
+
+{% if author.foursquare %}
+
+<a href="https://foursquare.com/{{ author.foursquare }}">
+  <button class="btn btn-md btn-default">
+    <i class="fab fa-fw fa-foursquare"></i><strong>Foursquare</strong> </button>
+</a>
+
+{% endif %}
+
+{% if author.steam %}
+
+<a href="https://steamcommunity.com/id/{{ author.steam }}">
+  <button class="btn btn-md btn-default">
+    <i class="fab fa-fw fa-steam"></i><strong>Steam</strong> </button>
+</a>
+
+{% endif %}
+
+{% if author.youtube %}
+{% if author.youtube contains "://" %}
+
+<a href="{{ author.youtube }}">
+  <button class="btn btn-md btn-default">
+    <i class="fab fa-fw fa-youtube"></i><strong>YouTube</strong> </button>
+</a>
+
+{% elsif author.youtube %}
+
+<a href="https://www.youtube.com/user/{{ author.youtube }}">
+  <button class="btn btn-md btn-default">
+    <i class="fab fa-fw fa-youtube"></i><strong>YouTube</strong> </button>
+</a>
+
+{% endif %}
+{% endif %}
+
+{% if author.soundcloud %}
+
+<a href="https://soundcloud.com/{{ author.soundcloud }}">
+  <button class="btn btn-md btn-default">
+    <i class="fab fa-fw fa-soundcloud"></i><strong>SoundCloud</strong> </button>
+</a>
+
+{% endif %}
+
+{% if author.weibo %}
+
+<a href="https://www.weibo.com/{{ author.weibo }}">
+  <button class="btn btn-md btn-default">
+    <i class="fab fa-fw fa-weibo"></i><strong>Weibo</strong> </button>
+</a>
+
+{% endif %}
+
+{% if author.flickr %}
+
+<a href="https://www.flickr.com/{{ author.flickr }}">
+  <button class="btn btn-md btn-default">
+    <i class="fab fa-fw fa-flickr"></i><strong>Flickr</strong> </button>
+</a>
+
+{% endif %}
+
+{% if author.codepen %}
+
+<a href="https://codepen.io/{{ author.codepen }}">
+  <button class="btn btn-md btn-default">
+    <i class="fab fa-fw fa-codepen"></i><strong>CodePen</strong> </button>
+</a>
+
+{% endif %}
+
+{% if author.vine %}
+
+<a href="https://vine.co/u/{{ author.vine }}">
+  <button class="btn btn-md btn-default">
+    <i class="fab fa-fw fa-vine"></i><strong>{{
+      site.data.ui-text[site.locale].email_label | default: "Email" }}</strong> </button>
+</a>
+
+{% endif %}
+
+{% include author-profile-custom-links.html %}

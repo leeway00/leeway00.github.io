@@ -18,9 +18,9 @@ minimal_mistakes_skin    : "dirt2" # "air", "aqua", "contrast", "dark", "dirt", 
 locale                   : "en-US"
 title                    : "Hun's Blog"
 title_separator          : "-"
-subtitle                 : "Math, Stats, and Finance" # site tagline that appears below site title in masthead
+subtitle                 : "Powered by Yobi Isi❤️"  # site tagline that appears below site title in masthead
 name                     : "Younghun Lee"
-typewrite-text           : "Quantitative Finance"
+typewrite-text           : "Math, Stats, and Finance!"
 description              : "Blog nebie"
 url                      : "https://leeway00.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog" ##찾아보자!!
@@ -105,14 +105,14 @@ analytics:
 author:
   name             : "Younghun Lee"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
+  bio              : "Student"
   location         : "Somewhere"
   email            :
-  author_logo      : "profile.png"
+  author_logo      : "profile_yh.png"
   links:
     - label: "Personal Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: "leeyh0920@gmail.com"
+      url: "mailto:leeyh0920@gmail.com"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://leeway00@github.com/"
