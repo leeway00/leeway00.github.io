@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+
+    <!-- begin _includes/seo.html -->
+    <title>Statistics and Machine Learning in Finance - Hun’s Blog</title>
+    <meta
+      name="description"
+      content="나는 이지❤️ ISI IS THE BEST, hun is a lazy person"
+    />
+
+    <meta name="author" content="Younghun Lee" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Hun's Blog" />
+    <meta
+      property="og:title"
+      content="Statistics and Machine Learning in Finance"
+    />
+    <meta property="og:url" content="https://leeway00.github.io/" />
+
+    <meta
+      property="og:description"
+      content="나는 이지❤️ ISI IS THE BEST, hun is a lazy person"
+    />
+
+    <link rel="canonical" href="https://leeway00.github.io/" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+
+        "@type": "Person",
+        "name": "Younghun Lee",
+        "url": "https://leeway00.github.io/"
+      }
+    </script>
+
+    <!-- end _includes/seo.html -->
+
+    <link
+      href="/feed.xml"
+      type="application/atom+xml"
+      rel="alternate"
+      title="Hun's Blog Feed"
+    />
+
+    <!-- https://t.co/dKP3o1e -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script>
+      document.documentElement.className =
+        document.documentElement.className.replace(/\bno-js\b/g, "") + " js ";
+    </script>
+
+    <!-- For all browsers -->
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"
+    /></noscript>
+
+    <!-- start custom head snippets -->
+
+    <!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+    <!-- Jquery -->
+    <!-- <script
+src="https://code.jquery.com/jquery-3.4.1.min.js"
+integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh"
+crossorigin="anonymous"
+></script>
+<script src="https://leeway00.github.io/assets/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="https://leeway00.github.io/assets/bower_components/jquery.easing/jquery.easing.min.js"></script>
+<script src="https://leeway00.github.io/assets/bower_components/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://leeway00.github.io/assets/bower_components/jquery-mousewheel/jquery.mousewheel.min.js"></script>
+<script src="https://leeway00.github.io/assets/bower_components/ghosthunter/dist/jquery.ghostHunter.min.js"></script>
+<script
+    src="https://leeway00.github.io/assets/bower_components/lightgallery/dist/js/lightgallery-all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/picturefill/3.0.2/picturefill.min.js"></script>
+<script src="https://leeway00.github.io/assets/bower_components/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="https://leeway00.github.io/assets/bower_components/nanobar/nanobar.min.js"></script>
+<script src="https://leeway00.github.io/assets/bower_components/typewrite/dist/typewrite.min.js"></script>
+<script src="https://leeway00.github.io/assets/js/search.js"></script>
+<script src="https://leeway00.github.io/assets/js/on-scroll-progress.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script> -->
+
+    <!-- Github Button
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script> -->
+
+    <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+    <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+    <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <!-- <html class="no-js"> -->
+    <!--<![endif]-->
+    <!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--home">
+    <nav class="skip-links">
+      <ul>
+        <li>
+          <a href="#site-nav" class="screen-reader-shortcut"
+            >Skip to primary navigation</a
+          >
+        </li>
+        <li>
+          <a href="#main" class="screen-reader-shortcut">Skip to content</a>
+        </li>
+        <li>
+          <a href="#footer" class="screen-reader-shortcut">Skip to footer</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!--[if lt IE 9]>
+      <div class="notice--danger align-center" style="margin: 0">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience.
+      </div>
+    <![endif]-->
+
+    <div class="masthead">
+      <div class="masthead__inner-wrap">
+        <div class="masthead__menu">
+          <nav id="site-nav" class="greedy-nav">
+            <a class="site-title" href="/">
+              Hun's Blog
+              <span class="site-subtitle">Math, Stats, and Finance</span>
+            </a>
+            <ul class="visible-links">
+              <li class="masthead__menu-item">
+                <a href="/data_science/">Data Science Notes</a>
+              </li>
+              <li class="masthead__menu-item">
+                <a
+                  href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/"
+                  >Quick-Start Guide</a
+                >
+              </li>
+            </ul>
+
+            <button class="greedy-nav__toggle hidden" type="button">
+              <span class="visually-hidden">Toggle menu</span>
+              <div class="navicon"></div>
+            </button>
+            <ul class="hidden-links hidden"></ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var elements = document.querySelectorAll(".page__content.e-content")
+        .childNodes; // 수정1
+      var addContent = false;
+      var contentsToAdd = [];
+      var expandtags = null;
+      var detailText = null;
+      var detailsTag = null;
+      var summaryTag = null;
+      var detailsContent = null;
+      for (var i = elements.length - 1; i > -1; i--) {
+        el = elements[i];
+        if (el.innerHTML == "[/expand]") {
+          addContent = true;
+          detailsContent = document.createElement("div");
+          detailsContent.className = "collaspe-content";
+          detailsContent.setAttribute("markdown", "1");
+          el.parentNode.removeChild(el);
+        } else if (
+          el.innerHTML == "[expand]" ||
+          (el.nodeName == "P" && el.innerHTML.includes("[expand]summary:"))
+        ) {
+          addContent = false;
+          expandtags = el.innerHTML.split("summary:");
+          if (expandtags.length == 1) {
+            detailText = "Details";
+          } else {
+            detailText = expandtags[1];
+          }
+          detailsTag = document.createElement("details");
+          detailsTag.className = "collaspe-article";
+          summaryTag = document.createElement("summary");
+          summaryTag.appendChild(document.createTextNode(detailText));
+          detailsTag.appendChild(summaryTag);
+          for (var j = contentsToAdd.length - 1; j > -1; j--) {
+            detailsContent.appendChild(contentsToAdd[j]);
+          }
+          detailsTag.appendChild(detailsContent);
+          el.parentNode.replaceChild(detailsTag, el);
+          contentsToAdd = [];
+        } else {
+          if (addContent) {
+            contentsToAdd.push(el);
+          }
+        }
+      }
+    </script>
+
+    <div class="initial-content">
+      <script src="/assets/bower_components/typewrite/dist/typewrite.min.js"></script>
+
+      <script>
+        $(document).ready(function () {
+          $("#typewriteText").typewrite({
+            actions: [{ type: "Quantitative Finance" }],
+          });
+        });
+      </script>
+      <!-- Changes:
+1. 220406 uncommented the github star, fork 
+/assets/images/
+-->
+
+      <style>
+        /* change cover_img in config.yml */
+        .jumbotron {
+          background-color: var(--main-background-color) !important;
+          background-image: url("/assets/images/hero_ferrari.jpeg");
+          text-align: center;
+          background-attachment: fixed;
+          background-size: cover;
+          height: 75vh;
+          background-origin: content-box;
+          background-position-y: bottom;
+          margin: auto;
+        }
+
+        .author-profile-img {
+          margin-top: 20vh;
+          padding-bottom: 1vh;
+        }
+
+        .jumbotron-btns {
+          display: block;
+          margin-top: 50px;
+        }
+
+        .jumbotron-heading,
+        .lead {
+          color: #fff;
+          text-shadow: 0px 0px 5px #000000, 1px 1px 5px #000000,
+            2px 2px 5px #000000;
+        }
+      </style>
+
+      <!-- home hero section -->
+      <div class="jumbotron">
+        <img class="author-profile-img" src="/assets/images/profile.png" />
+        <p class="jumbotron-heading">Hi, I am Younghun Lee !</p>
+        <script>
+          $(document).ready(function () {
+            $("#typewriteText").typewrite({
+              actions: [{ type: page.title }],
+            });
+          });
+        </script>
+
+        <p class="lead" id="typewriteText"></p>
+
+        <div class="jumbotron-btns">
+          <a href="https://leeway00.github.io/get-started">
+            <button class="btn btn-md btn-warning">
+              <strong>Get Started</strong>
+            </button>
+          </a>
+          <a id="olvy-target">
+            <button class="btn btn-md btn-default">
+              <strong>What's New</strong>
+            </button>
+          </a>
+        </div>
+      </div>
+
+      <div id="main" role="main">
+        <div class="sidebar sticky">
+          <div itemscope itemtype="https://schema.org/Person" class="h-card">
+            <div class="author__content">
+              <h3 class="author__name p-name" itemprop="name">
+                <a
+                  class="u-url"
+                  rel="me"
+                  href="https://leeway00.github.io/"
+                  itemprop="url"
+                  >Younghun Lee</a
+                >
+              </h3>
+
+              <div class="author__bio p-note" itemprop="description">
+                <p>I am an <strong>amazing</strong> person.</p>
+              </div>
+            </div>
+
+            <div class="author__urls-wrapper">
+              <button class="btn btn--inverse">Follow</button>
+              <ul class="author__urls social-icons">
+                <li
+                  itemprop="homeLocation"
+                  itemscope
+                  itemtype="https://schema.org/Place"
+                >
+                  <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i>
+                  <span itemprop="name" class="p-locality">Somewhere</span>
+                </li>
+
+                <li>
+                  <a
+                    href="leeyh0920@gmail.com"
+                    rel="nofollow noopener noreferrer me"
+                    ><i
+                      class="fas fa-fw fa-envelope-square"
+                      aria-hidden="true"
+                    ></i
+                    ><span class="label">Personal Email</span></a
+                  >
+                </li>
+
+                <li>
+                  <a
+                    href="https://leeway00@github.com/"
+                    rel="nofollow noopener noreferrer me"
+                    ><i class="fab fa-fw fa-github" aria-hidden="true"></i
+                    ><span class="label">GitHub</span></a
+                  >
+                </li>
+
+                <li>
+                  <a
+                    href="https://linkedin.com/in/younghunlee"
+                    rel="nofollow noopener noreferrer me"
+                    ><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i
+                    ><span class="label">linkedin</span></a
+                  >
+                </li>
+
+                <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="archive">
+          <h1 id="page-title" class="page__title">
+            Statistics and Machine Learning in Finance
+          </h1>
+
+          <h3 class="archive__subtitle">Recent posts</h3>
+
+          <div class="entries-list">
+            <div class="list__item">
+              <article
+                class="archive__item"
+                itemscope
+                itemtype="https://schema.org/CreativeWork"
+              >
+                <h2 class="archive__item-title no_toc" itemprop="headline">
+                  <a href="/time-series/" rel="permalink">Time Series 1 </a>
+                </h2>
+
+                <p class="page__meta">
+                  <span class="page__meta-readtime">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+
+                    3 minute read
+                  </span>
+                </p>
+
+                <p class="archive__item-excerpt" itemprop="description">
+                  Chapter 3. Special Distributions
+                </p>
+              </article>
+            </div>
+
+            <div class="list__item">
+              <article
+                class="archive__item"
+                itemscope
+                itemtype="https://schema.org/CreativeWork"
+              >
+                <h2 class="archive__item-title no_toc" itemprop="headline">
+                  <a href="/python/ask-python/" rel="permalink"
+                    >Questions in Python
+                  </a>
+                </h2>
+
+                <p class="page__meta">
+                  <span class="page__meta-readtime">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+
+                    less than 1 minute read
+                  </span>
+                </p>
+
+                <p class="archive__item-excerpt" itemprop="description">
+                  General Python How class and get works
+                  https://stackoverflow.com/a/44741455
+                </p>
+              </article>
+            </div>
+
+            <div class="list__item">
+              <article
+                class="archive__item"
+                itemscope
+                itemtype="https://schema.org/CreativeWork"
+              >
+                <h2 class="archive__item-title no_toc" itemprop="headline">
+                  <a href="/math_stat/ch3-1/" rel="permalink"
+                    >[Mathematical Statistics] Chapter3
+                  </a>
+                </h2>
+
+                <p class="archive__item-excerpt" itemprop="description">
+                  Chapter 3. Special Distributions
+                </p>
+              </article>
+            </div>
+
+            <div class="list__item">
+              <article
+                class="archive__item"
+                itemscope
+                itemtype="https://schema.org/CreativeWork"
+              >
+                <h2 class="archive__item-title no_toc" itemprop="headline">
+                  <a href="/math_stat/ch3/" rel="permalink"
+                    >Chapter3 Special Distributions
+                  </a>
+                </h2>
+
+                <p class="page__meta">
+                  <span class="page__meta-readtime">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+
+                    2 minute read
+                  </span>
+                </p>
+
+                <p class="archive__item-excerpt" itemprop="description">
+                  Chapter 3. Special Distributions
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+        <!-- end custom footer snippets -->
+        <!-- <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div> -->
+
+        <div class="page__footer-copyright">
+          &copy; 2022 Younghun Lee. Powered by
+          <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp;
+          <a
+            href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/"
+            rel="nofollow"
+            >Minimal Mistakes</a
+          >.
+        </div>
+      </footer>
+    </div>
+
+    <script src="/assets/js/main.min.js"></script>
+  </body>
+</html>
