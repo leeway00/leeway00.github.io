@@ -5,9 +5,9 @@ category: Time Series
 tags:
   - [statistics]
 
-layout: single_v2
+# layout: single_v2
 
-permalink: /time-series/ts1/
+permalink: /time_series/ts1/
 excerpt: "Chapter 3. Special Distributions"
 last_modified_at: Now
 

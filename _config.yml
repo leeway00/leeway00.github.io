@@ -147,7 +147,6 @@ footer:
 include:
   - .htaccess
   - _pages
-  - _data_science/_pages
   - math_stat
   - _plugins
 exclude:
@@ -254,16 +253,16 @@ tag_archive:
   type: liquid
   path: /tags/
 # https://github.com/jekyll/jekyll-archives
-# jekyll-archives:
-#   enabled:
-#     - categories
-#     - tags
-#   layouts:
-#     category: archive-taxonomy
-#     tag: archive-taxonomy
-#   permalinks:
-#     category: /categories/:name/
-#     tag: /tags/:name/
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+  layouts:
+    category: archive-taxonomy
+    tag: archive-taxonomy
+  permalinks:
+    category: /categories/:name/
+    tag: /tags/:name/
 
 
 # HTML Compression
@@ -275,7 +274,7 @@ compress_html:
 
 
 collections:
-  data_science:
+  time_series:
     output: true
     permalink: /:collection/:path/
 
@@ -292,7 +291,6 @@ defaults:
       comments: true
       share: true
       related: true
-      mathjax: true
       sidebar:
         nav: "_posts"
   
@@ -306,14 +304,18 @@ defaults:
       comments: true
       share: true
       related: true
-      mathjax: true
       sidebar:
         nav: "/math_stat"
 
-  # _pages
   - scope:
-      path: ""
-      type: data_science
+      path: "/time_series/"
+      type: time-series
     values:
       layout: single
       author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
+      sidebar:
+        nav: "/time_series/"

@@ -6,7 +6,7 @@
   @include clearfix;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1em;
+  padding-left: 2em;
   padding-right: 1em;
   -webkit-animation: $intro-transition;
   animation: $intro-transition;
@@ -38,12 +38,12 @@ body {
 .page {
   @include breakpoint($large) {
     float: right;
-    width: calc(100% - #{$right-sidebar-width-narrow}/3);
+    width: calc(100% - #{$right-sidebar-width-narrow});
     padding-right: $right-sidebar-width-narrow;
   }
 
   @include breakpoint($x-large) {
-    width: calc(100% - #{$right-sidebar-width}/3);
+    width: calc(100% - #{$right-sidebar-width});
     padding-right: $right-sidebar-width;
   }
 
@@ -284,10 +284,9 @@ body {
    ========================================================================== */
 
 .page__meta {
-  margin-top: 2em;
   color: $muted-text-color;
   font-family: $sans-serif;
-  font-size: $type-size-6;
+  font-size: $type-size-7;
 
   p {
     margin: 0;
@@ -326,12 +325,12 @@ body {
 
 .page__taxonomy-item {
   display: inline-block;
-  margin-right: 5px;
-  margin-bottom: 8px;
-  padding: 5px 10px;
+  // margin-right: 5px;
+  margin-bottom: 2px;
+  // padding: 5px 10px;
   text-decoration: none;
-  border: 1px solid mix(#000, $border-color, 25%);
-  border-radius: $border-radius;
+  // border: 1px solid mix(#000, $border-color, 25%);
+  // border-radius: $border-radius;
 
   &:hover {
     text-decoration: none;
@@ -518,11 +517,11 @@ body {
 
   @include breakpoint($large) {
     float: right;
-    width: calc(100% - #{$right-sidebar-width-narrow}/3);
+    width: calc(100% - #{$right-sidebar-width-narrow});
   }
 
   @include breakpoint($x-large) {
-    width: calc(100% - #{$right-sidebar-width}/3);
+    width: calc(100% - #{$right-sidebar-width});
   }
 
   a {
