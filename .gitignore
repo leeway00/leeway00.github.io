@@ -29,3 +29,5 @@ _site
 
 /test
 /docs
+
+.vscode
