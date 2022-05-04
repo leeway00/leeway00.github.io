@@ -23,6 +23,12 @@ var store = [{
         "url": "/time-series/ts1/",
         "teaser": null
       },{
+        "title": "E",
+        "excerpt":"Data Cleaning Why important? Key aspects of ML depend on clened data e.g.) Observation Labels: predicted Algorithms: estimation Features Model: assume this is acutal data representent Messy data generate garbage-in, garbage-out Reason: Lack of data, too much data, bad data How become Messy? Duplicate or unnecessary data filter the data...","categories": ["IBM ML"],
+        "tags": ["IBM","Machine Learning"],
+        "url": "/ibm/eda2/",
+        "teaser": null
+      },{
         "title": "Time Series 1",
         "excerpt":"multiple h1 is availalbe? White noise We assume it is uncorrelated Cov(at,at+1)=0Cov(a_t, a_{t+1}) = 0Cov(at​,at+1​)=0 Covariance measures linear relationship between X, Y. e.g.) Y=X2+1Y=X^2+1Y=X2+1 have Cov=0Cov=0Cov=0 e.g.2) What if Y=X2Y=X^2Y=X2? Cov(X,Y)=E[X⋅X2]−E[x]E[X2]Cov(X,Y) = E[X \\cdot X^2] - E[x]E[X^2]Cov(X,Y)=E[X⋅X2]−E[x]E[X2]. Since X and Y are (0,0) symmetric, Cov(X,Y)=0Cov(X,Y) = 0Cov(X,Y)=0 E(at)=0E(a_t) = 0E(at​)=0...","categories": ["Time Series"],
         "tags": ["statistics"],
