@@ -48,6 +48,10 @@ html {
   @include breakpoint($x-large) {padding-inline-start: 30px;}
 }
 
+.toc ul {
+  padding-inline-start: 0 !important;
+}
+
 // LateX font sizes, currently using katex with $,$$ delimiters
 .katex, .MathJax {
   font-size: 95% !important;
