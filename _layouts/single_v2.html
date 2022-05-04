@@ -41,7 +41,8 @@ layout: default
       {% endunless %}
 
       <header class="page__meta">
-        {% include page__taxonomy.html %}<h5></h5>
+        {% include page__taxonomy.html %}
+        {% include page__date.html %}<hr>
       </header>
       
 
@@ -63,7 +64,6 @@ layout: default
         {% if site.data.ui-text[site.locale].meta_label %}
           <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
         {% endif %}
-        {% include page__date.html %}
       </footer>
 
 

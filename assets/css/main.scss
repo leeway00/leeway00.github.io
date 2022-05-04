@@ -28,18 +28,30 @@ html {
   @include breakpoint($x-large) {font-size: 16px;}
 }
 
-.page__content p, li, ol {
+.page__content p, ul, li, ol {
   font-size: 90%;
+  margin: 0;
+  li, ul {
+    margin: 0;
+  }
+}
+
+.page__content pre {
+  font-size: 80%;
+  margin: 0.5em;
+}
+
+.page__content ul {
+  padding-inline-start: 10px;
+  @include breakpoint($medium) {padding-inline-start: 15px;}
+  @include breakpoint($large) {padding-inline-start: 20px;}
+  @include breakpoint($x-large) {padding-inline-start: 30px;}
 }
 
 // LateX font sizes, currently using katex with $,$$ delimiters
-.MathJax {
-  font-size: 100% !important;
-  }
-.katex {
+.katex, .MathJax {
   font-size: 95% !important;
   }
-
 
 .highlight {
   font-family: $monospace;
@@ -50,6 +62,31 @@ html {
   font-family: $monospace;
   font-size: $type-size-5;
   background: #c0ffee;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 1em 0 0.5em;
+}
+
+.page__title {
+  font-size: 2em;
+  margin: 0.5em 0 0.5em;
+  text-align: center;
+}
+
+.page__meta {
+  text-align: right;
+  a, time {
+    margin-left: 0.3rem;
+  }
+  font-size: $type-size-6;
+  hr {
+    display: block;
+    margin: 1em 0;
+    border: 0;
+    border-bottom: 0.1rem solid $border-color;
+  }
 }
 
 
@@ -72,4 +109,30 @@ html {
   display: block;
   width: 100%;
   border-bottom: 1px solid #bcbcbc;
+}
+
+.sidebar {
+  display: none;
+  @include breakpoint($large) {
+    display: table;
+  }
+}
+
+.sidebar__right {
+  @include breakpoint($large) {
+    width: $right-sidebar-width;
+    margin-right: -1 * $right-sidebar-width;
+  }
+}
+.page {
+  @include breakpoint($large) {
+    float: right;
+    width: calc(100% - #{$right-sidebar-width-narrow});
+    padding-right: $right-sidebar-width;
+  }
+  @include breakpoint($x-large) {
+    width: calc(100% - #{$right-sidebar-width});
+    padding-right: $right-sidebar-width;
+  }
+
 }
