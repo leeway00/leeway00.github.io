@@ -23,10 +23,16 @@ var store = [{
         "url": "/time-series/ts1/",
         "teaser": null
       },{
-        "title": "E",
-        "excerpt":"Data Cleaning Why important? Key aspects of ML depend on clened data e.g.) Observation Labels: predicted Algorithms: estimation Features Model: assume this is acutal data representent Messy data generate garbage-in, garbage-out Reason: Lack of data, too much data, bad data How become Messy? Duplicate or unnecessary data filter the data...","categories": ["IBM ML"],
+        "title": "EDA Week2 Data Cleaning",
+        "excerpt":"Data Cleaning Why important? Key aspects of ML depend on clened data e.g.) Observation Labels: predicted Algorithms: estimation Features Model: assume this is acutal data representent Messy data generate garbage-in, garbage-out Reason: Lack of data, too much data, bad data How to deal with it? Duplicate or unnecessary data filter...","categories": ["IBM"],
         "tags": ["IBM","Machine Learning"],
         "url": "/ibm/eda2/",
+        "teaser": null
+      },{
+        "title": "EDA Week3 Feature Engineering",
+        "excerpt":"Variable Transformation We often assume normally distributed data. But often skewed -&gt; Data transformation solve this Log transformation Log transformation is a transformation that takes the natural log of the data. Useful for linear regression. Solve right skewed Polynomial Features higher order relationship from sklearn.preprocessing import PolynomialFeatures poly = PolynomialFeatures(degree=2)...","categories": ["IBM"],
+        "tags": ["IBM","Machine Learning"],
+        "url": "/ibm/eda3/",
         "teaser": null
       },{
         "title": "Time Series 1",

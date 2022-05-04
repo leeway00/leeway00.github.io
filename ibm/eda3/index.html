@@ -50,11 +50,8 @@
     <meta charset="utf-8" />
 
     <!-- begin _includes/seo.html -->
-    <title>Questions in Python - Hun’s Blog</title>
-    <meta
-      name="description"
-      content="General Python    How class and get works https://stackoverflow.com/a/44741455"
-    />
+    <title>EDA Week3 Feature Engineering - Hun’s Blog</title>
+    <meta name="description" content="Exploratory Data Analysis" />
 
     <meta name="author" content="Younghun Lee" />
 
@@ -63,26 +60,22 @@
     <meta property="og:type" content="article" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="Hun's Blog" />
-    <meta property="og:title" content="Questions in Python" />
-    <meta
-      property="og:url"
-      content="https://leeway00.github.io/python/ask-python/"
-    />
+    <meta property="og:title" content="EDA Week3 Feature Engineering" />
+    <meta property="og:url" content="https://leeway00.github.io/ibm/eda3/" />
 
-    <meta
-      property="og:description"
-      content="General Python    How class and get works https://stackoverflow.com/a/44741455"
-    />
+    <meta property="og:description" content="Exploratory Data Analysis" />
 
     <meta
       property="article:published_time"
-      content="2022-04-12T20:05:23+00:00"
+      content="2022-05-04T00:00:00+00:00"
     />
 
-    <link
-      rel="canonical"
-      href="https://leeway00.github.io/python/ask-python/"
+    <meta
+      property="article:modified_time"
+      content="2022-05-04T09:36:46+00:00"
     />
+
+    <link rel="canonical" href="https://leeway00.github.io/ibm/eda3/" />
 
     <script type="application/ld+json">
       {
@@ -314,12 +307,10 @@
           itemscope
           itemtype="https://schema.org/CreativeWork"
         >
-          <meta itemprop="headline" content="Questions in Python" />
-          <meta
-            itemprop="description"
-            content="General Python  How class and get workshttps://stackoverflow.com/a/44741455"
-          />
-          <meta itemprop="datePublished" content="2022-04-12T20:05:23+00:00" />
+          <meta itemprop="headline" content="EDA Week3 Feature Engineering" />
+          <meta itemprop="description" content="Exploratory Data Analysis" />
+          <meta itemprop="datePublished" content="2022-05-04T00:00:00+00:00" />
+          <meta itemprop="dateModified" content="2022-05-04T09:36:46+00:00" />
 
           <div class="page__inner-wrap">
             <header>
@@ -329,10 +320,10 @@
                 itemprop="headline"
               >
                 <a
-                  href="https://leeway00.github.io/python/ask-python/"
+                  href="https://leeway00.github.io/ibm/eda3/"
                   class="u-url"
                   itemprop="url"
-                  >Questions in Python
+                  >EDA Week3 Feature Engineering
                 </a>
               </h1>
             </header>
@@ -345,10 +336,17 @@
                 </strong>
                 <span itemprop="keywords">
                   <a
-                    href="/tags/#python"
+                    href="/tags/#ibm"
                     class="page__taxonomy-item p-category"
                     rel="tag"
-                    >Python</a
+                    >IBM</a
+                  ><span class="sep">, </span>
+
+                  <a
+                    href="/tags/#machine-learning"
+                    class="page__taxonomy-item p-category"
+                    rel="tag"
+                    >Machine Learning</a
                   >
                 </span>
               </p>
@@ -360,24 +358,10 @@
                 </strong>
                 <span itemprop="keywords">
                   <a
-                    href="/categories/#numpy"
+                    href="/categories/#ibm"
                     class="page__taxonomy-item p-category"
                     rel="tag"
-                    >Numpy</a
-                  ><span class="sep">, </span>
-
-                  <a
-                    href="/categories/#pandas"
-                    class="page__taxonomy-item p-category"
-                    rel="tag"
-                    >Pandas</a
-                  ><span class="sep">, </span>
-
-                  <a
-                    href="/categories/#python"
-                    class="page__taxonomy-item p-category"
-                    rel="tag"
-                    >Python</a
+                    >IBM</a
                   >
                 </span>
               </p>
@@ -387,8 +371,8 @@
                   ><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>
                   Updated:</strong
                 >
-                <time class="dt-published" datetime="2022-04-12T20:05:23+00:00"
-                  >April 12, 2022</time
+                <time class="dt-published" datetime="2022-05-04"
+                  >May 4, 2022</time
                 >
               </p>
               <hr />
@@ -403,53 +387,105 @@
                     </h4>
                   </header>
                   <ul class="toc__menu">
-                    <li><a href="#general-python">General Python</a></li>
-                    <li><a href="#pandas">Pandas</a></li>
-                    <li><a href="#numpy">Numpy</a></li>
+                    <li>
+                      <a href="#variable-transformation"
+                        >Variable Transformation</a
+                      >
+                      <ul>
+                        <li>
+                          <a href="#log-transformation">Log transformation</a>
+                        </li>
+                        <li>
+                          <a href="#polynomial-features">Polynomial Features</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a href="#feature-encoding">Feature Encoding</a></li>
+                    <li>
+                      <a href="#feature-scaling">Feature Scaling</a>
+                      <ul>
+                        <li><a href="#why-problematic">Why problematic?</a></li>
+                        <li><a href="#approach">Approach</a></li>
+                      </ul>
+                    </li>
                   </ul>
                 </nav>
               </aside>
 
-              <h2 id="general-python">General Python</h2>
-              <ol>
-                <li>
-                  <p>
-                    How class and <strong>get</strong> works
-                    https://stackoverflow.com/a/44741455
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    Adjusting tqdm message with sys.stdout and sys.stderr
-                    modification
-                    https://stackoverflow.com/questions/36986929/redirect-print-command-in-python-script-through-tqdm-write/37243211#37243211
-                  </p>
-                </li>
-              </ol>
+              <h2 id="variable-transformation">Variable Transformation</h2>
+              <p>
+                We often assume normally distributed data. But often skewed
+                -&gt; Data transformation solve this
+              </p>
 
-              <h2 id="pandas">Pandas</h2>
-              <ol>
-                <li>
-                  <p>
-                    Make DataFrame iterable based on index (row-wise iteration)
-                    https://stackoverflow.com/questions/16476924/how-to-iterate-over-rows-in-a-dataframe-in-pandas
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    How to use MultiIndex? Advanced pandas
-                    https://towardsdatascience.com/how-to-use-multiindex-in-pandas-to-level-up-your-analysis-aeac7f451fce
-                  </p>
-                </li>
-              </ol>
+              <h3 id="log-transformation">Log transformation</h3>
+              <p>
+                Log transformation is a transformation that takes the natural
+                log of the data. Useful for linear regression. Solve right
+                skewed
+              </p>
 
-              <h2 id="numpy">Numpy</h2>
-              <ol>
+              <h3 id="polynomial-features">Polynomial Features</h3>
+              <p>higher order relationship</p>
+              <pre><code class="language-{.python}">from sklearn.preprocessing import PolynomialFeatures
+poly = PolynomialFeatures(degree=2)
+polyfeat = poly.fit(data)
+polyfeat.transform(data)
+</code></pre>
+
+              <h2 id="feature-encoding">Feature Encoding</h2>
+              <p>Variable selection involves choosing the set of features</p>
+              <ul>
                 <li>
-                  Hadamard product
-                  https://stackoverflow.com/questions/40034993/how-to-get-element-wise-matrix-multiplication-hadamard-product-in-numpy
+                  Encoding: converting non-numeric features to numeric features
+                  <ul>
+                    <li>
+                      applied to categorical features
+                      <ul>
+                        <li>Nominal: Red, blue</li>
+                        <li>Ordinal: high, medium, low</li>
+                      </ul>
+                    </li>
+                    <li>Binary encoding: 0, 1</li>
+                    <li>
+                      One-hot encoding: multiple columns for each category with
+                      binary vaiables
+                    </li>
+                    <li>
+                      Ordinal encoding: converting ordered categories to
+                      numerical values. (e.g. 0,1,2,3,…)
+                    </li>
+                  </ul>
                 </li>
-              </ol>
+                <li>
+                  Scailing: converting the scale of numeric data so they are
+                  comparable
+                </li>
+              </ul>
+
+              <h2 id="feature-scaling">Feature Scaling</h2>
+              <p>
+                Adjusting a variable scale, so that comparison of variables with
+                different scales
+              </p>
+              <h3 id="why-problematic">Why problematic?</h3>
+              <p>If scale is so small, it will be hard to compare.</p>
+              <h3 id="approach">Approach</h3>
+              <ul>
+                <li>
+                  Standard scailing: convert features to standard normal
+                  variable
+                </li>
+                <li>
+                  Min-max scailing: convert features to min-max. It is sensitive
+                  to outliers
+                </li>
+                <li>
+                  Robust scaling: similar to min-max but maps the interquartile
+                  range 1Q to 0 and 3Q to 1. Other range takes values outside of
+                  the (0,1) interval.
+                </li>
+              </ul>
             </section>
 
             <footer class="page__meta"></footer>
@@ -458,7 +494,7 @@
               <h4 class="page__share-title">Share on</h4>
 
               <a
-                href="https://twitter.com/intent/tweet?text=Questions+in+Python%20https%3A%2F%2Fleeway00.github.io%2Fpython%2Fask-python%2F"
+                href="https://twitter.com/intent/tweet?text=EDA+Week3+Feature+Engineering%20https%3A%2F%2Fleeway00.github.io%2Fibm%2Feda3%2F"
                 class="btn btn--twitter"
                 onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
                 title="Share on Twitter"
@@ -467,7 +503,7 @@
               >
 
               <a
-                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fleeway00.github.io%2Fpython%2Fask-python%2F"
+                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fleeway00.github.io%2Fibm%2Feda3%2F"
                 class="btn btn--facebook"
                 onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
                 title="Share on Facebook"
@@ -476,7 +512,7 @@
               >
 
               <a
-                href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fleeway00.github.io%2Fpython%2Fask-python%2F"
+                href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fleeway00.github.io%2Fibm%2Feda3%2F"
                 class="btn btn--linkedin"
                 onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
                 title="Share on LinkedIn"
@@ -487,20 +523,14 @@
 
             <nav class="pagination">
               <a
-                href="/math_stat/ch3-1/"
+                href="/ibm/eda2/"
                 class="pagination--pager"
-                title="[Mathematical Statistics] Chapter3
+                title="EDA Week2 Data Cleaning
 "
                 >Previous</a
               >
 
-              <a
-                href="/time-series/ts1/"
-                class="pagination--pager"
-                title="Time Series 1
-"
-                >Next</a
-              >
+              <a href="#" class="pagination--pager disabled">Next</a>
             </nav>
           </div>
 
@@ -508,7 +538,7 @@
             <h4 class="page__comments-title">Leave a comment</h4>
             <section
               class="fb-comments"
-              data-href="https://leeway00.github.io/python/ask-python/"
+              data-href="https://leeway00.github.io/ibm/eda3/"
               data-mobile="true"
               data-num-posts="5"
               data-width="100%"
@@ -520,32 +550,6 @@
         <div class="page__related">
           <h2 class="page__related-title">You may also enjoy</h2>
           <div class="grid__wrapper">
-            <div class="grid__item">
-              <article
-                class="archive__item"
-                itemscope
-                itemtype="https://schema.org/CreativeWork"
-              >
-                <h2 class="archive__item-title no_toc" itemprop="headline">
-                  <a href="/ibm/eda3/" rel="permalink"
-                    >EDA Week3 Feature Engineering
-                  </a>
-                </h2>
-
-                <p class="page__meta">
-                  <span class="page__meta-readtime">
-                    <i class="far fa-clock" aria-hidden="true"></i>
-
-                    1 minute read
-                  </span>
-                </p>
-
-                <p class="archive__item-excerpt" itemprop="description">
-                  Exploratory Data Analysis
-                </p>
-              </article>
-            </div>
-
             <div class="grid__item">
               <article
                 class="archive__item"
@@ -586,12 +590,39 @@
                   <span class="page__meta-readtime">
                     <i class="far fa-clock" aria-hidden="true"></i>
 
-                    4 minute read
+                    3 minute read
                   </span>
                 </p>
 
                 <p class="archive__item-excerpt" itemprop="description">
                   Chapter 3. Special Distributions
+                </p>
+              </article>
+            </div>
+
+            <div class="grid__item">
+              <article
+                class="archive__item"
+                itemscope
+                itemtype="https://schema.org/CreativeWork"
+              >
+                <h2 class="archive__item-title no_toc" itemprop="headline">
+                  <a href="/python/ask-python/" rel="permalink"
+                    >Questions in Python
+                  </a>
+                </h2>
+
+                <p class="page__meta">
+                  <span class="page__meta-readtime">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+
+                    less than 1 minute read
+                  </span>
+                </p>
+
+                <p class="archive__item-excerpt" itemprop="description">
+                  General Python How class and get works
+                  https://stackoverflow.com/a/44741455
                 </p>
               </article>
             </div>
