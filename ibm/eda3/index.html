@@ -72,7 +72,7 @@
 
     <meta
       property="article:modified_time"
-      content="2022-05-04T09:36:46+00:00"
+      content="2022-05-04T11:04:45+00:00"
     />
 
     <link rel="canonical" href="https://leeway00.github.io/ibm/eda3/" />
@@ -310,7 +310,7 @@
           <meta itemprop="headline" content="EDA Week3 Feature Engineering" />
           <meta itemprop="description" content="Exploratory Data Analysis" />
           <meta itemprop="datePublished" content="2022-05-04T00:00:00+00:00" />
-          <meta itemprop="dateModified" content="2022-05-04T09:36:46+00:00" />
+          <meta itemprop="dateModified" content="2022-05-04T11:04:45+00:00" />
 
           <div class="page__inner-wrap">
             <header>
@@ -408,6 +408,12 @@
                         <li><a href="#approach">Approach</a></li>
                       </ul>
                     </li>
+                    <li>
+                      <a href="#common-variable-transformation"
+                        >Common Variable Transformation</a
+                      >
+                    </li>
+                    <li><a href="#etc">ETC</a></li>
                   </ul>
                 </nav>
               </aside>
@@ -486,6 +492,76 @@ polyfeat.transform(data)
                   the (0,1) interval.
                 </li>
               </ul>
+
+              <h2 id="common-variable-transformation">
+                Common Variable Transformation
+              </h2>
+              <p>Feature type</p>
+              <ul>
+                <li>
+                  Continuous: Standard, Min-max, Robust scaling
+                  <ul>
+                    <li>
+                      <code class="language-plaintext highlighter-rouge"
+                        >from sklearn.preprocessing import StandardScaler,
+                        MinMaxScaler, RobustScaler</code
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  Nominla: Categorical, unordered features: Binanry, One-hot
+                  encoding
+                  <ul>
+                    <li>
+                      <code class="language-plaintext highlighter-rouge"
+                        >from sklearn.preprocessing import LabelEncoder,
+                        LabelBinarizer, OneHotEncoder</code
+                      >
+                    </li>
+                    <li>
+                      <code class="language-plaintext highlighter-rouge"
+                        >from pandas import get_dummies</code
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  Ordinal: Categorical, ordered features: Ordinal encoding
+                  <ul>
+                    <li>
+                      <code class="language-plaintext highlighter-rouge"
+                        >from sklearn.feature_extraction import
+                        DictVectorizer</code
+                      >
+                    </li>
+                    <li>
+                      <code class="language-plaintext highlighter-rouge"
+                        >from sklearn.preprocessing import OrdinalEncoder</code
+                      >
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+              <h2 id="etc">ETC</h2>
+              <ol>
+                <li>
+                  <dl>
+                    <dt>
+                      <a
+                        href="https://www.statisticshowto.com/box-cox-transformation/"
+                        >Boxcox transformation</a
+                      >
+                    </dt>
+                    <dd>
+                      A Box Cox transformation is a transformation of non-normal
+                      dependent variables into a normal shape.
+                    </dd>
+                  </dl>
+                </li>
+                <li></li>
+              </ol>
             </section>
 
             <footer class="page__meta"></footer>
@@ -530,7 +606,13 @@ polyfeat.transform(data)
                 >Previous</a
               >
 
-              <a href="#" class="pagination--pager disabled">Next</a>
+              <a
+                href="/ibm/eda4/"
+                class="pagination--pager"
+                title="EDA Week4 Inferential Statistics and Hypothesis Testing
+"
+                >Next</a
+              >
             </nav>
           </div>
 
@@ -550,6 +632,32 @@ polyfeat.transform(data)
         <div class="page__related">
           <h2 class="page__related-title">You may also enjoy</h2>
           <div class="grid__wrapper">
+            <div class="grid__item">
+              <article
+                class="archive__item"
+                itemscope
+                itemtype="https://schema.org/CreativeWork"
+              >
+                <h2 class="archive__item-title no_toc" itemprop="headline">
+                  <a href="/ibm/eda4/" rel="permalink"
+                    >EDA Week4 Inferential Statistics and Hypothesis Testing
+                  </a>
+                </h2>
+
+                <p class="page__meta">
+                  <span class="page__meta-readtime">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+
+                    1 minute read
+                  </span>
+                </p>
+
+                <p class="archive__item-excerpt" itemprop="description">
+                  Exploratory Data Analysis
+                </p>
+              </article>
+            </div>
+
             <div class="grid__item">
               <article
                 class="archive__item"
@@ -623,24 +731,6 @@ polyfeat.transform(data)
                 <p class="archive__item-excerpt" itemprop="description">
                   General Python How class and get works
                   https://stackoverflow.com/a/44741455
-                </p>
-              </article>
-            </div>
-
-            <div class="grid__item">
-              <article
-                class="archive__item"
-                itemscope
-                itemtype="https://schema.org/CreativeWork"
-              >
-                <h2 class="archive__item-title no_toc" itemprop="headline">
-                  <a href="/math_stat/ch3-1/" rel="permalink"
-                    >[Mathematical Statistics] Chapter3
-                  </a>
-                </h2>
-
-                <p class="archive__item-excerpt" itemprop="description">
-                  Chapter 3. Special Distributions
                 </p>
               </article>
             </div>

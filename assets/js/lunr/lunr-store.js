@@ -35,6 +35,12 @@ var store = [{
         "url": "/ibm/eda3/",
         "teaser": null
       },{
+        "title": "EDA Week4 Inferential Statistics and Hypothesis Testing",
+        "excerpt":"Estimation and Inference Estimation is the application of an algorithm, to estimate parameter, e.g. mean, variance, etc. Inference involves putting an accuracy on the estimated value ? Statistical significancy Machine Learning and Statistical inference are similar. ML uses data to learn/infer qualities of a distirbution that generated the data, which...","categories": ["IBM"],
+        "tags": ["IBM","Machine Learning"],
+        "url": "/ibm/eda4/",
+        "teaser": null
+      },{
         "title": "Time Series 1",
         "excerpt":"multiple h1 is availalbe? White noise We assume it is uncorrelated Cov(at,at+1)=0Cov(a_t, a_{t+1}) = 0Cov(at​,at+1​)=0 Covariance measures linear relationship between X, Y. e.g.) Y=X2+1Y=X^2+1Y=X2+1 have Cov=0Cov=0Cov=0 e.g.2) What if Y=X2Y=X^2Y=X2? Cov(X,Y)=E[X⋅X2]−E[x]E[X2]Cov(X,Y) = E[X \\cdot X^2] - E[x]E[X^2]Cov(X,Y)=E[X⋅X2]−E[x]E[X2]. Since X and Y are (0,0) symmetric, Cov(X,Y)=0Cov(X,Y) = 0Cov(X,Y)=0 E(at)=0E(a_t) = 0E(at​)=0...","categories": ["Time Series"],
         "tags": ["statistics"],
