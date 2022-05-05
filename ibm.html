@@ -299,6 +299,12 @@
             </div>
           </div>
 
+          <nav class="nav__list">
+            <input id="ac-toc" name="accordion-toc" type="checkbox" />
+            <label for="ac-toc">Toggle menu</label>
+            <ul class="nav__items"></ul>
+          </nav>
+
           <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
 
           <nav class="nav__list">
@@ -500,5 +506,18 @@
     </div>
 
     <script src="/assets/js/main.min.js"></script>
+
+    <div id="fb-root"></div>
+    <script>
+      (function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, "script", "facebook-jssdk");
+    </script>
   </body>
 </html>
