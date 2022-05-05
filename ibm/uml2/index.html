@@ -51,7 +51,7 @@
 
     <meta
       property="article:modified_time"
-      content="2022-05-05T08:05:18+00:00"
+      content="2022-05-05T08:22:01+00:00"
     />
 
     <link rel="canonical" href="https://leeway00.github.io/ibm/uml2/" />
@@ -319,7 +319,11 @@
                   <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
                   <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시-->
 
-                  <li><a href="/ibm" class="">IBM (6)</a></li>
+                  <li>
+                    <a href="/categories/ibm-machine-learning" class=""
+                      >IBM (6)</a
+                    >
+                  </li>
                 </ul>
                 <!--ul>
                 
@@ -334,7 +338,11 @@
             </ul-->
                 <span class="nav__sub-title">Statistics</span>
                 <ul>
-                  <li><a href="/time_series" class="">Time Series (1)</a></li>
+                  <li>
+                    <a href="/categories/time-series" class=""
+                      >Time Series (1)</a
+                    >
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -352,7 +360,7 @@
             content="Unsupervised Machine Learning"
           />
           <meta itemprop="datePublished" content="2022-05-05T00:00:00+00:00" />
-          <meta itemprop="dateModified" content="2022-05-05T08:05:18+00:00" />
+          <meta itemprop="dateModified" content="2022-05-05T08:22:01+00:00" />
 
           <div class="page__inner-wrap">
             <header>
@@ -438,6 +446,11 @@
                       <a href="#distant-metrics">Distant Metrics</a>
                       <ul>
                         <li>
+                          <a href="#manhattan-distance-l1-distance"
+                            >Manhattan Distance, L1 distance</a
+                          >
+                        </li>
+                        <li>
                           <a href="#euclidean-distance-l2-distnace"
                             >Euclidean Distance, L2 distnace</a
                           >
@@ -453,6 +466,31 @@
                     </li>
                     <li>
                       <a href="#clustering-algorithms">Clustering Algorithms</a>
+                      <ul>
+                        <li>
+                          <a href="#hierarchical-agglomerative-clustering"
+                            >Hierarchical Agglomerative Clustering</a
+                          >
+                          <ul>
+                            <li>
+                              <a href="#average-cluster-distance"
+                                >Average cluster distance</a
+                              >
+                            </li>
+                            <li>
+                              <a href="#single-linkage">Single linkage</a>
+                            </li>
+                            <li>
+                              <a href="#complete-linkage">Complete linkage</a>
+                            </li>
+                            <li>
+                              <a href="#average-linkage">Average linkage</a>
+                            </li>
+                            <li><a href="#ward-linkage">Ward linkage</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="#code">Code</a></li>
+                      </ul>
                     </li>
                   </ul>
                 </nav>
@@ -460,6 +498,10 @@
 
               <h2 id="distant-metrics">Distant Metrics</h2>
               <p>Choice of Metrics?</p>
+
+              <h3 id="manhattan-distance-l1-distance">
+                Manhattan Distance, L1 distance
+              </h3>
 
               <h3 id="euclidean-distance-l2-distnace">
                 Euclidean Distance, L2 distnace
@@ -1444,6 +1486,8 @@ M1001 80h400000v40h-400000z"
                 Cosine is better for data such as text where location of
                 occurence is less importance. Also, it is more robust than
                 euclidean distance, which is vulnerable in multi-dimension.
+                Cosine is better for data such as text where location of
+                occurrence is less important.
               </p>
 
               <span class="katex-display"
@@ -1751,6 +1795,63 @@ c-16-25.333-24-45-24-59z"
               <p><img src="/assets/images/IBM/Jaccard.png" alt="Jaccard" /></p>
 
               <h2 id="clustering-algorithms">Clustering Algorithms</h2>
+
+              <h3 id="hierarchical-agglomerative-clustering">
+                Hierarchical Agglomerative Clustering
+              </h3>
+              <ol>
+                <li>Find closet pair and merge them.</li>
+                <li>
+                  We get clusters and regard it as a point. For distance between
+                  clusters, use average distance regarding all the point within
+                  their respective clusters.
+                </li>
+                <li>Repeat 1 and 2 until we get a single cluster.</li>
+              </ol>
+
+              <h4 id="average-cluster-distance">Average cluster distance</h4>
+              <p>
+                For the new combined cluster, cluster distance will be
+                increased. Some cluster will merged with larger value of cluster
+                distance. When all the distance is above a threshold, we stop
+                clustering.
+              </p>
+
+              <h4 id="single-linkage">Single linkage</h4>
+              <p>
+                Minimum pairwise distance between clusters
+                <strong>Pro</strong> is a clear separation of clusters.
+                <strong>Con</strong> is that seperation is vague with outliers
+                failing close to certain clusters.
+              </p>
+
+              <h4 id="complete-linkage">Complete linkage</h4>
+              <p>
+                We take maximum value. <strong>Pro</strong> better seperating
+                even with noise. <strong>Cons</strong> tend to break apart big
+                clusters.
+              </p>
+
+              <h4 id="average-linkage">Average linkage</h4>
+              <p>Both Pro and Cons of Single and Complete</p>
+
+              <h4 id="ward-linkage">Ward linkage</h4>
+              <p>merge based on best inertia.</p>
+
+              <h3 id="code">Code</h3>
+              <div class="language-python highlighter-rouge">
+                <div class="highlight">
+                  <pre
+                    class="highlight"
+                  ><code><span class="kn">from</span> <span class="nn">skleran.cluster</span> <span class="kn">import</span> <span class="n">AgglomerativeClustering</span>
+<span class="n">agg</span> <span class="o">=</span> <span class="n">AgglomerativeClustering</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
+                              <span class="n">affinity</span><span class="o">=</span><span class="s">'euclidean'</span><span class="p">,</span> 
+                              <span class="n">linkage</span><span class="o">=</span><span class="s">'average'</span><span class="p">)</span>
+<span class="n">agg</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">y_predict</span> <span class="o">=</span> <span class="n">agg</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+</code></pre>
+                </div>
+              </div>
             </section>
 
             <footer class="page__meta"></footer>
