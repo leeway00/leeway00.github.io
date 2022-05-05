@@ -34,4 +34,22 @@ var store = [{
         "tags": ["EDA","Week4"],
         "url": "/ibm/eda4/",
         "teaser": null
+      },{
+        "title": "Additional ML sources from IBM",
+        "excerpt":"From IBM  Random Forest  https://www.ibm.com/cloud/learn/random-forest  ","categories": ["IBM Machine Learning"],
+        "tags": ["Additional"],
+        "url": "/ibm/add/",
+        "teaser": null
+      },{
+        "title": "K-Means",
+        "excerpt":"K-Means algorithm taking K random points as centroids. For each point, decide which centroid is closer, which forms clusters Move centroids to the mean of the clusters repeat 2-3 until centroids are not moving anymore K-Means++ It is smart initialization method. When adding one more point, no optimal is often...","categories": ["IBM Machine Learning"],
+        "tags": ["Unsupervised","Week4"],
+        "url": "/ibm/uml1/",
+        "teaser": null
+      },{
+        "title": "Clustering Algorithms",
+        "excerpt":" ","categories": ["IBM Machine Learning"],
+        "tags": ["Unsupervised","Week2"],
+        "url": "/ibm/uml2/",
+        "teaser": null
       }]
