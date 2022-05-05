@@ -51,7 +51,7 @@
 
     <meta
       property="article:modified_time"
-      content="2022-05-05T07:36:39+00:00"
+      content="2022-05-05T07:56:52+00:00"
     />
 
     <link rel="canonical" href="https://leeway00.github.io/ibm/eda3/" />
@@ -349,7 +349,7 @@
           <meta itemprop="headline" content="Feature Engineering" />
           <meta itemprop="description" content="Exploratory Data Analysis" />
           <meta itemprop="datePublished" content="2022-05-04T00:00:00+00:00" />
-          <meta itemprop="dateModified" content="2022-05-05T07:36:39+00:00" />
+          <meta itemprop="dateModified" content="2022-05-05T07:56:52+00:00" />
 
           <div class="page__inner-wrap">
             <header>
@@ -477,11 +477,17 @@
 
               <h3 id="polynomial-features">Polynomial Features</h3>
               <p>higher order relationship</p>
-              <pre><code class="language-{.python}">from sklearn.preprocessing import PolynomialFeatures
-poly = PolynomialFeatures(degree=2)
-polyfeat = poly.fit(data)
-polyfeat.transform(data)
+              <div class="language-python highlighter-rouge">
+                <div class="highlight">
+                  <pre
+                    class="highlight"
+                  ><code><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+<span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">polyfeat</span> <span class="o">=</span> <span class="n">poly</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">polyfeat</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre>
+                </div>
+              </div>
 
               <h2 id="feature-encoding">Feature Encoding</h2>
               <p>Variable selection involves choosing the set of features</p>

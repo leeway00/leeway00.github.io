@@ -51,7 +51,7 @@
 
     <meta
       property="article:modified_time"
-      content="2022-05-05T07:36:40+00:00"
+      content="2022-05-05T07:56:53+00:00"
     />
 
     <link rel="canonical" href="https://leeway00.github.io/ibm/uml2/" />
@@ -352,7 +352,7 @@
             content="Unsupervised Machine Learning"
           />
           <meta itemprop="datePublished" content="2022-05-05T00:00:00+00:00" />
-          <meta itemprop="dateModified" content="2022-05-05T07:36:40+00:00" />
+          <meta itemprop="dateModified" content="2022-05-05T07:56:53+00:00" />
 
           <div class="page__inner-wrap">
             <header>
@@ -433,8 +433,1324 @@
                       <i class="fas fa-file-alt"></i> On this page
                     </h4>
                   </header>
+                  <ul class="toc__menu">
+                    <li>
+                      <a href="#distant-metrics">Distant Metrics</a>
+                      <ul>
+                        <li>
+                          <a href="#euclidean-distance-l2-distnace"
+                            >Euclidean Distance, L2 distnace</a
+                          >
+                          <ul>
+                            <li><a href="#l2-norm">L2 norm</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="#cosine-distance">Cosine Distance</a></li>
+                        <li>
+                          <a href="#jaccards-distance">Jaccards Distance</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a href="#clustering-algorithms">Clustering Algorithms</a>
+                    </li>
+                  </ul>
                 </nav>
               </aside>
+
+              <h2 id="distant-metrics">Distant Metrics</h2>
+              <p>Choice of Metrics?</p>
+
+              <h3 id="euclidean-distance-l2-distnace">
+                Euclidean Distance, L2 distnace
+              </h3>
+
+              <span class="katex-display"
+                ><span class="katex"
+                  ><span class="katex-mathml"
+                    ><math
+                      xmlns="http://www.w3.org/1998/Math/MathML"
+                      display="block"
+                      ><semantics
+                        ><mrow
+                          ><mstyle scriptlevel="0" displaystyle="true"
+                            ><mi>d</mi><mo stretchy="false">(</mo><mi>p</mi
+                            ><mo separator="true">,</mo><mi>q</mi
+                            ><mo stretchy="false">)</mo><mo>=</mo
+                            ><msqrt
+                              ><mrow
+                                ><mo stretchy="false">(</mo
+                                ><msub><mi>p</mi><mn>1</mn></msub
+                                ><mo>−</mo><msub><mi>q</mi><mn>1</mn></msub
+                                ><msup
+                                  ><mo stretchy="false">)</mo><mn>2</mn></msup
+                                ><mo>+</mo><mo stretchy="false">(</mo
+                                ><msub><mi>p</mi><mn>2</mn></msub
+                                ><mo>−</mo><msub><mi>q</mi><mn>2</mn></msub
+                                ><msup
+                                  ><mo stretchy="false">)</mo><mn>2</mn></msup
+                                ><mo>+</mo><mo>⋯</mo><mo>+</mo
+                                ><mo stretchy="false">(</mo
+                                ><msub><mi>p</mi><mi>i</mi></msub
+                                ><mo>−</mo><msub><mi>q</mi><mi>i</mi></msub
+                                ><msup
+                                  ><mo stretchy="false">)</mo><mn>2</mn></msup
+                                ><mo>+</mo><mo>⋯</mo><mo>+</mo
+                                ><mo stretchy="false">(</mo
+                                ><msub><mi>p</mi><mi>n</mi></msub
+                                ><mo>−</mo><msub><mi>q</mi><mi>n</mi></msub
+                                ><msup
+                                  ><mo stretchy="false">)</mo><mn>2</mn></msup
+                                ></mrow
+                              ></msqrt
+                            ><mi mathvariant="normal">.</mi></mstyle
+                          ></mrow
+                        ><annotation encoding="application/x-tex"
+                          >{\displaystyle d(p,q)={\sqrt
+                          {(p_{1}-q_{1})^{2}+(p_{2}-q_{2})^{2}+\cdots
+                          +(p_{i}-q_{i})^{2}+\cdots
+                          +(p_{n}-q_{n})^{2}}}.}</annotation
+                        ></semantics
+                      ></math
+                    ></span
+                  ><span class="katex-html" aria-hidden="true"
+                    ><span class="base"
+                      ><span
+                        class="strut"
+                        style="
+                          height: 1.24em;
+                          vertical-align: -0.25612499999999994em;
+                        "
+                      ></span
+                      ><span class="mord"
+                        ><span class="mord mathnormal">d</span
+                        ><span class="mopen">(</span
+                        ><span class="mord mathnormal">p</span
+                        ><span class="mpunct">,</span
+                        ><span
+                          class="mspace"
+                          style="margin-right: 0.16666666666666666em"
+                        ></span
+                        ><span
+                          class="mord mathnormal"
+                          style="margin-right: 0.03588em"
+                          >q</span
+                        ><span class="mclose">)</span
+                        ><span
+                          class="mspace"
+                          style="margin-right: 0.2777777777777778em"
+                        ></span
+                        ><span class="mrel">=</span
+                        ><span
+                          class="mspace"
+                          style="margin-right: 0.2777777777777778em"
+                        ></span
+                        ><span class="mord"
+                          ><span class="mord sqrt"
+                            ><span class="vlist-t vlist-t2"
+                              ><span class="vlist-r"
+                                ><span class="vlist" style="height: 0.983875em"
+                                  ><span class="svg-align" style="top: -3.2em"
+                                    ><span
+                                      class="pstrut"
+                                      style="height: 3.2em"
+                                    ></span
+                                    ><span
+                                      class="mord"
+                                      style="padding-left: 1em"
+                                      ><span class="mopen">(</span
+                                      ><span class="mord"
+                                        ><span class="mord mathnormal">p</span
+                                        ><span class="msupsub"
+                                          ><span class="vlist-t vlist-t2"
+                                            ><span class="vlist-r"
+                                              ><span
+                                                class="vlist"
+                                                style="
+                                                  height: 0.30110799999999993em;
+                                                "
+                                                ><span
+                                                  style="
+                                                    top: -2.5500000000000003em;
+                                                    margin-left: 0em;
+                                                    margin-right: 0.05em;
+                                                  "
+                                                  ><span
+                                                    class="pstrut"
+                                                    style="height: 2.7em"
+                                                  ></span
+                                                  ><span
+                                                    class="sizing reset-size6 size3 mtight"
+                                                    ><span class="mord mtight"
+                                                      ><span class="mord mtight"
+                                                        >1</span
+                                                      ></span
+                                                    ></span
+                                                  ></span
+                                                ></span
+                                              ><span class="vlist-s"
+                                                >​</span
+                                              ></span
+                                            ><span class="vlist-r"
+                                              ><span
+                                                class="vlist"
+                                                style="height: 0.15em"
+                                                ><span></span></span></span></span></span></span
+                                      ><span
+                                        class="mspace"
+                                        style="
+                                          margin-right: 0.2222222222222222em;
+                                        "
+                                      ></span
+                                      ><span class="mbin">−</span
+                                      ><span
+                                        class="mspace"
+                                        style="
+                                          margin-right: 0.2222222222222222em;
+                                        "
+                                      ></span
+                                      ><span class="mord"
+                                        ><span
+                                          class="mord mathnormal"
+                                          style="margin-right: 0.03588em"
+                                          >q</span
+                                        ><span class="msupsub"
+                                          ><span class="vlist-t vlist-t2"
+                                            ><span class="vlist-r"
+                                              ><span
+                                                class="vlist"
+                                                style="
+                                                  height: 0.30110799999999993em;
+                                                "
+                                                ><span
+                                                  style="
+                                                    top: -2.5500000000000003em;
+                                                    margin-left: -0.03588em;
+                                                    margin-right: 0.05em;
+                                                  "
+                                                  ><span
+                                                    class="pstrut"
+                                                    style="height: 2.7em"
+                                                  ></span
+                                                  ><span
+                                                    class="sizing reset-size6 size3 mtight"
+                                                    ><span class="mord mtight"
+                                                      ><span class="mord mtight"
+                                                        >1</span
+                                                      ></span
+                                                    ></span
+                                                  ></span
+                                                ></span
+                                              ><span class="vlist-s"
+                                                >​</span
+                                              ></span
+                                            ><span class="vlist-r"
+                                              ><span
+                                                class="vlist"
+                                                style="height: 0.15em"
+                                                ><span></span></span></span></span></span></span
+                                      ><span class="mclose"
+                                        ><span class="mclose">)</span
+                                        ><span class="msupsub"
+                                          ><span class="vlist-t"
+                                            ><span class="vlist-r"
+                                              ><span
+                                                class="vlist"
+                                                style="height: 0.740108em"
+                                                ><span
+                                                  style="
+                                                    top: -2.9890000000000003em;
+                                                    margin-right: 0.05em;
+                                                  "
+                                                  ><span
+                                                    class="pstrut"
+                                                    style="height: 2.7em"
+                                                  ></span
+                                                  ><span
+                                                    class="sizing reset-size6 size3 mtight"
+                                                    ><span class="mord mtight"
+                                                      ><span class="mord mtight"
+                                                        >2</span
+                                                      ></span
+                                                    ></span
+                                                  ></span
+                                                ></span
+                                              ></span
+                                            ></span
+                                          ></span
+                                        ></span
+                                      ><span
+                                        class="mspace"
+                                        style="
+                                          margin-right: 0.2222222222222222em;
+                                        "
+                                      ></span
+                                      ><span class="mbin">+</span
+                                      ><span
+                                        class="mspace"
+                                        style="
+                                          margin-right: 0.2222222222222222em;
+                                        "
+                                      ></span
+                                      ><span class="mopen">(</span
+                                      ><span class="mord"
+                                        ><span class="mord mathnormal">p</span
+                                        ><span class="msupsub"
+                                          ><span class="vlist-t vlist-t2"
+                                            ><span class="vlist-r"
+                                              ><span
+                                                class="vlist"
+                                                style="
+                                                  height: 0.30110799999999993em;
+                                                "
+                                                ><span
+                                                  style="
+                                                    top: -2.5500000000000003em;
+                                                    margin-left: 0em;
+                                                    margin-right: 0.05em;
+                                                  "
+                                                  ><span
+                                                    class="pstrut"
+                                                    style="height: 2.7em"
+                                                  ></span
+                                                  ><span
+                                                    class="sizing reset-size6 size3 mtight"
+                                                    ><span class="mord mtight"
+                                                      ><span class="mord mtight"
+                                                        >2</span
+                                                      ></span
+                                                    ></span
+                                                  ></span
+                                                ></span
+                                              ><span class="vlist-s"
+                                                >​</span
+                                              ></span
+                                            ><span class="vlist-r"
+                                              ><span
+                                                class="vlist"
+                                                style="height: 0.15em"
+                                                ><span></span></span></span></span></span></span
+                                      ><span
+                                        class="mspace"
+                                        style="
+                                          margin-right: 0.2222222222222222em;
+                                        "
+                                      ></span
+                                      ><span class="mbin">−</span
+                                      ><span
+                                        class="mspace"
+                                        style="
+                                          margin-right: 0.2222222222222222em;
+                                        "
+                                      ></span
+                                      ><span class="mord"
+                                        ><span
+                                          class="mord mathnormal"
+                                          style="margin-right: 0.03588em"
+                                          >q</span
+                                        ><span class="msupsub"
+                                          ><span class="vlist-t vlist-t2"
+                                            ><span class="vlist-r"
+                                              ><span
+                                                class="vlist"
+                                                style="
+                                                  height: 0.30110799999999993em;
+                                                "
+                                                ><span
+                                                  style="
+                                                    top: -2.5500000000000003em;
+                                                    margin-left: -0.03588em;
+                                                    margin-right: 0.05em;
+                                                  "
+                                                  ><span
+                                                    class="pstrut"
+                                                    style="height: 2.7em"
+                                                  ></span
+                                                  ><span
+                                                    class="sizing reset-size6 size3 mtight"
+                                                    ><span class="mord mtight"
+                                                      ><span class="mord mtight"
+                                                        >2</span
+                                                      ></span
+                                                    ></span
+                                                  ></span
+                                                ></span
+                                              ><span class="vlist-s"
+                                                >​</span
+                                              ></span
+                                            ><span class="vlist-r"
+                                              ><span
+                                                class="vlist"
+                                                style="height: 0.15em"
+                                                ><span></span></span></span></span></span></span
+                                      ><span class="mclose"
+                                        ><span class="mclose">)</span
+                                        ><span class="msupsub"
+                                          ><span class="vlist-t"
+                                            ><span class="vlist-r"
+                                              ><span
+                                                class="vlist"
+                                                style="height: 0.740108em"
+                                                ><span
+                                                  style="
+                                                    top: -2.9890000000000003em;
+                                                    margin-right: 0.05em;
+                                                  "
+                                                  ><span
+                                                    class="pstrut"
+                                                    style="height: 2.7em"
+                                                  ></span
+                                                  ><span
+                                                    class="sizing reset-size6 size3 mtight"
+                                                    ><span class="mord mtight"
+                                                      ><span class="mord mtight"
+                                                        >2</span
+                                                      ></span
+                                                    ></span
+                                                  ></span
+                                                ></span
+                                              ></span
+                                            ></span
+                                          ></span
+                                        ></span
+                                      ><span
+                                        class="mspace"
+                                        style="
+                                          margin-right: 0.2222222222222222em;
+                                        "
+                                      ></span
+                                      ><span class="mbin">+</span
+                                      ><span
+                                        class="mspace"
+                                        style="
+                                          margin-right: 0.2222222222222222em;
+                                        "
+                                      ></span
+                                      ><span class="minner">⋯</span
+                                      ><span
+                                        class="mspace"
+                                        style="
+                                          margin-right: 0.2222222222222222em;
+                                        "
+                                      ></span
+                                      ><span class="mbin">+</span
+                                      ><span
+                                        class="mspace"
+                                        style="
+                                          margin-right: 0.2222222222222222em;
+                                        "
+                                      ></span
+                                      ><span class="mopen">(</span
+                                      ><span class="mord"
+                                        ><span class="mord mathnormal">p</span
+                                        ><span class="msupsub"
+                                          ><span class="vlist-t vlist-t2"
+                                            ><span class="vlist-r"
+                                              ><span
+                                                class="vlist"
+                                                style="
+                                                  height: 0.31166399999999994em;
+                                                "
+                                                ><span
+                                                  style="
+                                                    top: -2.5500000000000003em;
+                                                    margin-left: 0em;
+                                                    margin-right: 0.05em;
+                                                  "
+                                                  ><span
+                                                    class="pstrut"
+                                                    style="height: 2.7em"
+                                                  ></span
+                                                  ><span
+                                                    class="sizing reset-size6 size3 mtight"
+                                                    ><span class="mord mtight"
+                                                      ><span
+                                                        class="mord mathnormal mtight"
+                                                        >i</span
+                                                      ></span
+                                                    ></span
+                                                  ></span
+                                                ></span
+                                              ><span class="vlist-s"
+                                                >​</span
+                                              ></span
+                                            ><span class="vlist-r"
+                                              ><span
+                                                class="vlist"
+                                                style="height: 0.15em"
+                                                ><span></span></span></span></span></span></span
+                                      ><span
+                                        class="mspace"
+                                        style="
+                                          margin-right: 0.2222222222222222em;
+                                        "
+                                      ></span
+                                      ><span class="mbin">−</span
+                                      ><span
+                                        class="mspace"
+                                        style="
+                                          margin-right: 0.2222222222222222em;
+                                        "
+                                      ></span
+                                      ><span class="mord"
+                                        ><span
+                                          class="mord mathnormal"
+                                          style="margin-right: 0.03588em"
+                                          >q</span
+                                        ><span class="msupsub"
+                                          ><span class="vlist-t vlist-t2"
+                                            ><span class="vlist-r"
+                                              ><span
+                                                class="vlist"
+                                                style="
+                                                  height: 0.31166399999999994em;
+                                                "
+                                                ><span
+                                                  style="
+                                                    top: -2.5500000000000003em;
+                                                    margin-left: -0.03588em;
+                                                    margin-right: 0.05em;
+                                                  "
+                                                  ><span
+                                                    class="pstrut"
+                                                    style="height: 2.7em"
+                                                  ></span
+                                                  ><span
+                                                    class="sizing reset-size6 size3 mtight"
+                                                    ><span class="mord mtight"
+                                                      ><span
+                                                        class="mord mathnormal mtight"
+                                                        >i</span
+                                                      ></span
+                                                    ></span
+                                                  ></span
+                                                ></span
+                                              ><span class="vlist-s"
+                                                >​</span
+                                              ></span
+                                            ><span class="vlist-r"
+                                              ><span
+                                                class="vlist"
+                                                style="height: 0.15em"
+                                                ><span></span></span></span></span></span></span
+                                      ><span class="mclose"
+                                        ><span class="mclose">)</span
+                                        ><span class="msupsub"
+                                          ><span class="vlist-t"
+                                            ><span class="vlist-r"
+                                              ><span
+                                                class="vlist"
+                                                style="height: 0.740108em"
+                                                ><span
+                                                  style="
+                                                    top: -2.9890000000000003em;
+                                                    margin-right: 0.05em;
+                                                  "
+                                                  ><span
+                                                    class="pstrut"
+                                                    style="height: 2.7em"
+                                                  ></span
+                                                  ><span
+                                                    class="sizing reset-size6 size3 mtight"
+                                                    ><span class="mord mtight"
+                                                      ><span class="mord mtight"
+                                                        >2</span
+                                                      ></span
+                                                    ></span
+                                                  ></span
+                                                ></span
+                                              ></span
+                                            ></span
+                                          ></span
+                                        ></span
+                                      ><span
+                                        class="mspace"
+                                        style="
+                                          margin-right: 0.2222222222222222em;
+                                        "
+                                      ></span
+                                      ><span class="mbin">+</span
+                                      ><span
+                                        class="mspace"
+                                        style="
+                                          margin-right: 0.2222222222222222em;
+                                        "
+                                      ></span
+                                      ><span class="minner">⋯</span
+                                      ><span
+                                        class="mspace"
+                                        style="
+                                          margin-right: 0.2222222222222222em;
+                                        "
+                                      ></span
+                                      ><span class="mbin">+</span
+                                      ><span
+                                        class="mspace"
+                                        style="
+                                          margin-right: 0.2222222222222222em;
+                                        "
+                                      ></span
+                                      ><span class="mopen">(</span
+                                      ><span class="mord"
+                                        ><span class="mord mathnormal">p</span
+                                        ><span class="msupsub"
+                                          ><span class="vlist-t vlist-t2"
+                                            ><span class="vlist-r"
+                                              ><span
+                                                class="vlist"
+                                                style="height: 0.151392em"
+                                                ><span
+                                                  style="
+                                                    top: -2.5500000000000003em;
+                                                    margin-left: 0em;
+                                                    margin-right: 0.05em;
+                                                  "
+                                                  ><span
+                                                    class="pstrut"
+                                                    style="height: 2.7em"
+                                                  ></span
+                                                  ><span
+                                                    class="sizing reset-size6 size3 mtight"
+                                                    ><span class="mord mtight"
+                                                      ><span
+                                                        class="mord mathnormal mtight"
+                                                        >n</span
+                                                      ></span
+                                                    ></span
+                                                  ></span
+                                                ></span
+                                              ><span class="vlist-s"
+                                                >​</span
+                                              ></span
+                                            ><span class="vlist-r"
+                                              ><span
+                                                class="vlist"
+                                                style="height: 0.15em"
+                                                ><span></span></span></span></span></span></span
+                                      ><span
+                                        class="mspace"
+                                        style="
+                                          margin-right: 0.2222222222222222em;
+                                        "
+                                      ></span
+                                      ><span class="mbin">−</span
+                                      ><span
+                                        class="mspace"
+                                        style="
+                                          margin-right: 0.2222222222222222em;
+                                        "
+                                      ></span
+                                      ><span class="mord"
+                                        ><span
+                                          class="mord mathnormal"
+                                          style="margin-right: 0.03588em"
+                                          >q</span
+                                        ><span class="msupsub"
+                                          ><span class="vlist-t vlist-t2"
+                                            ><span class="vlist-r"
+                                              ><span
+                                                class="vlist"
+                                                style="height: 0.151392em"
+                                                ><span
+                                                  style="
+                                                    top: -2.5500000000000003em;
+                                                    margin-left: -0.03588em;
+                                                    margin-right: 0.05em;
+                                                  "
+                                                  ><span
+                                                    class="pstrut"
+                                                    style="height: 2.7em"
+                                                  ></span
+                                                  ><span
+                                                    class="sizing reset-size6 size3 mtight"
+                                                    ><span class="mord mtight"
+                                                      ><span
+                                                        class="mord mathnormal mtight"
+                                                        >n</span
+                                                      ></span
+                                                    ></span
+                                                  ></span
+                                                ></span
+                                              ><span class="vlist-s"
+                                                >​</span
+                                              ></span
+                                            ><span class="vlist-r"
+                                              ><span
+                                                class="vlist"
+                                                style="height: 0.15em"
+                                                ><span></span></span></span></span></span></span
+                                      ><span class="mclose"
+                                        ><span class="mclose">)</span
+                                        ><span class="msupsub"
+                                          ><span class="vlist-t"
+                                            ><span class="vlist-r"
+                                              ><span
+                                                class="vlist"
+                                                style="height: 0.740108em"
+                                                ><span
+                                                  style="
+                                                    top: -2.9890000000000003em;
+                                                    margin-right: 0.05em;
+                                                  "
+                                                  ><span
+                                                    class="pstrut"
+                                                    style="height: 2.7em"
+                                                  ></span
+                                                  ><span
+                                                    class="sizing reset-size6 size3 mtight"
+                                                    ><span class="mord mtight"
+                                                      ><span class="mord mtight"
+                                                        >2</span
+                                                      ></span
+                                                    ></span
+                                                  ></span
+                                                ></span
+                                              ></span
+                                            ></span
+                                          ></span
+                                        ></span
+                                      ></span
+                                    ></span
+                                  ><span style="top: -2.9438750000000002em"
+                                    ><span
+                                      class="pstrut"
+                                      style="height: 3.2em"
+                                    ></span
+                                    ><span
+                                      class="hide-tail"
+                                      style="min-width: 1.02em; height: 1.28em"
+                                      ><svg
+                                        width="400em"
+                                        height="1.28em"
+                                        viewBox="0 0 400000 1296"
+                                        preserveAspectRatio="xMinYMin slice"
+                                      >
+                                        <path
+                                          d="M263,681c0.7,0,18,39.7,52,119
+c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
+c340,-704.7,510.7,-1060.3,512,-1067
+l0 -0
+c4.7,-7.3,11,-11,19,-11
+H40000v40H1012.3
+s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,232
+c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
+s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
+c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
+M1001 80h400000v40h-400000z"
+                                        /></svg></span></span></span
+                                ><span class="vlist-s">​</span></span
+                              ><span class="vlist-r"
+                                ><span
+                                  class="vlist"
+                                  style="height: 0.25612499999999994em"
+                                  ><span></span></span></span></span></span></span
+                        ><span class="mord">.</span></span
+                      ></span
+                    ></span
+                  ></span
+                ></span
+              >
+
+              <h4 id="l2-norm">
+                <a
+                  href="https://medium.com/mlearning-ai/is-l2-norm-euclidean-distance-a9c04be0b3ca"
+                  >L2 norm</a
+                >
+              </h4>
+
+              <span class="katex-display"
+                ><span class="katex"
+                  ><span class="katex-mathml"
+                    ><math
+                      xmlns="http://www.w3.org/1998/Math/MathML"
+                      display="block"
+                      ><semantics
+                        ><mrow
+                          ><mstyle scriptlevel="0" displaystyle="true"
+                            ><mi mathvariant="normal">∥</mi
+                            ><mi mathvariant="bold-italic">x</mi
+                            ><msub
+                              ><mi mathvariant="normal">∥</mi><mn>2</mn></msub
+                            ><mo>:</mo><mo>=</mo
+                            ><msqrt
+                              ><mrow
+                                ><msubsup
+                                  ><mi>x</mi><mn>1</mn><mn>2</mn></msubsup
+                                ><mo>+</mo><mo>⋯</mo><mo>+</mo
+                                ><msubsup
+                                  ><mi>x</mi><mi>n</mi><mn>2</mn></msubsup
+                                ></mrow
+                              ></msqrt
+                            ><mi mathvariant="normal">.</mi></mstyle
+                          ></mrow
+                        ><annotation encoding="application/x-tex"
+                          >{\displaystyle \|{\boldsymbol {x}}\|_{2}:={\sqrt
+                          {x_{1}^{2}+\cdots +x_{n}^{2}}}.}</annotation
+                        ></semantics
+                      ></math
+                    ></span
+                  ><span class="katex-html" aria-hidden="true"
+                    ><span class="base"
+                      ><span
+                        class="strut"
+                        style="
+                          height: 1.84em;
+                          vertical-align: -0.5413249999999998em;
+                        "
+                      ></span
+                      ><span class="mord"
+                        ><span class="mord">∥</span
+                        ><span class="mord"
+                          ><span class="mord"
+                            ><span class="mord"
+                              ><span class="mord boldsymbol">x</span></span
+                            ></span
+                          ></span
+                        ><span class="mord"
+                          ><span class="mord">∥</span
+                          ><span class="msupsub"
+                            ><span class="vlist-t vlist-t2"
+                              ><span class="vlist-r"
+                                ><span
+                                  class="vlist"
+                                  style="height: 0.30110799999999993em"
+                                  ><span
+                                    style="
+                                      top: -2.5500000000000003em;
+                                      margin-left: 0em;
+                                      margin-right: 0.05em;
+                                    "
+                                    ><span
+                                      class="pstrut"
+                                      style="height: 2.7em"
+                                    ></span
+                                    ><span
+                                      class="sizing reset-size6 size3 mtight"
+                                      ><span class="mord mtight"
+                                        ><span class="mord mtight"
+                                          >2</span
+                                        ></span
+                                      ></span
+                                    ></span
+                                  ></span
+                                ><span class="vlist-s">​</span></span
+                              ><span class="vlist-r"
+                                ><span class="vlist" style="height: 0.15em"
+                                  ><span></span></span></span></span></span></span
+                        ><span
+                          class="mspace"
+                          style="margin-right: 0.2777777777777778em"
+                        ></span
+                        ><span class="mrel">:=</span
+                        ><span
+                          class="mspace"
+                          style="margin-right: 0.2777777777777778em"
+                        ></span
+                        ><span class="mord"
+                          ><span class="mord sqrt"
+                            ><span class="vlist-t vlist-t2"
+                              ><span class="vlist-r"
+                                ><span
+                                  class="vlist"
+                                  style="height: 1.2986750000000002em"
+                                  ><span class="svg-align" style="top: -3.8em"
+                                    ><span
+                                      class="pstrut"
+                                      style="height: 3.8em"
+                                    ></span
+                                    ><span
+                                      class="mord"
+                                      style="padding-left: 1em"
+                                      ><span class="mord"
+                                        ><span class="mord mathnormal">x</span
+                                        ><span class="msupsub"
+                                          ><span class="vlist-t vlist-t2"
+                                            ><span class="vlist-r"
+                                              ><span
+                                                class="vlist"
+                                                style="
+                                                  height: 0.7959080000000001em;
+                                                "
+                                                ><span
+                                                  style="
+                                                    top: -2.433692em;
+                                                    margin-left: 0em;
+                                                    margin-right: 0.05em;
+                                                  "
+                                                  ><span
+                                                    class="pstrut"
+                                                    style="height: 2.7em"
+                                                  ></span
+                                                  ><span
+                                                    class="sizing reset-size6 size3 mtight"
+                                                    ><span class="mord mtight"
+                                                      ><span class="mord mtight"
+                                                        >1</span
+                                                      ></span
+                                                    ></span
+                                                  ></span
+                                                ><span
+                                                  style="
+                                                    top: -3.0448000000000004em;
+                                                    margin-right: 0.05em;
+                                                  "
+                                                  ><span
+                                                    class="pstrut"
+                                                    style="height: 2.7em"
+                                                  ></span
+                                                  ><span
+                                                    class="sizing reset-size6 size3 mtight"
+                                                    ><span class="mord mtight"
+                                                      ><span class="mord mtight"
+                                                        >2</span
+                                                      ></span
+                                                    ></span
+                                                  ></span
+                                                ></span
+                                              ><span class="vlist-s"
+                                                >​</span
+                                              ></span
+                                            ><span class="vlist-r"
+                                              ><span
+                                                class="vlist"
+                                                style="
+                                                  height: 0.26630799999999993em;
+                                                "
+                                                ><span></span></span></span></span></span></span
+                                      ><span
+                                        class="mspace"
+                                        style="
+                                          margin-right: 0.2222222222222222em;
+                                        "
+                                      ></span
+                                      ><span class="mbin">+</span
+                                      ><span
+                                        class="mspace"
+                                        style="
+                                          margin-right: 0.2222222222222222em;
+                                        "
+                                      ></span
+                                      ><span class="minner">⋯</span
+                                      ><span
+                                        class="mspace"
+                                        style="
+                                          margin-right: 0.2222222222222222em;
+                                        "
+                                      ></span
+                                      ><span class="mbin">+</span
+                                      ><span
+                                        class="mspace"
+                                        style="
+                                          margin-right: 0.2222222222222222em;
+                                        "
+                                      ></span
+                                      ><span class="mord"
+                                        ><span class="mord mathnormal">x</span
+                                        ><span class="msupsub"
+                                          ><span class="vlist-t vlist-t2"
+                                            ><span class="vlist-r"
+                                              ><span
+                                                class="vlist"
+                                                style="height: 0.740108em"
+                                                ><span
+                                                  style="
+                                                    top: -2.4530000000000003em;
+                                                    margin-left: 0em;
+                                                    margin-right: 0.05em;
+                                                  "
+                                                  ><span
+                                                    class="pstrut"
+                                                    style="height: 2.7em"
+                                                  ></span
+                                                  ><span
+                                                    class="sizing reset-size6 size3 mtight"
+                                                    ><span class="mord mtight"
+                                                      ><span
+                                                        class="mord mathnormal mtight"
+                                                        >n</span
+                                                      ></span
+                                                    ></span
+                                                  ></span
+                                                ><span
+                                                  style="
+                                                    top: -2.9890000000000003em;
+                                                    margin-right: 0.05em;
+                                                  "
+                                                  ><span
+                                                    class="pstrut"
+                                                    style="height: 2.7em"
+                                                  ></span
+                                                  ><span
+                                                    class="sizing reset-size6 size3 mtight"
+                                                    ><span class="mord mtight"
+                                                      ><span class="mord mtight"
+                                                        >2</span
+                                                      ></span
+                                                    ></span
+                                                  ></span
+                                                ></span
+                                              ><span class="vlist-s"
+                                                >​</span
+                                              ></span
+                                            ><span class="vlist-r"
+                                              ><span
+                                                class="vlist"
+                                                style="height: 0.247em"
+                                                ><span></span></span></span></span></span></span></span></span
+                                  ><span style="top: -3.258675em"
+                                    ><span
+                                      class="pstrut"
+                                      style="height: 3.8em"
+                                    ></span
+                                    ><span
+                                      class="hide-tail"
+                                      style="
+                                        min-width: 1.02em;
+                                        height: 1.8800000000000001em;
+                                      "
+                                      ><svg
+                                        width="400em"
+                                        height="1.8800000000000001em"
+                                        viewBox="0 0 400000 1944"
+                                        preserveAspectRatio="xMinYMin slice"
+                                      >
+                                        <path
+                                          d="M983 90
+l0 -0
+c4,-6.7,10,-10,18,-10 H400000v40
+H1013.1s-83.4,268,-264.1,840c-180.7,572,-277,876.3,-289,913c-4.7,4.7,-12.7,7,-24,7
+s-12,0,-12,0c-1.3,-3.3,-3.7,-11.7,-7,-25c-35.3,-125.3,-106.7,-373.3,-214,-744
+c-10,12,-21,25,-33,39s-32,39,-32,39c-6,-5.3,-15,-14,-27,-26s25,-30,25,-30
+c26.7,-32.7,52,-63,76,-91s52,-60,52,-60s208,722,208,722
+c56,-175.3,126.3,-397.3,211,-666c84.7,-268.7,153.8,-488.2,207.5,-658.5
+c53.7,-170.3,84.5,-266.8,92.5,-289.5z
+M1001 80h400000v40h-400000z"
+                                        /></svg></span></span></span
+                                ><span class="vlist-s">​</span></span
+                              ><span class="vlist-r"
+                                ><span
+                                  class="vlist"
+                                  style="height: 0.5413249999999998em"
+                                  ><span></span></span></span></span></span></span
+                        ><span class="mord">.</span></span
+                      ></span
+                    ></span
+                  ></span
+                ></span
+              >
+
+              <h3 id="cosine-distance">Cosine Distance</h3>
+              <p>
+                Cosine is better for data such as text where location of
+                occurence is less importance. Also, it is more robust than
+                euclidean distance, which is vulnerable in multi-dimension.
+              </p>
+
+              <span class="katex-display"
+                ><span class="katex"
+                  ><span class="katex-mathml"
+                    ><math
+                      xmlns="http://www.w3.org/1998/Math/MathML"
+                      display="block"
+                      ><semantics
+                        ><mrow
+                          ><mi>c</mi><mi>o</mi><mi>s</mi
+                          ><mo stretchy="false">(</mo><mi>θ</mi
+                          ><mo stretchy="false">)</mo><mo>=</mo
+                          ><mfrac
+                            ><mrow
+                              ><mover accent="true"><mi>x</mi><mo>⃗</mo></mover
+                              ><mo>⋅</mo
+                              ><mover accent="true"
+                                ><mi>y</mi><mo>⃗</mo></mover
+                              ></mrow
+                            ><mrow
+                              ><mi mathvariant="normal">∥</mi
+                              ><mover accent="true"><mi>x</mi><mo>⃗</mo></mover
+                              ><mi mathvariant="normal">∥</mi
+                              ><mi mathvariant="normal">∥</mi
+                              ><mover accent="true"><mi>y</mi><mo>⃗</mo></mover
+                              ><mi mathvariant="normal">∥</mi></mrow
+                            ></mfrac
+                          ></mrow
+                        ><annotation encoding="application/x-tex"
+                          >cos(\theta)=\frac{\vec{x} \cdot \vec{y}}{\|\vec{x}\|
+                          \|\vec{y}\|}</annotation
+                        ></semantics
+                      ></math
+                    ></span
+                  ><span class="katex-html" aria-hidden="true"
+                    ><span class="base"
+                      ><span
+                        class="strut"
+                        style="height: 1em; vertical-align: -0.25em"
+                      ></span
+                      ><span class="mord mathnormal">cos</span
+                      ><span class="mopen">(</span
+                      ><span
+                        class="mord mathnormal"
+                        style="margin-right: 0.02778em"
+                        >θ</span
+                      ><span class="mclose">)</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2777777777777778em"
+                      ></span
+                      ><span class="mrel">=</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2777777777777778em"
+                      ></span></span
+                    ><span class="base"
+                      ><span
+                        class="strut"
+                        style="height: 2.327em; vertical-align: -0.936em"
+                      ></span
+                      ><span class="mord"
+                        ><span class="mopen nulldelimiter"></span
+                        ><span class="mfrac"
+                          ><span class="vlist-t vlist-t2"
+                            ><span class="vlist-r"
+                              ><span class="vlist" style="height: 1.391em"
+                                ><span style="top: -2.314em"
+                                  ><span
+                                    class="pstrut"
+                                    style="height: 3em"
+                                  ></span
+                                  ><span class="mord"
+                                    ><span class="mord">∥</span
+                                    ><span class="mord accent"
+                                      ><span class="vlist-t"
+                                        ><span class="vlist-r"
+                                          ><span
+                                            class="vlist"
+                                            style="height: 0.714em"
+                                            ><span style="top: -3em"
+                                              ><span
+                                                class="pstrut"
+                                                style="height: 3em"
+                                              ></span
+                                              ><span class="mord mathnormal"
+                                                >x</span
+                                              ></span
+                                            ><span style="top: -3em"
+                                              ><span
+                                                class="pstrut"
+                                                style="height: 3em"
+                                              ></span
+                                              ><span
+                                                class="accent-body"
+                                                style="left: -0.20772em"
+                                                ><span
+                                                  class="overlay"
+                                                  style="
+                                                    height: 0.714em;
+                                                    width: 0.471em;
+                                                  "
+                                                  ><svg
+                                                    width="0.471em"
+                                                    height="0.714em"
+                                                    style="width: 0.471em"
+                                                    viewBox="0 0 471 714"
+                                                    preserveAspectRatio="xMinYMin"
+                                                  >
+                                                    <path
+                                                      d="M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z"
+                                                    /></svg></span></span></span></span></span></span></span
+                                    ><span class="mord">∥∥</span
+                                    ><span class="mord accent"
+                                      ><span class="vlist-t vlist-t2"
+                                        ><span class="vlist-r"
+                                          ><span
+                                            class="vlist"
+                                            style="height: 0.714em"
+                                            ><span style="top: -3em"
+                                              ><span
+                                                class="pstrut"
+                                                style="height: 3em"
+                                              ></span
+                                              ><span
+                                                class="mord mathnormal"
+                                                style="margin-right: 0.03588em"
+                                                >y</span
+                                              ></span
+                                            ><span style="top: -3em"
+                                              ><span
+                                                class="pstrut"
+                                                style="height: 3em"
+                                              ></span
+                                              ><span
+                                                class="accent-body"
+                                                style="left: -0.17994em"
+                                                ><span
+                                                  class="overlay"
+                                                  style="
+                                                    height: 0.714em;
+                                                    width: 0.471em;
+                                                  "
+                                                  ><svg
+                                                    width="0.471em"
+                                                    height="0.714em"
+                                                    style="width: 0.471em"
+                                                    viewBox="0 0 471 714"
+                                                    preserveAspectRatio="xMinYMin"
+                                                  >
+                                                    <path
+                                                      d="M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z"
+                                                    /></svg></span></span></span></span
+                                          ><span class="vlist-s">​</span></span
+                                        ><span class="vlist-r"
+                                          ><span
+                                            class="vlist"
+                                            style="height: 0.19444em"
+                                            ><span></span></span></span></span></span
+                                    ><span class="mord">∥</span></span
+                                  ></span
+                                ><span style="top: -3.23em"
+                                  ><span
+                                    class="pstrut"
+                                    style="height: 3em"
+                                  ></span
+                                  ><span
+                                    class="frac-line"
+                                    style="border-bottom-width: 0.04em"
+                                  ></span></span
+                                ><span style="top: -3.677em"
+                                  ><span
+                                    class="pstrut"
+                                    style="height: 3em"
+                                  ></span
+                                  ><span class="mord"
+                                    ><span class="mord accent"
+                                      ><span class="vlist-t"
+                                        ><span class="vlist-r"
+                                          ><span
+                                            class="vlist"
+                                            style="height: 0.714em"
+                                            ><span style="top: -3em"
+                                              ><span
+                                                class="pstrut"
+                                                style="height: 3em"
+                                              ></span
+                                              ><span class="mord mathnormal"
+                                                >x</span
+                                              ></span
+                                            ><span style="top: -3em"
+                                              ><span
+                                                class="pstrut"
+                                                style="height: 3em"
+                                              ></span
+                                              ><span
+                                                class="accent-body"
+                                                style="left: -0.20772em"
+                                                ><span
+                                                  class="overlay"
+                                                  style="
+                                                    height: 0.714em;
+                                                    width: 0.471em;
+                                                  "
+                                                  ><svg
+                                                    width="0.471em"
+                                                    height="0.714em"
+                                                    style="width: 0.471em"
+                                                    viewBox="0 0 471 714"
+                                                    preserveAspectRatio="xMinYMin"
+                                                  >
+                                                    <path
+                                                      d="M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z"
+                                                    /></svg></span></span></span></span></span></span></span
+                                    ><span
+                                      class="mspace"
+                                      style="margin-right: 0.2222222222222222em"
+                                    ></span
+                                    ><span class="mbin">⋅</span
+                                    ><span
+                                      class="mspace"
+                                      style="margin-right: 0.2222222222222222em"
+                                    ></span
+                                    ><span class="mord accent"
+                                      ><span class="vlist-t vlist-t2"
+                                        ><span class="vlist-r"
+                                          ><span
+                                            class="vlist"
+                                            style="height: 0.714em"
+                                            ><span style="top: -3em"
+                                              ><span
+                                                class="pstrut"
+                                                style="height: 3em"
+                                              ></span
+                                              ><span
+                                                class="mord mathnormal"
+                                                style="margin-right: 0.03588em"
+                                                >y</span
+                                              ></span
+                                            ><span style="top: -3em"
+                                              ><span
+                                                class="pstrut"
+                                                style="height: 3em"
+                                              ></span
+                                              ><span
+                                                class="accent-body"
+                                                style="left: -0.17994em"
+                                                ><span
+                                                  class="overlay"
+                                                  style="
+                                                    height: 0.714em;
+                                                    width: 0.471em;
+                                                  "
+                                                  ><svg
+                                                    width="0.471em"
+                                                    height="0.714em"
+                                                    style="width: 0.471em"
+                                                    viewBox="0 0 471 714"
+                                                    preserveAspectRatio="xMinYMin"
+                                                  >
+                                                    <path
+                                                      d="M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z"
+                                                    /></svg></span></span></span></span
+                                          ><span class="vlist-s">​</span></span
+                                        ><span class="vlist-r"
+                                          ><span
+                                            class="vlist"
+                                            style="height: 0.19444em"
+                                            ><span></span></span></span></span></span></span></span></span
+                              ><span class="vlist-s">​</span></span
+                            ><span class="vlist-r"
+                              ><span class="vlist" style="height: 0.936em"
+                                ><span></span></span></span></span></span
+                        ><span
+                          class="mclose nulldelimiter"
+                        ></span></span></span></span></span
+              ></span>
+
+              <h3 id="jaccards-distance">Jaccards Distance</h3>
+              <p><img src="/assets/images/IBM/Jaccard.png" alt="Jaccard" /></p>
+
+              <h2 id="clustering-algorithms">Clustering Algorithms</h2>
             </section>
 
             <footer class="page__meta"></footer>

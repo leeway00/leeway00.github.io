@@ -48,7 +48,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Clustering Algorithms",
-        "excerpt":" ","categories": ["IBM Machine Learning"],
+        "excerpt":"Distant Metrics Choice of Metrics? Euclidean Distance, L2 distnace d(p,q)=(p1−q1)2+(p2−q2)2+⋯+(pi−qi)2+⋯+(pn−qn)2.{\\displaystyle d(p,q)={\\sqrt {(p_{1}-q_{1})^{2}+(p_{2}-q_{2})^{2}+\\cdots +(p_{i}-q_{i})^{2}+\\cdots +(p_{n}-q_{n})^{2}}}.}d(p,q)=(p1​−q1​)2+(p2​−q2​)2+⋯+(pi​−qi​)2+⋯+(pn​−qn​)2​. L2 norm ∥x∥2:=x12+⋯+xn2.{\\displaystyle \\|{\\boldsymbol {x}}\\|_{2}:={\\sqrt {x_{1}^{2}+\\cdots +x_{n}^{2}}}.}∥x∥2​:=x12​+⋯+xn2​​. Cosine Distance Cosine is better for data such as text where location of occurence is less importance. Also, it is more robust than euclidean distance, which is vulnerable in...","categories": ["IBM Machine Learning"],
         "tags": ["Unsupervised","Week2"],
         "url": "/ibm/uml2/",
         "teaser": null
