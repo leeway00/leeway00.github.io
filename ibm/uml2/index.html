@@ -51,7 +51,7 @@
 
     <meta
       property="article:modified_time"
-      content="2022-05-05T08:53:02+00:00"
+      content="2022-05-05T08:55:50+00:00"
     />
 
     <link rel="canonical" href="https://leeway00.github.io/ibm/uml2/" />
@@ -360,7 +360,7 @@
             content="Unsupervised Machine Learning"
           />
           <meta itemprop="datePublished" content="2022-05-05T00:00:00+00:00" />
-          <meta itemprop="dateModified" content="2022-05-05T08:53:02+00:00" />
+          <meta itemprop="dateModified" content="2022-05-05T08:55:50+00:00" />
 
           <div class="page__inner-wrap">
             <header>
@@ -512,16 +512,16 @@
                 </nav>
               </aside>
 
-              <h2 id="distant-metrics">Distant Metrics</h2>
+              <h1 id="distant-metrics">Distant Metrics</h1>
               <p>Choice of Metrics?</p>
 
-              <h3 id="manhattan-distance-l1-distance">
+              <h2 id="manhattan-distance-l1-distance">
                 Manhattan Distance, L1 distance
-              </h3>
+              </h2>
 
-              <h3 id="euclidean-distance-l2-distnace">
+              <h2 id="euclidean-distance-l2-distnace">
                 Euclidean Distance, L2 distnace
-              </h3>
+              </h2>
 
               <span class="katex-display"
                 ><span class="katex"
@@ -1157,12 +1157,12 @@ M1001 80h400000v40h-400000z"
                 ></span
               >
 
-              <h4 id="l2-norm">
+              <h3 id="l2-norm">
                 <a
                   href="https://medium.com/mlearning-ai/is-l2-norm-euclidean-distance-a9c04be0b3ca"
                   >L2 norm</a
                 >
-              </h4>
+              </h3>
 
               <span class="katex-display"
                 ><span class="katex"
@@ -1422,7 +1422,7 @@ M1001 80h400000v40h-400000z"
                 ></span
               >
 
-              <h3 id="cosine-distance">Cosine Distance</h3>
+              <h2 id="cosine-distance">Cosine Distance</h2>
               <p>
                 Cosine is better for data such as text where location of
                 occurence is less importance. Also, it is more robust than
@@ -1736,14 +1736,14 @@ c-16-25.333-24-45-24-59z"
                         ></span></span></span></span></span
               ></span>
 
-              <h3 id="jaccards-distance">Jaccards Distance</h3>
+              <h2 id="jaccards-distance">Jaccards Distance</h2>
               <p><img src="/assets/images/IBM/Jaccard.png" alt="Jaccard" /></p>
 
-              <h2 id="clustering-algorithms">Clustering Algorithms</h2>
+              <h1 id="clustering-algorithms">Clustering Algorithms</h1>
 
-              <h3 id="hierarchical-agglomerative-clustering">
+              <h2 id="hierarchical-agglomerative-clustering">
                 Hierarchical Agglomerative Clustering
-              </h3>
+              </h2>
               <ol>
                 <li>Find closet pair and merge them.</li>
                 <li>
@@ -1754,7 +1754,7 @@ c-16-25.333-24-45-24-59z"
                 <li>Repeat 1 and 2 until we get a single cluster.</li>
               </ol>
 
-              <h4 id="average-cluster-distance">Average cluster distance</h4>
+              <h3 id="average-cluster-distance">Average cluster distance</h3>
               <p>
                 For the new combined cluster, cluster distance will be
                 increased. Some cluster will merged with larger value of cluster
@@ -1762,7 +1762,7 @@ c-16-25.333-24-45-24-59z"
                 clustering.
               </p>
 
-              <h4 id="single-linkage">Single linkage</h4>
+              <h3 id="single-linkage">Single linkage</h3>
               <p>
                 Minimum pairwise distance between clusters
                 <strong>Pro</strong> is a clear separation of clusters.
@@ -1770,20 +1770,20 @@ c-16-25.333-24-45-24-59z"
                 failing close to certain clusters.
               </p>
 
-              <h4 id="complete-linkage">Complete linkage</h4>
+              <h3 id="complete-linkage">Complete linkage</h3>
               <p>
                 We take maximum value. <strong>Pro</strong> better seperating
                 even with noise. <strong>Cons</strong> tend to break apart big
                 clusters.
               </p>
 
-              <h4 id="average-linkage">Average linkage</h4>
+              <h3 id="average-linkage">Average linkage</h3>
               <p>Both Pro and Cons of Single and Complete</p>
 
-              <h4 id="ward-linkage">Ward linkage</h4>
+              <h3 id="ward-linkage">Ward linkage</h3>
               <p>merge based on best inertia.</p>
 
-              <h4 id="code">Code</h4>
+              <h3 id="code">Code</h3>
               <div class="language-python highlighter-rouge">
                 <div class="highlight">
                   <pre
@@ -1798,7 +1798,7 @@ c-16-25.333-24-45-24-59z"
                 </div>
               </div>
 
-              <h3 id="dbscan">DBscan</h3>
+              <h2 id="dbscan">DBscan</h2>
               <p>
                 <strong
                   >Density Based Spatial Clustering of Applications with
@@ -1911,7 +1911,7 @@ c-16-25.333-24-45-24-59z"
                 </li>
               </ul>
 
-              <h4 id="char">Char</h4>
+              <h3 id="char">Char</h3>
               <p>
                 <strong>Pro</strong><br />
                 No need to specify number of clusters. Allows for noise. Can
@@ -1920,7 +1920,7 @@ c-16-25.333-24-45-24-59z"
                 Requires two parameters, Finding appropriate epsilon and n_clu.\
               </p>
 
-              <h4 id="code-1">Code</h4>
+              <h3 id="code-1">Code</h3>
               <div class="language-python highlighter-rouge">
                 <div class="highlight">
                   <pre
@@ -1932,7 +1932,7 @@ c-16-25.333-24-45-24-59z"
 </span></code></pre>
                 </div>
               </div>
-              <h3 id="mean-shift">Mean Shift</h3>
+              <h2 id="mean-shift">Mean Shift</h2>
               <p>
                 Mean Shift is similar to KMeans, but centroid is the point of
                 highest local density. Algorthm finish when all points are
@@ -1954,7 +1954,7 @@ c-16-25.333-24-45-24-59z"
                 </li>
               </ol>
 
-              <h4 id="weighted-mean">Weighted mean</h4>
+              <h3 id="weighted-mean">Weighted mean</h3>
               <p>
                 Commonly, kernel function that used is
                 <strong>RBF kernel</strong>.
@@ -2383,7 +2383,7 @@ c-16-25.333-24-45-24-59z"
                         ></span></span></span></span></span
               ></span>
 
-              <h4 id="char-1">char</h4>
+              <h3 id="char-1">char</h3>
               <p>
                 <strong>Pro</strong><br />
                 model free, one parameter(window size), robust to outliers
@@ -2391,7 +2391,7 @@ c-16-25.333-24-45-24-59z"
                 depend on window(bandwith), slection of window is hard to find.
               </p>
 
-              <h4 id="code-2">Code</h4>
+              <h3 id="code-2">Code</h3>
               <div class="language-python highlighter-rouge">
                 <div class="highlight">
                   <pre
@@ -2404,7 +2404,7 @@ c-16-25.333-24-45-24-59z"
                 </div>
               </div>
 
-              <h2 id="summary">Summary</h2>
+              <h1 id="summary">Summary</h1>
               <p>
                 <img src="/assets/images/IBM/clustering_summary.png" alt="" />
               </p>
