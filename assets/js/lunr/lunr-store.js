@@ -48,7 +48,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Clustering Algorithms",
-        "excerpt":"Distant Metrics Choice of Metrics? Manhattan Distance, L1 distance Euclidean Distance, L2 distnace d(p,q)=(p1−q1)2+(p2−q2)2+⋯+(pi−qi)2+⋯+(pn−qn)2.{\\displaystyle d(p,q)={\\sqrt {(p_{1}-q_{1})^{2}+(p_{2}-q_{2})^{2}+\\cdots +(p_{i}-q_{i})^{2}+\\cdots +(p_{n}-q_{n})^{2}}}.}d(p,q)=(p1​−q1​)2+(p2​−q2​)2+⋯+(pi​−qi​)2+⋯+(pn​−qn​)2​. L2 norm ∥x∥2:=x12+⋯+xn2.{\\displaystyle \\|{\\boldsymbol {x}}\\|_{2}:={\\sqrt {x_{1}^{2}+\\cdots +x_{n}^{2}}}.}∥x∥2​:=x12​+⋯+xn2​​. Cosine Distance Cosine is better for data such as text where location of occurence is less importance. Also, it is more robust than euclidean distance,...","categories": ["IBM Machine Learning"],
+        "excerpt":"Distant Metrics Manhattan Distance, L1 distance Another distance metric is the L1 distance or the Manhattan distance, and instead of squaring each term we are adding up the absolute value of each term. It will always be larger than the L2 distance, unless they lie on the same axis. We...","categories": ["IBM Machine Learning"],
         "tags": ["Unsupervised","Week2"],
         "url": "/ibm/uml2/",
         "teaser": null
