@@ -4,9 +4,7 @@ main:
     url: "/categories/ibm-machine-learning/"
   - title: "Time Series"
     url: "/categories/time-series/"
-  - title: "About"
-    url: https://mmistakes.github.io/minimal-mistakes/about/
-    
+
   # - title: "Quick-Start Guide"
   #   url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
   
