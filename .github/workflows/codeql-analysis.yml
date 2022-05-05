@@ -35,22 +35,22 @@ jobs:
           -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
           jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
 
-  # Then check the markdown files are properly formatted
-  analyse:
-    name: Markdown Lint
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-    # Check markdown files are markdown-lint compliant
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3.0.2
-      - name: Lint markdown files with markdown-lint
-        uses: articulate/actions-markdownlint@v1.1.0
-        with:
-          # Includes some specific rules to ignore
-          config: .github/workflows/markdownlint-config.json
-          files: '_posts/**/*.md'
-          # Ignore the built website, might have some funky files
-          ignore: _site/
-          # Try to fix basic errors
-          fix: true
+  # # Then check the markdown files are properly formatted
+  # analyse:
+  #   name: Markdown Lint
+  #   # The type of runner that the job will run on
+  #   runs-on: ubuntu-latest
+  #   # Check markdown files are markdown-lint compliant
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v3.0.2
+  #     - name: Lint markdown files with markdown-lint
+  #       uses: articulate/actions-markdownlint@v1.1.0
+  #       with:
+  #         # Includes some specific rules to ignore
+  #         config: .github/workflows/markdownlint-config.json
+  #         files: '_posts/**/*.md'
+  #         # Ignore the built website, might have some funky files
+  #         ignore: _site/
+  #         # Try to fix basic errors
+  #         fix: true
