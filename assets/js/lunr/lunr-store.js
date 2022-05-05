@@ -20,18 +20,18 @@ var store = [{
         "title": "Data Cleaning",
         "excerpt":"Data Cleaning Why important? Key aspects of ML depend on clened data e.g.) Observation Labels: predicted Algorithms: estimation Features Model: assume this is acutal data representent Messy data generate garbage-in, garbage-out Reason: Lack of data, too much data, bad data How to deal with it? Duplicate or unnecessary data filter...","categories": ["IBM Machine Learning"],
         "tags": ["EDA","Week2"],
-        "url": "/ibm-machine-learning/eda2/",
+        "url": "/ibm/eda2/",
         "teaser": null
       },{
         "title": "Feature Engineering",
         "excerpt":"Variable Transformation We often assume normally distributed data. But often skewed -&gt; Data transformation solve this Log transformation Log transformation is a transformation that takes the natural log of the data. Useful for linear regression. Solve right skewed Polynomial Features higher order relationship from sklearn.preprocessing import PolynomialFeatures poly = PolynomialFeatures(degree=2)...","categories": ["IBM Machine Learning"],
         "tags": ["EDA","Week3"],
-        "url": "/ibm-machine-learning/eda3/",
+        "url": "/ibm/eda3/",
         "teaser": null
       },{
         "title": "Inferential Statistics and Hypothesis Testing",
         "excerpt":"Estimation and Inference Estimation is the application of an algorithm, to estimate parameter, e.g. mean, variance, etc. Inference involves putting an accuracy on the estimated value ? Statistical significancy Machine Learning and Statistical inference are similar. ML uses data to learn/infer qualities of a distirbution that generated the data, which...","categories": ["IBM Machine Learning"],
         "tags": ["EDA","Week4"],
-        "url": "/ibm-machine-learning/eda4/",
+        "url": "/ibm/eda4/",
         "teaser": null
       }]

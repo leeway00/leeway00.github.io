@@ -60,7 +60,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Hun's Blog">
 <meta property="og:title" content="Inferential Statistics and Hypothesis Testing">
-<meta property="og:url" content="https://leeway00.github.io/ibm/eda4/">
+<meta property="og:url" content="https://leeway00.github.io/ibm-machine-learning/eda4/">
 
 
   <meta property="og:description" content="Exploratory Data Analysis">
@@ -75,7 +75,7 @@
 
 
 
-  <meta property="article:modified_time" content="2022-05-05T04:07:48+00:00">
+  <meta property="article:modified_time" content="2022-05-05T04:39:33+00:00">
 
 
 
@@ -84,7 +84,7 @@
   
 
 
-<link rel="canonical" href="https://leeway00.github.io/ibm/eda4/">
+<link rel="canonical" href="https://leeway00.github.io/ibm-machine-learning/eda4/">
 
 
 
@@ -155,9 +155,11 @@
         </a>
         <ul class="visible-links">
           <li class="masthead__menu-item">
-                <a href="/ibm/">IBM Notes</a>
+                <a href="/categories/ibm-machine-learning/">IBM Notes</a>
               </li><li class="masthead__menu-item">
-                <a href="/time_series/">Time Series</a>
+                <a href="/categories/time-series/">Time Series</a>
+              </li><li class="masthead__menu-item">
+                <a href="https://mmistakes.github.io/minimal-mistakes/about/">About</a>
               </li><li class="masthead__menu-item"></li>
           
         </ul>
@@ -431,14 +433,14 @@
     <meta itemprop="headline" content="Inferential Statistics and Hypothesis Testing">
     <meta itemprop="description" content="Exploratory Data Analysis">
     <meta itemprop="datePublished" content="2022-05-04T00:00:00+00:00">
-    <meta itemprop="dateModified" content="2022-05-05T04:07:48+00:00">
+    <meta itemprop="dateModified" content="2022-05-05T04:39:33+00:00">
 
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="https://leeway00.github.io/ibm/eda4/" class="u-url" itemprop="url">Inferential Statistics and Hypothesis Testing
+            <a href="https://leeway00.github.io/ibm-machine-learning/eda4/" class="u-url" itemprop="url">Inferential Statistics and Hypothesis Testing
 </a>
           </h1>
         </header>
@@ -459,9 +461,9 @@
     </strong>
     <span itemprop="keywords">
       
-        <a href="/tags/#eda" class="page__taxonomy-item p-category" rel="tag">EDA</a><span class="sep">, </span>
+        <a href="/tags/eda" class="page__taxonomy-item p-category" rel="tag">EDA</a><span class="sep">, </span>
       
-        <a href="/tags/#week4" class="page__taxonomy-item p-category" rel="tag">Week4</a>
+        <a href="/tags/week4" class="page__taxonomy-item p-category" rel="tag">Week4</a>
       
     </span>
   </p>
@@ -481,7 +483,7 @@
     </strong>
     <span itemprop="keywords">
       
-        <a href="/categories/#ibm-machine-learning" class="page__taxonomy-item p-category" rel="tag">IBM Machine Learning</a>
+        <a href="/categories/ibm-machine-learning" class="page__taxonomy-item p-category" rel="tag">IBM Machine Learning</a>
       
     </span>
   </p>
@@ -598,18 +600,18 @@ Then by Bayes’ Rule, likelihood ratio is defined as below.</p>
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Inferential+Statistics+and+Hypothesis+Testing%20https%3A%2F%2Fleeway00.github.io%2Fibm%2Feda4%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Inferential+Statistics+and+Hypothesis+Testing%20https%3A%2F%2Fleeway00.github.io%2Fibm-machine-learning%2Feda4%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fleeway00.github.io%2Fibm%2Feda4%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fleeway00.github.io%2Fibm-machine-learning%2Feda4%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fleeway00.github.io%2Fibm%2Feda4%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fleeway00.github.io%2Fibm-machine-learning%2Feda4%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/ibm/eda3/" class="pagination--pager" title="Feature Engineering
+      <a href="/ibm-machine-learning/eda3/" class="pagination--pager" title="Feature Engineering
 ">Previous</a>
     
     
@@ -624,7 +626,7 @@ Then by Bayes’ Rule, likelihood ratio is defined as below.</p>
   
   
       <h4 class="page__comments-title">Leave a comment</h4>
-      <section class="fb-comments" data-href="https://leeway00.github.io/ibm/eda4/" data-mobile="true" data-num-posts="5" data-width="100%" data-colorscheme="light"></section>
+      <section class="fb-comments" data-href="https://leeway00.github.io/ibm-machine-learning/eda4/" data-mobile="true" data-num-posts="5" data-width="100%" data-colorscheme="light"></section>
     
 </div>
 
@@ -646,7 +648,7 @@ Then by Bayes’ Rule, likelihood ratio is defined as below.</p>
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/ibm/eda3/" rel="permalink">Feature Engineering
+        <a href="/ibm-machine-learning/eda3/" rel="permalink">Feature Engineering
 </a>
       
     </h2>
@@ -686,7 +688,7 @@ Then by Bayes’ Rule, likelihood ratio is defined as below.</p>
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/ibm/eda2/" rel="permalink">Data Cleaning
+        <a href="/ibm-machine-learning/eda2/" rel="permalink">Data Cleaning
 </a>
       
     </h2>
