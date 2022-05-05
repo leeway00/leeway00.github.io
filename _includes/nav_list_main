@@ -19,7 +19,7 @@
                 <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
                 {% for category in site.categories %}
                     {% if category[0] == "IBM Machine Learning" %}
-                        <li><a href="/ibm" class="">IBM ({{category[1].size}})</a></li>
+                        <li><a href="/categories/ibm-machine-learning" class="">IBM ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -34,7 +34,7 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Time Series" %}
-                        <li><a href="/time_series" class="">Time Series ({{category[1].size}})</a></li>
+                        <li><a href="/categories/time-series" class="">Time Series ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
