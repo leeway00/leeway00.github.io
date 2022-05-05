@@ -29,7 +29,7 @@
     <meta charset="utf-8" />
 
     <!-- begin _includes/seo.html -->
-    <title>K-Means - Hun’s Blog</title>
+    <title>Dimensionality Reduction - Hun’s Blog</title>
     <meta name="description" content="Unsupervised Machine Learning" />
 
     <meta name="author" content="Younghun Lee" />
@@ -39,8 +39,8 @@
     <meta property="og:type" content="article" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="Hun's Blog" />
-    <meta property="og:title" content="K-Means" />
-    <meta property="og:url" content="https://leeway00.github.io/ibm/uml1/" />
+    <meta property="og:title" content="Dimensionality Reduction" />
+    <meta property="og:url" content="https://leeway00.github.io/ibm/uml3/" />
 
     <meta property="og:description" content="Unsupervised Machine Learning" />
 
@@ -51,10 +51,10 @@
 
     <meta
       property="article:modified_time"
-      content="2022-05-05T10:16:43+00:00"
+      content="2022-05-05T10:16:44+00:00"
     />
 
-    <link rel="canonical" href="https://leeway00.github.io/ibm/uml1/" />
+    <link rel="canonical" href="https://leeway00.github.io/ibm/uml3/" />
 
     <script type="application/ld+json">
       {
@@ -354,13 +354,13 @@
           itemscope
           itemtype="https://schema.org/CreativeWork"
         >
-          <meta itemprop="headline" content="K-Means" />
+          <meta itemprop="headline" content="Dimensionality Reduction" />
           <meta
             itemprop="description"
             content="Unsupervised Machine Learning"
           />
           <meta itemprop="datePublished" content="2022-05-05T00:00:00+00:00" />
-          <meta itemprop="dateModified" content="2022-05-05T10:16:43+00:00" />
+          <meta itemprop="dateModified" content="2022-05-05T10:16:44+00:00" />
 
           <div class="page__inner-wrap">
             <header>
@@ -370,10 +370,10 @@
                 itemprop="headline"
               >
                 <a
-                  href="https://leeway00.github.io/ibm/uml1/"
+                  href="https://leeway00.github.io/ibm/uml3/"
                   class="u-url"
                   itemprop="url"
-                  >K-Means
+                  >Dimensionality Reduction
                 </a>
               </h1>
             </header>
@@ -387,10 +387,10 @@
                   </strong>
                   <span itemprop="keywords">
                     <a
-                      href="/tags/k-means"
+                      href="/tags/pca"
                       class="page__taxonomy-item p-category"
                       rel="tag"
-                      >K-Means</a
+                      >PCA</a
                     ><span class="sep">, </span>
 
                     <a
@@ -401,10 +401,10 @@
                     ><span class="sep">, </span>
 
                     <a
-                      href="/tags/week1"
+                      href="/tags/week3"
                       class="page__taxonomy-item p-category"
                       rel="tag"
-                      >Week1</a
+                      >Week3</a
                     >
                   </span>
                 </p>
@@ -450,78 +450,62 @@
                   </header>
                   <ul class="toc__menu">
                     <li>
-                      <a href="#k-means">K-Means</a>
+                      <a href="#dimensionality-reduction"
+                        >Dimensionality Reduction</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#pca">PCA</a>
                       <ul>
-                        <li><a href="#algorithm">algorithm</a></li>
-                        <li><a href="#k-means-1">K-Means++</a></li>
+                        <li><a href="#svd">SVD</a></li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a href="#non-linear">Non-linear</a>
+                      <ul>
+                        <li><a href="#kernel-pca">Kernel PCA</a></li>
                         <li>
-                          <a href="#choosing-right-k">Choosing right K</a>
-                          <ul>
-                            <li><a href="#intertia">Intertia</a></li>
-                            <li><a href="#distortion">Distortion</a></li>
-                            <li><a href="#elbow-method">Elbow Method</a></li>
-                          </ul>
+                          <a href="#multi-dimensional-scaling-mds"
+                            >Multi-Dimensional Scaling (MDS)</a
+                          >
                         </li>
                         <li>
-                          <a href="#code">Code</a>
-                          <ul>
-                            <li><a href="#inertia">Inertia</a></li>
-                          </ul>
+                          <a href="#others-isomap-tsne">Others: Isomap, TSNE</a>
                         </li>
                       </ul>
                     </li>
+                    <li>
+                      <a href="#non-negative-matrix-factorization"
+                        >Non-negative Matrix Factorization</a
+                      >
+                    </li>
+                    <li><a href="#summary">Summary</a></li>
                   </ul>
                 </nav>
               </aside>
 
-              <h2 id="k-means">K-Means</h2>
-              <h3 id="algorithm">algorithm</h3>
-              <ol>
-                <li>taking K random points as centroids.</li>
-                <li>
-                  For each point, decide which centroid is closer, which forms
-                  clusters
-                </li>
-                <li>Move centroids to the mean of the clusters</li>
-                <li>repeat 2-3 until centroids are not moving anymore</li>
-              </ol>
-
-              <h3 id="k-means-1">K-Means++</h3>
+              <h2 id="dimensionality-reduction">Dimensionality Reduction</h2>
               <p>
-                It is smart initialization method. When adding one more point,
-                no optimal is often happen if two points are close. Thus, pick
-                next point with probabilty proportional to distance from the
-                centroid.
+                Too many features leads to worse performance. Distance measures
+                perform poorly and the indicent of outliers increases. Data can
+                be represented in a lower dimensional space. Reduce
+                dimensionality by selecting subset (feature elimination).
+                Combine with linear and non-linear transformation.
               </p>
 
-              <span class="katex-display"
-                ><span class="katex"
+              <h2 id="pca">PCA</h2>
+              <p>
+                Principal Component Analysis (PCA) is a dimensionality reduction
+                technique. It is a linear transformation that projects the data
+                into a lower dimensional space. Let direction
+                <span class="katex"
                   ><span class="katex-mathml"
-                    ><math
-                      xmlns="http://www.w3.org/1998/Math/MathML"
-                      display="block"
+                    ><math xmlns="http://www.w3.org/1998/Math/MathML"
                       ><semantics
                         ><mrow
-                          ><mi>d</mi><mi>i</mi><mi>s</mi><mi>t</mi><mi>a</mi
-                          ><mi>n</mi><mi>c</mi><mi>e</mi
-                          ><mo stretchy="false">(</mo
-                          ><msub><mi>x</mi><mi>i</mi></msub
-                          ><msup><mo stretchy="false">)</mo><mn>2</mn></msup
-                          ><mo stretchy="false">)</mo
-                          ><mi mathvariant="normal">/</mi
-                          ><munderover
-                            ><mo>∑</mo
-                            ><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow
-                            ><mi>K</mi></munderover
-                          ><mi>d</mi><mi>i</mi><mi>s</mi><mi>t</mi><mi>a</mi
-                          ><mi>n</mi><mi>c</mi><mi>e</mi
-                          ><mo stretchy="false">(</mo
-                          ><msub><mi>x</mi><mi>j</mi></msub
-                          ><msup
-                            ><mo stretchy="false">)</mo><mn>2</mn></msup
-                          ></mrow
+                          ><msub><mi>v</mi><mn>1</mn></msub></mrow
                         ><annotation encoding="application/x-tex"
-                          >distance(x_i)^2)/\sum_{j=1}^{K}distance(x_j)^2</annotation
+                          >v_1</annotation
                         ></semantics
                       ></math
                     ></span
@@ -529,25 +513,21 @@
                     ><span class="base"
                       ><span
                         class="strut"
-                        style="height: 3.2421em; vertical-align: -1.4138em"
+                        style="height: 0.5806em; vertical-align: -0.15em"
                       ></span
-                      ><span class="mord mathnormal">d</span
-                      ><span class="mord mathnormal">i</span
-                      ><span class="mord mathnormal">s</span
-                      ><span class="mord mathnormal">t</span
-                      ><span class="mord mathnormal">an</span
-                      ><span class="mord mathnormal">ce</span
-                      ><span class="mopen">(</span
                       ><span class="mord"
-                        ><span class="mord mathnormal">x</span
+                        ><span
+                          class="mord mathnormal"
+                          style="margin-right: 0.03588em"
+                          >v</span
                         ><span class="msupsub"
                           ><span class="vlist-t vlist-t2"
                             ><span class="vlist-r"
-                              ><span class="vlist" style="height: 0.3117em"
+                              ><span class="vlist" style="height: 0.3011em"
                                 ><span
                                   style="
                                     top: -2.55em;
-                                    margin-left: 0em;
+                                    margin-left: -0.0359em;
                                     margin-right: 0.05em;
                                   "
                                   ><span
@@ -555,105 +535,38 @@
                                     style="height: 2.7em"
                                   ></span
                                   ><span class="sizing reset-size6 size3 mtight"
-                                    ><span class="mord mathnormal mtight"
-                                      >i</span
-                                    ></span
-                                  ></span
-                                ></span
-                              ><span class="vlist-s">​</span></span
-                            ><span class="vlist-r"
-                              ><span class="vlist" style="height: 0.15em"
-                                ><span></span></span></span></span></span></span
-                      ><span class="mclose"
-                        ><span class="mclose">)</span
-                        ><span class="msupsub"
-                          ><span class="vlist-t"
-                            ><span class="vlist-r"
-                              ><span class="vlist" style="height: 0.8641em"
-                                ><span
-                                  style="top: -3.113em; margin-right: 0.05em"
-                                  ><span
-                                    class="pstrut"
-                                    style="height: 2.7em"
-                                  ></span
-                                  ><span class="sizing reset-size6 size3 mtight"
-                                    ><span class="mord mtight">2</span></span
-                                  ></span
-                                ></span
-                              ></span
-                            ></span
-                          ></span
-                        ></span
-                      ><span class="mclose">)</span><span class="mord">/</span
-                      ><span
-                        class="mspace"
-                        style="margin-right: 0.1667em"
-                      ></span
-                      ><span class="mop op-limits"
-                        ><span class="vlist-t vlist-t2"
-                          ><span class="vlist-r"
-                            ><span class="vlist" style="height: 1.8283em"
-                              ><span style="top: -1.8723em; margin-left: 0em"
-                                ><span
-                                  class="pstrut"
-                                  style="height: 3.05em"
-                                ></span
-                                ><span class="sizing reset-size6 size3 mtight"
-                                  ><span class="mord mtight"
-                                    ><span
-                                      class="mord mathnormal mtight"
-                                      style="margin-right: 0.05724em"
-                                      >j</span
-                                    ><span class="mrel mtight">=</span
                                     ><span class="mord mtight">1</span></span
                                   ></span
                                 ></span
-                              ><span style="top: -3.05em"
-                                ><span
-                                  class="pstrut"
-                                  style="height: 3.05em"
-                                ></span
-                                ><span
-                                  ><span class="mop op-symbol large-op"
-                                    >∑</span
-                                  ></span
-                                ></span
-                              ><span style="top: -4.3em; margin-left: 0em"
-                                ><span
-                                  class="pstrut"
-                                  style="height: 3.05em"
-                                ></span
-                                ><span class="sizing reset-size6 size3 mtight"
-                                  ><span class="mord mtight"
-                                    ><span
-                                      class="mord mathnormal mtight"
-                                      style="margin-right: 0.07153em"
-                                      >K</span
-                                    ></span
-                                  ></span
-                                ></span
-                              ></span
-                            ><span class="vlist-s">​</span></span
-                          ><span class="vlist-r"
-                            ><span class="vlist" style="height: 1.4138em"
-                              ><span></span></span></span></span></span
+                              ><span class="vlist-s">​</span></span
+                            ><span class="vlist-r"
+                              ><span class="vlist" style="height: 0.15em"
+                                ><span></span></span></span></span></span></span></span></span
+                ></span>
+                and length
+                <span class="katex"
+                  ><span class="katex-mathml"
+                    ><math xmlns="http://www.w3.org/1998/Math/MathML"
+                      ><semantics
+                        ><mrow
+                          ><msub><mi>λ</mi><mn>1</mn></msub></mrow
+                        ><annotation encoding="application/x-tex"
+                          >\lambda_1</annotation
+                        ></semantics
+                      ></math
+                    ></span
+                  ><span class="katex-html" aria-hidden="true"
+                    ><span class="base"
                       ><span
-                        class="mspace"
-                        style="margin-right: 0.1667em"
+                        class="strut"
+                        style="height: 0.8444em; vertical-align: -0.15em"
                       ></span
-                      ><span class="mord mathnormal">d</span
-                      ><span class="mord mathnormal">i</span
-                      ><span class="mord mathnormal">s</span
-                      ><span class="mord mathnormal">t</span
-                      ><span class="mord mathnormal">an</span
-                      ><span class="mord mathnormal">ce</span
-                      ><span class="mopen">(</span
                       ><span class="mord"
-                        ><span class="mord mathnormal">x</span
+                        ><span class="mord mathnormal">λ</span
                         ><span class="msupsub"
                           ><span class="vlist-t vlist-t2"
                             ><span class="vlist-r"
-                              ><span class="vlist" style="height: 0.3117em"
+                              ><span class="vlist" style="height: 0.3011em"
                                 ><span
                                   style="
                                     top: -2.55em;
@@ -665,157 +578,45 @@
                                     style="height: 2.7em"
                                   ></span
                                   ><span class="sizing reset-size6 size3 mtight"
-                                    ><span
-                                      class="mord mathnormal mtight"
-                                      style="margin-right: 0.05724em"
-                                      >j</span
-                                    ></span
-                                  ></span
-                                ></span
-                              ><span class="vlist-s">​</span></span
-                            ><span class="vlist-r"
-                              ><span class="vlist" style="height: 0.2861em"
-                                ><span></span></span></span></span></span></span
-                      ><span class="mclose"
-                        ><span class="mclose">)</span
-                        ><span class="msupsub"
-                          ><span class="vlist-t"
-                            ><span class="vlist-r"
-                              ><span class="vlist" style="height: 0.8641em"
-                                ><span
-                                  style="top: -3.113em; margin-right: 0.05em"
-                                  ><span
-                                    class="pstrut"
-                                    style="height: 2.7em"
-                                  ></span
-                                  ><span class="sizing reset-size6 size3 mtight"
-                                    ><span class="mord mtight">2</span></span
-                                  ></span
-                                ></span
-                              ></span
-                            ></span
-                          ></span
-                        ></span
-                      ></span
-                    ></span
-                  ></span
-                ></span
-              >
-
-              <h3 id="choosing-right-k">Choosing right K</h3>
-              <blockquote>
-                <p>
-                  e.g.)<br />
-                  K = cpu core<br />
-                  K is fixed to target number of clusters
-                </p>
-              </blockquote>
-
-              <h4 id="intertia">Intertia</h4>
-              <p>
-                Similar values corresponds to tighter clusters. But Value
-                senstivie to number of points in cluseter
-              </p>
-
-              <span class="katex-display"
-                ><span class="katex"
-                  ><span class="katex-mathml"
-                    ><math
-                      xmlns="http://www.w3.org/1998/Math/MathML"
-                      display="block"
-                      ><semantics
-                        ><mrow
-                          ><munderover
-                            ><mo>∑</mo
-                            ><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow
-                            ><mi>K</mi></munderover
-                          ><mi>d</mi><mi>i</mi><mi>s</mi><mi>t</mi><mi>a</mi
-                          ><mi>n</mi><mi>c</mi><mi>e</mi
-                          ><mo stretchy="false">(</mo
-                          ><msub><mi>x</mi><mi>i</mi></msub
-                          ><mo separator="true">,</mo
-                          ><msub><mi>c</mi><mi>i</mi></msub
-                          ><msup
-                            ><mo stretchy="false">)</mo><mn>2</mn></msup
-                          ></mrow
-                        ><annotation encoding="application/x-tex"
-                          >\sum_{i=1}^{K}distance(x_i,c_i)^2</annotation
-                        ></semantics
-                      ></math
-                    ></span
-                  ><span class="katex-html" aria-hidden="true"
-                    ><span class="base"
-                      ><span
-                        class="strut"
-                        style="height: 3.106em; vertical-align: -1.2777em"
-                      ></span
-                      ><span class="mop op-limits"
-                        ><span class="vlist-t vlist-t2"
-                          ><span class="vlist-r"
-                            ><span class="vlist" style="height: 1.8283em"
-                              ><span style="top: -1.8723em; margin-left: 0em"
-                                ><span
-                                  class="pstrut"
-                                  style="height: 3.05em"
-                                ></span
-                                ><span class="sizing reset-size6 size3 mtight"
-                                  ><span class="mord mtight"
-                                    ><span class="mord mathnormal mtight"
-                                      >i</span
-                                    ><span class="mrel mtight">=</span
                                     ><span class="mord mtight">1</span></span
                                   ></span
                                 ></span
-                              ><span style="top: -3.05em"
-                                ><span
-                                  class="pstrut"
-                                  style="height: 3.05em"
-                                ></span
-                                ><span
-                                  ><span class="mop op-symbol large-op"
-                                    >∑</span
-                                  ></span
-                                ></span
-                              ><span style="top: -4.3em; margin-left: 0em"
-                                ><span
-                                  class="pstrut"
-                                  style="height: 3.05em"
-                                ></span
-                                ><span class="sizing reset-size6 size3 mtight"
-                                  ><span class="mord mtight"
-                                    ><span
-                                      class="mord mathnormal mtight"
-                                      style="margin-right: 0.07153em"
-                                      >K</span
-                                    ></span
-                                  ></span
-                                ></span
-                              ></span
-                            ><span class="vlist-s">​</span></span
-                          ><span class="vlist-r"
-                            ><span class="vlist" style="height: 1.2777em"
-                              ><span></span></span></span></span></span
+                              ><span class="vlist-s">​</span></span
+                            ><span class="vlist-r"
+                              ><span class="vlist" style="height: 0.15em"
+                                ><span></span></span></span></span></span></span></span></span
+                ></span>
+                be the first principal component.
+                <span class="katex"
+                  ><span class="katex-mathml"
+                    ><math xmlns="http://www.w3.org/1998/Math/MathML"
+                      ><semantics
+                        ><mrow
+                          ><msub><mi>v</mi><mn>1</mn></msub></mrow
+                        ><annotation encoding="application/x-tex"
+                          >v_1</annotation
+                        ></semantics
+                      ></math
+                    ></span
+                  ><span class="katex-html" aria-hidden="true"
+                    ><span class="base"
                       ><span
-                        class="mspace"
-                        style="margin-right: 0.1667em"
+                        class="strut"
+                        style="height: 0.5806em; vertical-align: -0.15em"
                       ></span
-                      ><span class="mord mathnormal">d</span
-                      ><span class="mord mathnormal">i</span
-                      ><span class="mord mathnormal">s</span
-                      ><span class="mord mathnormal">t</span
-                      ><span class="mord mathnormal">an</span
-                      ><span class="mord mathnormal">ce</span
-                      ><span class="mopen">(</span
                       ><span class="mord"
-                        ><span class="mord mathnormal">x</span
+                        ><span
+                          class="mord mathnormal"
+                          style="margin-right: 0.03588em"
+                          >v</span
                         ><span class="msupsub"
                           ><span class="vlist-t vlist-t2"
                             ><span class="vlist-r"
-                              ><span class="vlist" style="height: 0.3117em"
+                              ><span class="vlist" style="height: 0.3011em"
                                 ><span
                                   style="
                                     top: -2.55em;
-                                    margin-left: 0em;
+                                    margin-left: -0.0359em;
                                     margin-right: 0.05em;
                                   "
                                   ><span
@@ -823,54 +624,47 @@
                                     style="height: 2.7em"
                                   ></span
                                   ><span class="sizing reset-size6 size3 mtight"
-                                    ><span class="mord mathnormal mtight"
-                                      >i</span
-                                    ></span
+                                    ><span class="mord mtight">1</span></span
                                   ></span
                                 ></span
                               ><span class="vlist-s">​</span></span
                             ><span class="vlist-r"
                               ><span class="vlist" style="height: 0.15em"
-                                ><span></span></span></span></span></span></span
-                      ><span class="mpunct">,</span
+                                ><span></span></span></span></span></span></span></span></span
+                ></span>
+                is perpendicular to
+                <span class="katex"
+                  ><span class="katex-mathml"
+                    ><math xmlns="http://www.w3.org/1998/Math/MathML"
+                      ><semantics
+                        ><mrow
+                          ><msub><mi>v</mi><mn>2</mn></msub></mrow
+                        ><annotation encoding="application/x-tex"
+                          >v_2</annotation
+                        ></semantics
+                      ></math
+                    ></span
+                  ><span class="katex-html" aria-hidden="true"
+                    ><span class="base"
                       ><span
-                        class="mspace"
-                        style="margin-right: 0.1667em"
+                        class="strut"
+                        style="height: 0.5806em; vertical-align: -0.15em"
                       ></span
                       ><span class="mord"
-                        ><span class="mord mathnormal">c</span
+                        ><span
+                          class="mord mathnormal"
+                          style="margin-right: 0.03588em"
+                          >v</span
                         ><span class="msupsub"
                           ><span class="vlist-t vlist-t2"
                             ><span class="vlist-r"
-                              ><span class="vlist" style="height: 0.3117em"
+                              ><span class="vlist" style="height: 0.3011em"
                                 ><span
                                   style="
                                     top: -2.55em;
-                                    margin-left: 0em;
+                                    margin-left: -0.0359em;
                                     margin-right: 0.05em;
                                   "
-                                  ><span
-                                    class="pstrut"
-                                    style="height: 2.7em"
-                                  ></span
-                                  ><span class="sizing reset-size6 size3 mtight"
-                                    ><span class="mord mathnormal mtight"
-                                      >i</span
-                                    ></span
-                                  ></span
-                                ></span
-                              ><span class="vlist-s">​</span></span
-                            ><span class="vlist-r"
-                              ><span class="vlist" style="height: 0.15em"
-                                ><span></span></span></span></span></span></span
-                      ><span class="mclose"
-                        ><span class="mclose">)</span
-                        ><span class="msupsub"
-                          ><span class="vlist-t"
-                            ><span class="vlist-r"
-                              ><span class="vlist" style="height: 0.8641em"
-                                ><span
-                                  style="top: -3.113em; margin-right: 0.05em"
                                   ><span
                                     class="pstrut"
                                     style="height: 2.7em"
@@ -879,18 +673,57 @@
                                     ><span class="mord mtight">2</span></span
                                   ></span
                                 ></span
-                              ></span
-                            ></span
-                          ></span
-                        ></span
-                      ></span
+                              ><span class="vlist-s">​</span></span
+                            ><span class="vlist-r"
+                              ><span class="vlist" style="height: 0.15em"
+                                ><span></span></span></span></span></span></span></span></span
+                ></span>
+                which has length
+                <span class="katex"
+                  ><span class="katex-mathml"
+                    ><math xmlns="http://www.w3.org/1998/Math/MathML"
+                      ><semantics
+                        ><mrow
+                          ><msub><mi>λ</mi><mn>2</mn></msub></mrow
+                        ><annotation encoding="application/x-tex"
+                          >\lambda_2</annotation
+                        ></semantics
+                      ></math
                     ></span
-                  ></span
-                ></span
-              >
+                  ><span class="katex-html" aria-hidden="true"
+                    ><span class="base"
+                      ><span
+                        class="strut"
+                        style="height: 0.8444em; vertical-align: -0.15em"
+                      ></span
+                      ><span class="mord"
+                        ><span class="mord mathnormal">λ</span
+                        ><span class="msupsub"
+                          ><span class="vlist-t vlist-t2"
+                            ><span class="vlist-r"
+                              ><span class="vlist" style="height: 0.3011em"
+                                ><span
+                                  style="
+                                    top: -2.55em;
+                                    margin-left: 0em;
+                                    margin-right: 0.05em;
+                                  "
+                                  ><span
+                                    class="pstrut"
+                                    style="height: 2.7em"
+                                  ></span
+                                  ><span class="sizing reset-size6 size3 mtight"
+                                    ><span class="mord mtight">2</span></span
+                                  ></span
+                                ></span
+                              ><span class="vlist-s">​</span></span
+                            ><span class="vlist-r"
+                              ><span class="vlist" style="height: 0.15em"
+                                ><span></span></span></span></span></span></span></span></span></span
+                >.
+              </p>
 
-              <h4 id="distortion">Distortion</h4>
-              <p>Adding more points will not increase distortion.</p>
+              <h3 id="svd">SVD</h3>
 
               <span class="katex-display"
                 ><span class="katex"
@@ -900,22 +733,24 @@
                       display="block"
                       ><semantics
                         ><mrow
-                          ><mn>1</mn><mi mathvariant="normal">/</mi><mi>n</mi
-                          ><munderover
-                            ><mo>∑</mo
-                            ><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow
-                            ><mi>n</mi></munderover
-                          ><mi>d</mi><mi>i</mi><mi>s</mi><mi>t</mi><mi>a</mi
-                          ><mi>n</mi><mi>c</mi><mi>e</mi
-                          ><mo stretchy="false">(</mo
-                          ><msub><mi>x</mi><mi>i</mi></msub
-                          ><mo separator="true">,</mo
-                          ><msub><mi>c</mi><mi>i</mi></msub
-                          ><msup
-                            ><mo stretchy="false">)</mo><mn>2</mn></msup
+                          ><msub
+                            ><mi>A</mi
+                            ><mrow><mi>m</mi><mo>×</mo><mi>n</mi></mrow></msub
+                          ><mo>=</mo
+                          ><msub
+                            ><mi>U</mi
+                            ><mrow><mi>m</mi><mo>×</mo><mi>m</mi></mrow></msub
+                          ><msub
+                            ><mi mathvariant="normal">Σ</mi
+                            ><mrow><mi>m</mi><mo>×</mo><mi>n</mi></mrow></msub
+                          ><msubsup
+                            ><mi>V</mi
+                            ><mrow><mi>n</mi><mo>×</mo><mi>n</mi></mrow
+                            ><mi>T</mi></msubsup
                           ></mrow
                         ><annotation encoding="application/x-tex"
-                          >1/n \sum_{i=1}^{n}distance(x_i,c_i)^2</annotation
+                          >A_{m\times n} = U_{m\times m} \Sigma_{m\times n}
+                          V_{n\times n}^T</annotation
                         ></semantics
                       ></math
                     ></span
@@ -923,194 +758,462 @@
                     ><span class="base"
                       ><span
                         class="strut"
-                        style="height: 2.9291em; vertical-align: -1.2777em"
+                        style="height: 0.8917em; vertical-align: -0.2083em"
                       ></span
-                      ><span class="mord">1/</span
+                      ><span class="mord"
+                        ><span class="mord mathnormal">A</span
+                        ><span class="msupsub"
+                          ><span class="vlist-t vlist-t2"
+                            ><span class="vlist-r"
+                              ><span class="vlist" style="height: 0.2583em"
+                                ><span
+                                  style="
+                                    top: -2.55em;
+                                    margin-left: 0em;
+                                    margin-right: 0.05em;
+                                  "
+                                  ><span
+                                    class="pstrut"
+                                    style="height: 2.7em"
+                                  ></span
+                                  ><span class="sizing reset-size6 size3 mtight"
+                                    ><span class="mord mtight"
+                                      ><span class="mord mathnormal mtight"
+                                        >m</span
+                                      ><span class="mbin mtight">×</span
+                                      ><span class="mord mathnormal mtight"
+                                        >n</span
+                                      ></span
+                                    ></span
+                                  ></span
+                                ></span
+                              ><span class="vlist-s">​</span></span
+                            ><span class="vlist-r"
+                              ><span class="vlist" style="height: 0.2083em"
+                                ><span></span></span></span></span></span></span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2778em"
+                      ></span
+                      ><span class="mrel">=</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2778em"
+                      ></span></span
+                    ><span class="base"
+                      ><span
+                        class="strut"
+                        style="height: 1.1967em; vertical-align: -0.3053em"
+                      ></span
+                      ><span class="mord"
+                        ><span
+                          class="mord mathnormal"
+                          style="margin-right: 0.10903em"
+                          >U</span
+                        ><span class="msupsub"
+                          ><span class="vlist-t vlist-t2"
+                            ><span class="vlist-r"
+                              ><span class="vlist" style="height: 0.2583em"
+                                ><span
+                                  style="
+                                    top: -2.55em;
+                                    margin-left: -0.109em;
+                                    margin-right: 0.05em;
+                                  "
+                                  ><span
+                                    class="pstrut"
+                                    style="height: 2.7em"
+                                  ></span
+                                  ><span class="sizing reset-size6 size3 mtight"
+                                    ><span class="mord mtight"
+                                      ><span class="mord mathnormal mtight"
+                                        >m</span
+                                      ><span class="mbin mtight">×</span
+                                      ><span class="mord mathnormal mtight"
+                                        >m</span
+                                      ></span
+                                    ></span
+                                  ></span
+                                ></span
+                              ><span class="vlist-s">​</span></span
+                            ><span class="vlist-r"
+                              ><span class="vlist" style="height: 0.2083em"
+                                ><span></span></span></span></span></span></span
+                      ><span class="mord"
+                        ><span class="mord">Σ</span
+                        ><span class="msupsub"
+                          ><span class="vlist-t vlist-t2"
+                            ><span class="vlist-r"
+                              ><span class="vlist" style="height: 0.2583em"
+                                ><span
+                                  style="
+                                    top: -2.55em;
+                                    margin-left: 0em;
+                                    margin-right: 0.05em;
+                                  "
+                                  ><span
+                                    class="pstrut"
+                                    style="height: 2.7em"
+                                  ></span
+                                  ><span class="sizing reset-size6 size3 mtight"
+                                    ><span class="mord mtight"
+                                      ><span class="mord mathnormal mtight"
+                                        >m</span
+                                      ><span class="mbin mtight">×</span
+                                      ><span class="mord mathnormal mtight"
+                                        >n</span
+                                      ></span
+                                    ></span
+                                  ></span
+                                ></span
+                              ><span class="vlist-s">​</span></span
+                            ><span class="vlist-r"
+                              ><span class="vlist" style="height: 0.2083em"
+                                ><span></span></span></span></span></span></span
+                      ><span class="mord"
+                        ><span
+                          class="mord mathnormal"
+                          style="margin-right: 0.22222em"
+                          >V</span
+                        ><span class="msupsub"
+                          ><span class="vlist-t vlist-t2"
+                            ><span class="vlist-r"
+                              ><span class="vlist" style="height: 0.8913em"
+                                ><span
+                                  style="
+                                    top: -2.453em;
+                                    margin-left: -0.2222em;
+                                    margin-right: 0.05em;
+                                  "
+                                  ><span
+                                    class="pstrut"
+                                    style="height: 2.7em"
+                                  ></span
+                                  ><span class="sizing reset-size6 size3 mtight"
+                                    ><span class="mord mtight"
+                                      ><span class="mord mathnormal mtight"
+                                        >n</span
+                                      ><span class="mbin mtight">×</span
+                                      ><span class="mord mathnormal mtight"
+                                        >n</span
+                                      ></span
+                                    ></span
+                                  ></span
+                                ><span
+                                  style="top: -3.113em; margin-right: 0.05em"
+                                  ><span
+                                    class="pstrut"
+                                    style="height: 2.7em"
+                                  ></span
+                                  ><span class="sizing reset-size6 size3 mtight"
+                                    ><span
+                                      class="mord mathnormal mtight"
+                                      style="margin-right: 0.13889em"
+                                      >T</span
+                                    ></span
+                                  ></span
+                                ></span
+                              ><span class="vlist-s">​</span></span
+                            ><span class="vlist-r"
+                              ><span class="vlist" style="height: 0.3053em"
+                                ><span></span></span></span></span></span></span></span></span></span
+              ></span>
+
+              <p>
+                Principal components are calculated from
+                <span class="katex"
+                  ><span class="katex-mathml"
+                    ><math xmlns="http://www.w3.org/1998/Math/MathML"
+                      ><semantics
+                        ><mrow><mi>V</mi></mrow
+                        ><annotation encoding="application/x-tex"
+                          >V</annotation
+                        ></semantics
+                      ></math
+                    ></span
+                  ><span class="katex-html" aria-hidden="true"
+                    ><span class="base"
+                      ><span class="strut" style="height: 0.6833em"></span
+                      ><span
+                        class="mord mathnormal"
+                        style="margin-right: 0.22222em"
+                        >V</span
+                      ></span
+                    ></span
+                  ></span
+                ><br />
+                <strong>Truncated SVD</strong> is used for dimensionality
+                reduction from n to k<br />
+                Variance is sensitive to scaling .
+              </p>
+
+              <div class="language-python highlighter-rouge">
+                <div class="highlight">
+                  <pre
+                    class="highlight"
+                  ><code><span class="kn">from</span> <span class="nn">sklearn.decompositon</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="n">PCAinst</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1">#create instance
+</span><span class="n">x_trans</span> <span class="o">=</span> <span class="n">PCAinst</span><span class="p">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span> <span class="c1">#fit the instance on the data
+</span></code></pre>
+                </div>
+              </div>
+              <h2 id="non-linear">Non-linear</h2>
+              <h3 id="kernel-pca">Kernel PCA</h3>
+              <p>
+                Use kernel trick introduced in SVM to map down linear
+                relationship.
+              </p>
+
+              <div class="language-python highlighter-rouge">
+                <div class="highlight">
+                  <pre
+                    class="highlight"
+                  ><code><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">KernelPCA</span>
+<span class="n">kPCA</span> <span class="o">=</span> <span class="n">KernelPCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s">'rbf'</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.04</span><span class="p">)</span>
+<span class="n">x_kpca</span> <span class="o">=</span> <span class="n">KPCA</span><span class="p">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+</code></pre>
+                </div>
+              </div>
+              <h3 id="multi-dimensional-scaling-mds">
+                Multi-Dimensional Scaling (MDS)
+              </h3>
+              <p>
+                MDS maintains the distance between points in a low-dimensional
+                space.
+              </p>
+
+              <div class="language-python highlighter-rouge">
+                <div class="highlight">
+                  <pre
+                    class="highlight"
+                  ><code><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">MDS</span>
+<span class="n">mds</span> <span class="o">=</span> <span class="n">MDS</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">x_mds</span> <span class="o">=</span> <span class="n">mds</span><span class="p">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+</code></pre>
+                </div>
+              </div>
+
+              <h3 id="others-isomap-tsne">Others: Isomap, TSNE</h3>
+
+              <h2 id="non-negative-matrix-factorization">
+                Non-negative Matrix Factorization
+              </h2>
+              <p>
+                Decompositing matrix only non-negative values. For example,
+                vectorized words, images. Let
+                <span class="katex"
+                  ><span class="katex-mathml"
+                    ><math xmlns="http://www.w3.org/1998/Math/MathML"
+                      ><semantics
+                        ><mrow
+                          ><mi>V</mi><mo>=</mo><mi>W</mi
+                          ><mstyle mathcolor="#cc0000"
+                            ><mtext>\tiems</mtext></mstyle
+                          ><mi>H</mi></mrow
+                        ><annotation encoding="application/x-tex"
+                          >V = W\tiems H</annotation
+                        ></semantics
+                      ></math
+                    ></span
+                  ><span class="katex-html" aria-hidden="true"
+                    ><span class="base"
+                      ><span class="strut" style="height: 0.6833em"></span
+                      ><span
+                        class="mord mathnormal"
+                        style="margin-right: 0.22222em"
+                        >V</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2778em"
+                      ></span
+                      ><span class="mrel">=</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2778em"
+                      ></span></span
+                    ><span class="base"
+                      ><span
+                        class="strut"
+                        style="height: 1em; vertical-align: -0.25em"
+                      ></span
+                      ><span
+                        class="mord mathnormal"
+                        style="margin-right: 0.13889em"
+                        >W</span
+                      ><span class="mord text" style="color: #cc0000"
+                        ><span class="mord" style="color: #cc0000"
+                          >\tiems</span
+                        ></span
+                      ><span
+                        class="mord mathnormal"
+                        style="margin-right: 0.08125em"
+                        >H</span
+                      ></span
+                    ></span
+                  ></span
+                >
+                so that
+                <span class="katex"
+                  ><span class="katex-mathml"
+                    ><math xmlns="http://www.w3.org/1998/Math/MathML"
+                      ><semantics
+                        ><mrow
+                          ><mi>t</mi><mi>e</mi><mi>r</mi><mi>m</mi><mo>−</mo
+                          ><mi>d</mi><mi>o</mi><mi>c</mi><mi>u</mi><mi>m</mi
+                          ><mi>e</mi><mi>n</mi><mi>t</mi><mi>M</mi><mi>a</mi
+                          ><mi>t</mi><mi>r</mi><mi>i</mi><mi>x</mi><mo>=</mo
+                          ><mi>T</mi><mi>e</mi><mi>r</mi><mi>m</mi><mo>→</mo
+                          ><mi>T</mi><mi>o</mi><mi>p</mi><mi>i</mi><mi>c</mi
+                          ><mi>s</mi><mo>+</mo><mi>T</mi><mi>o</mi><mi>p</mi
+                          ><mi>i</mi><mi>c</mi><mo>→</mo><mi>D</mi><mi>o</mi
+                          ><mi>c</mi><mi>s</mi></mrow
+                        ><annotation encoding="application/x-tex"
+                          >term-documentMatrix = Term\to Topics + Topic\to
+                          Docs</annotation
+                        ></semantics
+                      ></math
+                    ></span
+                  ><span class="katex-html" aria-hidden="true"
+                    ><span class="base"
+                      ><span
+                        class="strut"
+                        style="height: 0.6984em; vertical-align: -0.0833em"
+                      ></span
+                      ><span class="mord mathnormal">t</span
+                      ><span
+                        class="mord mathnormal"
+                        style="margin-right: 0.02778em"
+                        >er</span
+                      ><span class="mord mathnormal">m</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2222em"
+                      ></span
+                      ><span class="mbin">−</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2222em"
+                      ></span></span
+                    ><span class="base"
+                      ><span class="strut" style="height: 0.6944em"></span
+                      ><span class="mord mathnormal">d</span
+                      ><span class="mord mathnormal">oc</span
+                      ><span class="mord mathnormal">u</span
+                      ><span class="mord mathnormal">m</span
+                      ><span class="mord mathnormal">e</span
                       ><span class="mord mathnormal">n</span
                       ><span
-                        class="mspace"
-                        style="margin-right: 0.1667em"
-                      ></span
-                      ><span class="mop op-limits"
-                        ><span class="vlist-t vlist-t2"
-                          ><span class="vlist-r"
-                            ><span class="vlist" style="height: 1.6514em"
-                              ><span style="top: -1.8723em; margin-left: 0em"
-                                ><span
-                                  class="pstrut"
-                                  style="height: 3.05em"
-                                ></span
-                                ><span class="sizing reset-size6 size3 mtight"
-                                  ><span class="mord mtight"
-                                    ><span class="mord mathnormal mtight"
-                                      >i</span
-                                    ><span class="mrel mtight">=</span
-                                    ><span class="mord mtight">1</span></span
-                                  ></span
-                                ></span
-                              ><span style="top: -3.05em"
-                                ><span
-                                  class="pstrut"
-                                  style="height: 3.05em"
-                                ></span
-                                ><span
-                                  ><span class="mop op-symbol large-op"
-                                    >∑</span
-                                  ></span
-                                ></span
-                              ><span style="top: -4.3em; margin-left: 0em"
-                                ><span
-                                  class="pstrut"
-                                  style="height: 3.05em"
-                                ></span
-                                ><span class="sizing reset-size6 size3 mtight"
-                                  ><span class="mord mtight"
-                                    ><span class="mord mathnormal mtight"
-                                      >n</span
-                                    ></span
-                                  ></span
-                                ></span
-                              ></span
-                            ><span class="vlist-s">​</span></span
-                          ><span class="vlist-r"
-                            ><span class="vlist" style="height: 1.2777em"
-                              ><span></span></span></span></span></span
-                      ><span
-                        class="mspace"
-                        style="margin-right: 0.1667em"
-                      ></span
-                      ><span class="mord mathnormal">d</span
-                      ><span class="mord mathnormal">i</span
-                      ><span class="mord mathnormal">s</span
+                        class="mord mathnormal"
+                        style="margin-right: 0.10903em"
+                        >tM</span
+                      ><span class="mord mathnormal">a</span
                       ><span class="mord mathnormal">t</span
-                      ><span class="mord mathnormal">an</span
-                      ><span class="mord mathnormal">ce</span
-                      ><span class="mopen">(</span
-                      ><span class="mord"
-                        ><span class="mord mathnormal">x</span
-                        ><span class="msupsub"
-                          ><span class="vlist-t vlist-t2"
-                            ><span class="vlist-r"
-                              ><span class="vlist" style="height: 0.3117em"
-                                ><span
-                                  style="
-                                    top: -2.55em;
-                                    margin-left: 0em;
-                                    margin-right: 0.05em;
-                                  "
-                                  ><span
-                                    class="pstrut"
-                                    style="height: 2.7em"
-                                  ></span
-                                  ><span class="sizing reset-size6 size3 mtight"
-                                    ><span class="mord mathnormal mtight"
-                                      >i</span
-                                    ></span
-                                  ></span
-                                ></span
-                              ><span class="vlist-s">​</span></span
-                            ><span class="vlist-r"
-                              ><span class="vlist" style="height: 0.15em"
-                                ><span></span></span></span></span></span></span
-                      ><span class="mpunct">,</span
+                      ><span
+                        class="mord mathnormal"
+                        style="margin-right: 0.02778em"
+                        >r</span
+                      ><span class="mord mathnormal">i</span
+                      ><span class="mord mathnormal">x</span
                       ><span
                         class="mspace"
-                        style="margin-right: 0.1667em"
+                        style="margin-right: 0.2778em"
                       ></span
-                      ><span class="mord"
-                        ><span class="mord mathnormal">c</span
-                        ><span class="msupsub"
-                          ><span class="vlist-t vlist-t2"
-                            ><span class="vlist-r"
-                              ><span class="vlist" style="height: 0.3117em"
-                                ><span
-                                  style="
-                                    top: -2.55em;
-                                    margin-left: 0em;
-                                    margin-right: 0.05em;
-                                  "
-                                  ><span
-                                    class="pstrut"
-                                    style="height: 2.7em"
-                                  ></span
-                                  ><span class="sizing reset-size6 size3 mtight"
-                                    ><span class="mord mathnormal mtight"
-                                      >i</span
-                                    ></span
-                                  ></span
-                                ></span
-                              ><span class="vlist-s">​</span></span
-                            ><span class="vlist-r"
-                              ><span class="vlist" style="height: 0.15em"
-                                ><span></span></span></span></span></span></span
-                      ><span class="mclose"
-                        ><span class="mclose">)</span
-                        ><span class="msupsub"
-                          ><span class="vlist-t"
-                            ><span class="vlist-r"
-                              ><span class="vlist" style="height: 0.8641em"
-                                ><span
-                                  style="top: -3.113em; margin-right: 0.05em"
-                                  ><span
-                                    class="pstrut"
-                                    style="height: 2.7em"
-                                  ></span
-                                  ><span class="sizing reset-size6 size3 mtight"
-                                    ><span class="mord mtight">2</span></span
-                                  ></span
-                                ></span
-                              ></span
-                            ></span
-                          ></span
-                        ></span
+                      ><span class="mrel">=</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2778em"
+                      ></span></span
+                    ><span class="base"
+                      ><span class="strut" style="height: 0.6833em"></span
+                      ><span
+                        class="mord mathnormal"
+                        style="margin-right: 0.13889em"
+                        >T</span
+                      ><span
+                        class="mord mathnormal"
+                        style="margin-right: 0.02778em"
+                        >er</span
+                      ><span class="mord mathnormal">m</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2778em"
                       ></span
+                      ><span class="mrel">→</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2778em"
+                      ></span></span
+                    ><span class="base"
+                      ><span
+                        class="strut"
+                        style="height: 0.8778em; vertical-align: -0.1944em"
+                      ></span
+                      ><span
+                        class="mord mathnormal"
+                        style="margin-right: 0.13889em"
+                        >T</span
+                      ><span class="mord mathnormal">o</span
+                      ><span class="mord mathnormal">p</span
+                      ><span class="mord mathnormal">i</span
+                      ><span class="mord mathnormal">cs</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2222em"
+                      ></span
+                      ><span class="mbin">+</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2222em"
+                      ></span></span
+                    ><span class="base"
+                      ><span
+                        class="strut"
+                        style="height: 0.8778em; vertical-align: -0.1944em"
+                      ></span
+                      ><span
+                        class="mord mathnormal"
+                        style="margin-right: 0.13889em"
+                        >T</span
+                      ><span class="mord mathnormal">o</span
+                      ><span class="mord mathnormal">p</span
+                      ><span class="mord mathnormal">i</span
+                      ><span class="mord mathnormal">c</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2778em"
+                      ></span
+                      ><span class="mrel">→</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2778em"
+                      ></span></span
+                    ><span class="base"
+                      ><span class="strut" style="height: 0.6833em"></span
+                      ><span class="mord mathnormal">Docs</span></span
                     ></span
                   ></span
-                ></span
-              >
-
-              <h4 id="elbow-method">Elbow Method</h4>
-              <p>
-                We initiate K-mean several times, and choose the one with lowest
-                distortion or inertia. Find a point where the decrement of value
-                is lower.
+                >. Also in Image, we can compress only shaded values.<br />
+                Can never undo the application of a latent feature, it is much
+                more careful about what it adds at each step. In some
+                applications, this can make for more human interpretable latent
+                features.<br />
+                Thus NMF are non othogonal.
               </p>
 
-              <p>
-                <img
-                  src="/assets/images/IBM/k-means_inertia.png"
-                  alt="Choosing K"
-                />
-              </p>
-
-              <h3 id="code">Code</h3>
               <div class="language-python highlighter-rouge">
                 <div class="highlight">
                   <pre
                     class="highlight"
-                  ><code><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span><span class="p">,</span> <span class="n">MiniBatchKMeans</span>
-
-<span class="n">kmeans</span> <span class="o">=</span> <span class="n">Kmeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s">'k-means++'</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">kmeans</span> <span class="o">=</span> <span class="n">kmeans</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X1</span><span class="p">)</span>
-<span class="n">y_predict</span> <span class="o">=</span> <span class="n">kmeans</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X2</span><span class="p">)</span>
+                  ><code><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">NMF</span>
+<span class="n">nmf</span> <span class="o">=</span> <span class="n">NMF</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s">'random'</span><span class="p">)</span>
+<span class="n">x_nmf</span> <span class="o">=</span> <span class="n">nmf</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </code></pre>
                 </div>
               </div>
-
-              <h4 id="inertia">Inertia</h4>
-              <div class="language-python highlighter-rouge">
-                <div class="highlight">
-                  <pre
-                    class="highlight"
-                  ><code><span class="n">inertia</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">list_clusters</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">list_clusters</span><span class="p">:</span>
-    <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="n">k</span><span class="p">)</span>
-    <span class="n">kmenas</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X1</span><span class="p">)</span>
-    <span class="n">inertia</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">kmeans</span><span class="p">.</span><span class="n">inertia_</span><span class="p">)</span>
-</code></pre>
-                </div>
-              </div>
+              <h2 id="summary">Summary</h2>
+              <p>
+                <img src="/assets/images/IBM/dimension_summary.png" alt="" />
+              </p>
             </section>
 
             <footer class="page__meta"></footer>
@@ -1119,7 +1222,7 @@
               <h4 class="page__share-title">Share on</h4>
 
               <a
-                href="https://twitter.com/intent/tweet?text=K-Means%20https%3A%2F%2Fleeway00.github.io%2Fibm%2Fuml1%2F"
+                href="https://twitter.com/intent/tweet?text=Dimensionality+Reduction%20https%3A%2F%2Fleeway00.github.io%2Fibm%2Fuml3%2F"
                 class="btn btn--twitter"
                 onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
                 title="Share on Twitter"
@@ -1128,7 +1231,7 @@
               >
 
               <a
-                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fleeway00.github.io%2Fibm%2Fuml1%2F"
+                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fleeway00.github.io%2Fibm%2Fuml3%2F"
                 class="btn btn--facebook"
                 onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
                 title="Share on Facebook"
@@ -1137,7 +1240,7 @@
               >
 
               <a
-                href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fleeway00.github.io%2Fibm%2Fuml1%2F"
+                href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fleeway00.github.io%2Fibm%2Fuml3%2F"
                 class="btn btn--linkedin"
                 onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
                 title="Share on LinkedIn"
@@ -1148,20 +1251,14 @@
 
             <nav class="pagination">
               <a
-                href="/ibm/add/"
-                class="pagination--pager"
-                title="Additional ML sources from IBM
-"
-                >Previous</a
-              >
-
-              <a
                 href="/ibm/uml2/"
                 class="pagination--pager"
                 title="Clustering Algorithms
 "
-                >Next</a
+                >Previous</a
               >
+
+              <a href="#" class="pagination--pager disabled">Next</a>
             </nav>
           </div>
 
@@ -1169,7 +1266,7 @@
             <h4 class="page__comments-title">Leave a comment</h4>
             <section
               class="fb-comments"
-              data-href="https://leeway00.github.io/ibm/uml1/"
+              data-href="https://leeway00.github.io/ibm/uml3/"
               data-mobile="true"
               data-num-posts="5"
               data-width="100%"
@@ -1188,8 +1285,8 @@
                 itemtype="https://schema.org/CreativeWork"
               >
                 <h2 class="archive__item-title no_toc" itemprop="headline">
-                  <a href="/ibm/uml3/" rel="permalink"
-                    >Dimensionality Reduction
+                  <a href="/ibm/uml2/" rel="permalink"
+                    >Clustering Algorithms
                   </a>
                 </h2>
 
@@ -1197,7 +1294,7 @@
                   <span class="page__meta-readtime">
                     <i class="far fa-clock" aria-hidden="true"></i>
 
-                    1 minute read
+                    3 minute read
                   </span>
                 </p>
 
@@ -1214,16 +1311,14 @@
                 itemtype="https://schema.org/CreativeWork"
               >
                 <h2 class="archive__item-title no_toc" itemprop="headline">
-                  <a href="/ibm/uml2/" rel="permalink"
-                    >Clustering Algorithms
-                  </a>
+                  <a href="/ibm/uml1/" rel="permalink">K-Means </a>
                 </h2>
 
                 <p class="page__meta">
                   <span class="page__meta-readtime">
                     <i class="far fa-clock" aria-hidden="true"></i>
 
-                    3 minute read
+                    less than 1 minute read
                   </span>
                 </p>
 

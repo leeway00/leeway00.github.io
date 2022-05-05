@@ -43,13 +43,19 @@ var store = [{
       },{
         "title": "K-Means",
         "excerpt":"K-Means algorithm taking K random points as centroids. For each point, decide which centroid is closer, which forms clusters Move centroids to the mean of the clusters repeat 2-3 until centroids are not moving anymore K-Means++ It is smart initialization method. When adding one more point, no optimal is often...","categories": ["IBM Machine Learning"],
-        "tags": ["Unsupervised","Week4"],
+        "tags": ["Unsupervised","Week1","K-Means"],
         "url": "/ibm/uml1/",
         "teaser": null
       },{
         "title": "Clustering Algorithms",
         "excerpt":"Distant Metrics Manhattan Distance, L1 distance Another distance metric is the L1 distance or the Manhattan distance, and instead of squaring each term we are adding up the absolute value of each term. It will always be larger than the L2 distance, unless they lie on the same axis. We...","categories": ["IBM Machine Learning"],
-        "tags": ["Unsupervised","Week2"],
+        "tags": ["Unsupervised","Week2","Clustering"],
         "url": "/ibm/uml2/",
+        "teaser": null
+      },{
+        "title": "Dimensionality Reduction",
+        "excerpt":"Dimensionality Reduction Too many features leads to worse performance. Distance measures perform poorly and the indicent of outliers increases. Data can be represented in a lower dimensional space. Reduce dimensionality by selecting subset (feature elimination). Combine with linear and non-linear transformation. PCA Principal Component Analysis (PCA) is a dimensionality reduction...","categories": ["IBM Machine Learning"],
+        "tags": ["Unsupervised","Week3","PCA"],
+        "url": "/ibm/uml3/",
         "teaser": null
       }]
