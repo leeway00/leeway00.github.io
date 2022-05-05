@@ -261,7 +261,7 @@ jekyll-archives:
     category: archive-taxonomy
     tag: archive-taxonomy
   permalinks:
-    category: /categories/:name/
+    category: /:name/
     tag: /tags/:name/
 
 
@@ -304,5 +304,5 @@ defaults:
       comments: true
       share: true
       related: true
-      sidebar:
-        nav: "_posts"
+      # sidebar:
+      #   nav: "_posts"

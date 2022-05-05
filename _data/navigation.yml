@@ -1,9 +1,9 @@
 # main links
 main:
   - title: "IBM Notes"
-    url: "/ibm/"
+    url: "/ibm-machine-learning/"
   - title: "Time Series"
-    url: "/time_series/"
+    url: "/time-series/"
 
     
   # - title: "Quick-Start Guide"
