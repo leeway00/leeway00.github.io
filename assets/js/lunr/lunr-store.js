@@ -35,6 +35,18 @@ var store = [{
         "url": "/ibm/eda4/",
         "teaser": null
       },{
+        "title": "Logistic Regression",
+        "excerpt":"Logistic Regression Sigmoid function y=11+e−xy = \\frac{1}{1 + e^{-x}}y=1+e−x1​ Apply Sigmoid function to the regression. Yβ(x)=11+e−βTx+ϵPr⁡(Yi=y∣Xi)=piy(1−pi)1−y=(eβ⋅Xi1+eβ⋅Xi)y(1−eβ⋅Xi1+eβ⋅Xi)1−y=eβ⋅Xi⋅y1+eβ⋅Xi\\begin{aligned} Y_{\\beta}(x) &amp; = \\frac{1}{1 + e^{-\\beta^T x+\\epsilon}}\\\\ \\\\ \\Pr(Y_{i}=y\\mid \\mathbf{X} _{i}) &amp; = {p_{i}}^{y}(1-p_{i})^{1-y}\\\\ &amp; = \\left({\\frac{e^{\\mathbf{\\beta}\\cdot \\mathbf{X} _{i}}}{1+e^{\\mathbf{\\beta} \\cdot \\mathbf{X} _{i}}}}\\right)^{y}\\left(1-{\\frac {e^{\\mathbf{\\beta}\\cdot \\mathbf{X} _{i}}}{1+e^{\\mathbf{\\beta}\\cdot \\mathbf{X} _{i}}}}\\right)^{1-y}\\\\ &amp; = {\\frac {e^{\\mathbf{\\beta}\\cdot \\mathbf{X} _{i}\\cdot y}}{1+e^{\\mathbf{\\beta}\\cdot...","categories": ["IBM Machine Learning"],
+        "tags": ["Supervised","Classification","Week2","Logistic"],
+        "url": "/ibm/cls1/",
+        "teaser": null
+      },{
+        "title": "KNN and SVM",
+        "excerpt":"K Nearest Neighbours KNN is predicting the unknown value of the point based on the values nearby. Decision Boundary KNN does not provide a correct K such that the right value of K depends on which error metric is most importnat. Elbow method is a cmmon way to find the...","categories": ["IBM Machine Learning"],
+        "tags": ["Supervised","Classification","Week3","KNN","SVM"],
+        "url": "/ibm/cls2/",
+        "teaser": null
+      },{
         "title": "Additional ML sources from IBM",
         "excerpt":"From IBM  Random Forest  https://www.ibm.com/cloud/learn/random-forest  ","categories": ["IBM Machine Learning"],
         "tags": ["Additional"],
