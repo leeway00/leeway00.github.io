@@ -1,7 +1,7 @@
 ---
 title: "IBM Machine Learning Notes"
 layout: archive
-permalink: /ibm-machine-learning/
+permalink: /categories/ibm-machine-learning/
 author_profile: true
 sidebar_main: true
 ---

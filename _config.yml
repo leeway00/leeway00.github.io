@@ -261,7 +261,7 @@ jekyll-archives:
     category: archive-taxonomy
     tag: archive-taxonomy
   permalinks:
-    category: /:name/
+    category: /categories/:name/
     tag: /tags/:name/
 
 
@@ -271,12 +271,6 @@ compress_html:
   clippings: all
   ignore:
     envs: development
-
-
-collections:
-  time_series:
-    output: true
-    permalink: /:collection/:path/
 
 # Defaults
 defaults:

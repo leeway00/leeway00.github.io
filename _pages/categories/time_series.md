@@ -1,7 +1,7 @@
 ---
 title: "Time Series Study Notes"
 layout: archive
-permalink: /time-series/
+permalink: /categories/time-series/
 author_profile: true
 sidebar_main: true
 ---

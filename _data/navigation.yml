@@ -1,9 +1,9 @@
 # main links
 main:
   - title: "IBM Notes"
-    url: "/ibm-machine-learning/"
+    url: "/categories/ibm-machine-learning/"
   - title: "Time Series"
-    url: "/time-series/"
+    url: "/categories/time-series/"
   - title: "About"
     url: https://mmistakes.github.io/minimal-mistakes/about/
     
