@@ -293,23 +293,10 @@ defaults:
       related: true
       sidebar:
         nav: "_posts"
-  
-  - scope:
-      path: "/math_stat/_posts"
-      type: posts
-    values:
-      layout: single2
-      author_profile: true
-      read_time: true
-      comments: true
-      share: true
-      related: true
-      sidebar:
-        nav: "/math_stat"
 
   - scope:
-      path: "/time_series/"
-      type: time-series
+      path: "_page"
+      type: page
     values:
       layout: single
       author_profile: true
@@ -318,4 +305,4 @@ defaults:
       share: true
       related: true
       sidebar:
-        nav: "/time_series/"
+        nav: "_posts"
