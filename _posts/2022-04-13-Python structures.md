@@ -3,8 +3,8 @@ title:  "Questions in Python"
 summary: "Learn deeper Python"
 
 date: '2022-04-13 1:35:23 +0530'
-category: ['Python','Pandas', 'Numpy']
-tags: Python
+category: Python
+tags: ['Python','Pandas', 'Numpy']
 
 layout: single_v2
 
