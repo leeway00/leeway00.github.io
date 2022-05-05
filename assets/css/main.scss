@@ -45,6 +45,15 @@ html {
   background: #5ed6ae;
 }
 
+// image size //
+img[alt=medium] { 
+  width: 70%;
+}
+
+img[alt=small] {
+  width: 50%;
+}
+
 // Post page styles //
 .sidebar {
   display: none;
