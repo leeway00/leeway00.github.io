@@ -1,7 +1,10 @@
 # main links
 main:
+  - title: "IBM Notes"
+    url: "/ibm/"
   - title: "Time Series"
     url: "/time_series/"
+
     
   # - title: "Quick-Start Guide"
   #   url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/

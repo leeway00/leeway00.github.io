@@ -3,12 +3,12 @@ title: "Time Series 1"
 
 category: Time Series
 tags:
-  - [statistics]
+  - [White Noise, Stationary]
 
 layout: single_v2
 
-permalink: /time-series/ts1/
-excerpt: "Chapter 3. Special Distributions"
+permalink: /time-series/ch1/
+excerpt: "time series basic"
 last_modified_at: Now
 
 toc: true
