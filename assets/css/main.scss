@@ -49,11 +49,17 @@ html {
 img[alt=medium] { 
   width: 70%;
 }
-
+img[alt=mediumcenter] { 
+  width: 70%;
+  position: center;
+}
 img[alt=small] {
   width: 50%;
 }
-
+img[alt=smallcenter] { 
+  width: 50%;
+  position: center;
+}
 // Post page styles //
 .sidebar {
   display: none;
