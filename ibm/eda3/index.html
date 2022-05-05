@@ -50,7 +50,7 @@
     <meta charset="utf-8" />
 
     <!-- begin _includes/seo.html -->
-    <title>EDA Week3 Feature Engineering - Hun’s Blog</title>
+    <title>Feature Engineering - Hun’s Blog</title>
     <meta name="description" content="Exploratory Data Analysis" />
 
     <meta name="author" content="Younghun Lee" />
@@ -60,7 +60,7 @@
     <meta property="og:type" content="article" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="Hun's Blog" />
-    <meta property="og:title" content="EDA Week3 Feature Engineering" />
+    <meta property="og:title" content="Feature Engineering" />
     <meta property="og:url" content="https://leeway00.github.io/ibm/eda3/" />
 
     <meta property="og:description" content="Exploratory Data Analysis" />
@@ -72,7 +72,7 @@
 
     <meta
       property="article:modified_time"
-      content="2022-05-04T11:22:49+00:00"
+      content="2022-05-05T04:03:05+00:00"
     />
 
     <link rel="canonical" href="https://leeway00.github.io/ibm/eda3/" />
@@ -154,8 +154,12 @@
             </a>
             <ul class="visible-links">
               <li class="masthead__menu-item">
+                <a href="/ibm/">IBM Notes</a>
+              </li>
+              <li class="masthead__menu-item">
                 <a href="/time_series/">Time Series</a>
               </li>
+              <li class="masthead__menu-item"></li>
             </ul>
 
             <button class="greedy-nav__toggle hidden" type="button">
@@ -226,6 +230,17 @@
       <div id="main" role="main">
         <div class="sidebar sticky">
           <div itemscope itemtype="https://schema.org/Person" class="h-card">
+            <div class="author__avatar">
+              <a href="https://leeway00.github.io/">
+                <img
+                  src="/assets/images/profile_yh.png"
+                  alt="Younghun Lee"
+                  itemprop="image"
+                  class="u-photo"
+                />
+              </a>
+            </div>
+
             <div class="author__content">
               <h3 class="author__name p-name" itemprop="name">
                 <a
@@ -250,8 +265,13 @@
                   itemscope
                   itemtype="https://schema.org/Place"
                 >
-                  <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i>
-                  <span itemprop="name" class="p-locality">Somewhere</span>
+                  <a
+                    ><i
+                      class="fas fa-fw fa-map-marker-alt"
+                      aria-hidden="true"
+                    ></i>
+                    <span itemprop="name" class="p-locality">Somewhere</span></a
+                  >
                 </li>
 
                 <li>
@@ -300,6 +320,50 @@
             <label for="ac-toc">Toggle menu</label>
             <ul class="nav__items"></ul>
           </nav>
+
+          <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+          <nav class="nav__list">
+            <input id="ac-toc" name="accordion-toc" type="checkbox" />
+            <label for="ac-toc">Toggle menu</label>
+            <ul class="nav__items" id="category_tag_menu">
+              <!--전체 글 수-->
+              <li>
+                📂
+                <span style="font-family: 'Cafe24Oneprettynight'"
+                  >Total Posts #</span
+                >
+                <span style="font-family: 'Coming Soon'">6</span>
+                <span style="font-family: 'Cafe24Oneprettynight'"></span>
+              </li>
+              <li>
+                <!--span 태그로 카테고리들을 크게 분류 ex) C/C++-->
+                <span class="nav__sub-title">Machine Learning</span>
+                <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+                <ul>
+                  <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                  <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시-->
+
+                  <li><a href="/ibm" class="">IBM (3)</a></li>
+                </ul>
+                <!--ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul-->
+                <span class="nav__sub-title">Statistics</span>
+                <ul>
+                  <li><a href="/time_series" class="">Time Series (1)</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
         </div>
 
         <article
@@ -307,10 +371,10 @@
           itemscope
           itemtype="https://schema.org/CreativeWork"
         >
-          <meta itemprop="headline" content="EDA Week3 Feature Engineering" />
+          <meta itemprop="headline" content="Feature Engineering" />
           <meta itemprop="description" content="Exploratory Data Analysis" />
           <meta itemprop="datePublished" content="2022-05-04T00:00:00+00:00" />
-          <meta itemprop="dateModified" content="2022-05-04T11:22:49+00:00" />
+          <meta itemprop="dateModified" content="2022-05-05T04:03:05+00:00" />
 
           <div class="page__inner-wrap">
             <header>
@@ -323,58 +387,63 @@
                   href="https://leeway00.github.io/ibm/eda3/"
                   class="u-url"
                   itemprop="url"
-                  >EDA Week3 Feature Engineering
+                  >Feature Engineering
                 </a>
               </h1>
             </header>
 
             <header class="page__meta">
-              <p class="page__taxonomy">
-                <strong>
-                  <i class="fas fa-fw fa-tags" aria-hidden="true"></i>
-                  Tags:
-                </strong>
-                <span itemprop="keywords">
-                  <a
-                    href="/tags/#ibm"
-                    class="page__taxonomy-item p-category"
-                    rel="tag"
-                    >IBM</a
-                  ><span class="sep">, </span>
+              <small>
+                <p class="page__taxonomy">
+                  <strong>
+                    <i class="fas fa-fw fa-tags" aria-hidden="true"></i>
+                    Tags:
+                  </strong>
+                  <span itemprop="keywords">
+                    <a
+                      href="/tags/#eda"
+                      class="page__taxonomy-item p-category"
+                      rel="tag"
+                      >EDA</a
+                    ><span class="sep">, </span>
 
-                  <a
-                    href="/tags/#machine-learning"
-                    class="page__taxonomy-item p-category"
-                    rel="tag"
-                    >Machine Learning</a
+                    <a
+                      href="/tags/#week3"
+                      class="page__taxonomy-item p-category"
+                      rel="tag"
+                      >Week3</a
+                    >
+                  </span>
+                </p>
+
+                <p class="page__taxonomy">
+                  <strong>
+                    <i class="fas fa-fw fa-folder-open" aria-hidden="true"></i>
+                    Categories:
+                  </strong>
+                  <span itemprop="keywords">
+                    <a
+                      href="/categories/#ibm-machine-learning"
+                      class="page__taxonomy-item p-category"
+                      rel="tag"
+                      >IBM Machine Learning</a
+                    >
+                  </span>
+                </p>
+
+                <p class="page__date">
+                  <strong
+                    ><i
+                      class="fas fa-fw fa-calendar-alt"
+                      aria-hidden="true"
+                    ></i>
+                    Updated:</strong
                   >
-                </span>
-              </p>
-
-              <p class="page__taxonomy">
-                <strong>
-                  <i class="fas fa-fw fa-folder-open" aria-hidden="true"></i>
-                  Categories:
-                </strong>
-                <span itemprop="keywords">
-                  <a
-                    href="/categories/#ibm"
-                    class="page__taxonomy-item p-category"
-                    rel="tag"
-                    >IBM</a
+                  <time class="dt-published" datetime="2022-05-05"
+                    >May 5, 2022</time
                   >
-                </span>
-              </p>
-
-              <p class="page__date">
-                <strong
-                  ><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i>
-                  Updated:</strong
-                >
-                <time class="dt-published" datetime="2022-05-04"
-                  >May 4, 2022</time
-                >
-              </p>
+                </p>
+              </small>
               <hr />
             </header>
 
@@ -570,7 +639,7 @@ polyfeat.transform(data)
               <h4 class="page__share-title">Share on</h4>
 
               <a
-                href="https://twitter.com/intent/tweet?text=EDA+Week3+Feature+Engineering%20https%3A%2F%2Fleeway00.github.io%2Fibm%2Feda3%2F"
+                href="https://twitter.com/intent/tweet?text=Feature+Engineering%20https%3A%2F%2Fleeway00.github.io%2Fibm%2Feda3%2F"
                 class="btn btn--twitter"
                 onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
                 title="Share on Twitter"
@@ -601,7 +670,7 @@ polyfeat.transform(data)
               <a
                 href="/ibm/eda2/"
                 class="pagination--pager"
-                title="EDA Week2 Data Cleaning
+                title="Data Cleaning
 "
                 >Previous</a
               >
@@ -609,7 +678,7 @@ polyfeat.transform(data)
               <a
                 href="/ibm/eda4/"
                 class="pagination--pager"
-                title="EDA Week4 Inferential Statistics and Hypothesis Testing
+                title="Inferential Statistics and Hypothesis Testing
 "
                 >Next</a
               >
@@ -640,7 +709,7 @@ polyfeat.transform(data)
               >
                 <h2 class="archive__item-title no_toc" itemprop="headline">
                   <a href="/ibm/eda4/" rel="permalink"
-                    >EDA Week4 Inferential Statistics and Hypothesis Testing
+                    >Inferential Statistics and Hypothesis Testing
                   </a>
                 </h2>
 
@@ -665,9 +734,7 @@ polyfeat.transform(data)
                 itemtype="https://schema.org/CreativeWork"
               >
                 <h2 class="archive__item-title no_toc" itemprop="headline">
-                  <a href="/ibm/eda2/" rel="permalink"
-                    >EDA Week2 Data Cleaning
-                  </a>
+                  <a href="/ibm/eda2/" rel="permalink">Data Cleaning </a>
                 </h2>
 
                 <p class="page__meta">
@@ -691,7 +758,7 @@ polyfeat.transform(data)
                 itemtype="https://schema.org/CreativeWork"
               >
                 <h2 class="archive__item-title no_toc" itemprop="headline">
-                  <a href="/time-series/ts1/" rel="permalink">Time Series 1 </a>
+                  <a href="/time-series/ch1/" rel="permalink">Time Series 1 </a>
                 </h2>
 
                 <p class="page__meta">
@@ -703,7 +770,7 @@ polyfeat.transform(data)
                 </p>
 
                 <p class="archive__item-excerpt" itemprop="description">
-                  Chapter 3. Special Distributions
+                  time series basic
                 </p>
               </article>
             </div>

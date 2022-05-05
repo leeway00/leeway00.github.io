@@ -50,7 +50,7 @@
     <meta charset="utf-8" />
 
     <!-- begin _includes/seo.html -->
-    <title>Time Series - Hun’s Blog</title>
+    <title>Time Series Study Notes - Hun’s Blog</title>
     <meta name="description" content="Blog nebie" />
 
     <meta name="author" content="Younghun Lee" />
@@ -58,12 +58,12 @@
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="Hun's Blog" />
-    <meta property="og:title" content="Time Series" />
-    <meta property="og:url" content="https://leeway00.github.io/time_series/" />
+    <meta property="og:title" content="Time Series Study Notes" />
+    <meta property="og:url" content="https://leeway00.github.io/time_series" />
 
     <meta property="og:description" content="Blog nebie" />
 
-    <link rel="canonical" href="https://leeway00.github.io/time_series/" />
+    <link rel="canonical" href="https://leeway00.github.io/time_series" />
 
     <script type="application/ld+json">
       {
@@ -107,7 +107,7 @@
     /></noscript>
   </head>
 
-  <body class="layout--collection wide">
+  <body class="layout--archive">
     <nav class="skip-links">
       <ul>
         <li>
@@ -142,8 +142,12 @@
             </a>
             <ul class="visible-links">
               <li class="masthead__menu-item">
+                <a href="/ibm/">IBM Notes</a>
+              </li>
+              <li class="masthead__menu-item">
                 <a href="/time_series/">Time Series</a>
               </li>
+              <li class="masthead__menu-item"></li>
             </ul>
 
             <button class="greedy-nav__toggle hidden" type="button">
@@ -208,44 +212,177 @@
       <script src="/assets/bower_components/typewrite/dist/typewrite.min.js"></script>
 
       <div id="main" role="main">
+        <div class="sidebar sticky">
+          <div itemscope itemtype="https://schema.org/Person" class="h-card">
+            <div class="author__avatar">
+              <a href="https://leeway00.github.io/">
+                <img
+                  src="/assets/images/profile_yh.png"
+                  alt="Younghun Lee"
+                  itemprop="image"
+                  class="u-photo"
+                />
+              </a>
+            </div>
+
+            <div class="author__content">
+              <h3 class="author__name p-name" itemprop="name">
+                <a
+                  class="u-url"
+                  rel="me"
+                  href="https://leeway00.github.io/"
+                  itemprop="url"
+                  >Younghun Lee</a
+                >
+              </h3>
+
+              <div class="author__bio p-note" itemprop="description">
+                <p>Student</p>
+              </div>
+            </div>
+
+            <div class="author__urls-wrapper">
+              <button class="btn btn--inverse">Follow</button>
+              <ul class="author__urls social-icons">
+                <li
+                  itemprop="homeLocation"
+                  itemscope
+                  itemtype="https://schema.org/Place"
+                >
+                  <a
+                    ><i
+                      class="fas fa-fw fa-map-marker-alt"
+                      aria-hidden="true"
+                    ></i>
+                    <span itemprop="name" class="p-locality">Somewhere</span></a
+                  >
+                </li>
+
+                <li>
+                  <a
+                    href="mailto:leeyh0920@gmail.com"
+                    rel="nofollow noopener noreferrer me"
+                    ><i
+                      class="fas fa-fw fa-envelope-square"
+                      aria-hidden="true"
+                    ></i
+                    ><span class="label">Personal Email</span></a
+                  >
+                </li>
+
+                <li>
+                  <a
+                    href="https://leeway00@github.com/"
+                    rel="nofollow noopener noreferrer me"
+                    ><i class="fab fa-fw fa-github" aria-hidden="true"></i
+                    ><span class="label">GitHub</span></a
+                  >
+                </li>
+
+                <li>
+                  <a
+                    href="https://linkedin.com/in/younghunlee"
+                    rel="nofollow noopener noreferrer me"
+                    ><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i
+                    ><span class="label">linkedin</span></a
+                  >
+                </li>
+
+                <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+              </ul>
+            </div>
+          </div>
+
+          <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+          <nav class="nav__list">
+            <input id="ac-toc" name="accordion-toc" type="checkbox" />
+            <label for="ac-toc">Toggle menu</label>
+            <ul class="nav__items" id="category_tag_menu">
+              <!--전체 글 수-->
+              <li>
+                📂
+                <span style="font-family: 'Cafe24Oneprettynight'"
+                  >Total Posts #</span
+                >
+                <span style="font-family: 'Coming Soon'">6</span>
+                <span style="font-family: 'Cafe24Oneprettynight'"></span>
+              </li>
+              <li>
+                <!--span 태그로 카테고리들을 크게 분류 ex) C/C++-->
+                <span class="nav__sub-title">Machine Learning</span>
+                <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+                <ul>
+                  <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                  <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시-->
+
+                  <li><a href="/ibm" class="">IBM (3)</a></li>
+                </ul>
+                <!--ul>
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul-->
+                <span class="nav__sub-title">Statistics</span>
+                <ul>
+                  <li><a href="/time_series" class="">Time Series (1)</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
         <div class="archive">
-          <h1 id="page-title" class="page__title">Time Series</h1>
+          <h1 id="page-title" class="page__title">Time Series Study Notes</h1>
 
-          <div class="entries-grid">
-            <div class="grid__item">
-              <article
-                class="archive__item"
-                itemscope
-                itemtype="https://schema.org/CreativeWork"
-              >
-                <h2 class="archive__item-title no_toc" itemprop="headline">
-                  <a href="/time_series/ts1/" rel="permalink">Time Series 1 </a>
-                </h2>
+          <div class="list__item">
+            <article class="archive-item">
+              <div>
+                <small>
+                  <!--Archive page 용-: (post -> page)-->
+                  <!--page__taxonomy.html에서 가져 옴-->
 
-                <p class="archive__item-excerpt" itemprop="description">
-                  Chapter 3. Special Distributions
-                </p>
-              </article>
-            </div>
+                  <span class="page__taxonomy">
+                    <span itemprop="keywords">
+                      <!--<a href="/categories/#time-series" class="page__taxonomy-item-category" rel="tag">Time Series</a>-->
 
-            <div class="grid__item">
-              <article
-                class="archive__item"
-                itemscope
-                itemtype="https://schema.org/CreativeWork"
-              >
-                <h2 class="archive__item-title no_toc" itemprop="headline">
-                  <a href="/time_series/test/" rel="permalink"
-                    >Quick-Start Guide
-                  </a>
-                </h2>
+                      <a
+                        href="/tags/#stationary"
+                        class="page__taxonomy-item-tag"
+                        rel="tag"
+                        >Stationary</a
+                      ><span class="sep"> </span>
 
-                <p class="archive__item-excerpt" itemprop="description">
-                  How to quickly install and setup Minimal Mistakes for use with
-                  GitHub Pages.
-                </p>
-              </article>
-            </div>
+                      <a
+                        href="/tags/#white-noise"
+                        class="page__taxonomy-item-tag"
+                        rel="tag"
+                        >White Noise</a
+                      >
+                    </span>
+                  </span>
+                </small>
+                <span>
+                  <a href="/time-series/ch1/">Time Series 1</a>
+                </span>
+                <small>
+                  <i class="fas fa-fw fa-calendar-alt" aria-hidden="true"> </i>
+                  2022.04.23
+                </small>
+              </div>
+            </article>
           </div>
         </div>
       </div>
