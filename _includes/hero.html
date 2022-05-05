@@ -19,14 +19,16 @@ background-color: var(--main-background-color) !important;
 <div class="jumbotron">
   <img class="author-profile-img" src="/assets/images/{{site.author.author_logo}}" />
   <p class="jumbotron-heading">Hi, I am {{site.author.name}} !</p>
+  {% if page.title %}
   <script>
     $(document).ready(function () {
       $("#typewriteText").typewrite({
-        actions: [{ type: page.title }]
+        actions: [{ type: "{{page.title}}" }]
       });
     });
   </script>
-  <p class="lead" id="typewriteText">{{page.title}}</p>
+  {% endif %}
+  <p class="lead" id="typewriteText"></p>
 
   <div class="jumbotron-btns">
     <!-- <a href="{{site.url}}{{site.baseurl}}/get-started">
