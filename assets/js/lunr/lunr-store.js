@@ -2,7 +2,7 @@ var store = [{
         "title": "Chapter3 Special Distributions",
         "excerpt":"Bernoulli and Binomial Bernoulli Distribution Bernoulli experiment a random experiment that outcome are classified with two mutually exclusive and exhaustive ways Bernoulli process a sequence of Bernoulli trials. Let X be a random variable associated with a Bernoulli trial The pmf of X is p(x)=px(1−p)1−x,x=0,1p(x) = p^x(1-p)^{1-x}, x=0,1p(x)=px(1−p)1−x,x=0,1 The expected...","categories": ["Mathematical Statistics"],
         "tags": ["Distribution"],
-        "url": "/math_stat/ch3/",
+        "url": "/math-stat/ch3/",
         "teaser": null
       },{
         "title": "Questions in Python",
@@ -20,19 +20,19 @@ var store = [{
         "title": "Data Cleaning",
         "excerpt":"Data Cleaning Why important? Key aspects of ML depend on clened data e.g.) Observation Labels: predicted Algorithms: estimation Features Model: assume this is acutal data representent Messy data generate garbage-in, garbage-out Reason: Lack of data, too much data, bad data How to deal with it? Duplicate or unnecessary data filter...","categories": ["IBM Machine Learning"],
         "tags": ["EDA","Week2"],
-        "url": "/ibm/eda2/",
+        "url": "/ibm-machine-learning/eda2/",
         "teaser": null
       },{
         "title": "Feature Engineering",
         "excerpt":"Variable Transformation We often assume normally distributed data. But often skewed -&gt; Data transformation solve this Log transformation Log transformation is a transformation that takes the natural log of the data. Useful for linear regression. Solve right skewed Polynomial Features higher order relationship from sklearn.preprocessing import PolynomialFeatures poly = PolynomialFeatures(degree=2)...","categories": ["IBM Machine Learning"],
         "tags": ["EDA","Week3"],
-        "url": "/ibm/eda3/",
+        "url": "/ibm-machine-learning/eda3/",
         "teaser": null
       },{
         "title": "Inferential Statistics and Hypothesis Testing",
         "excerpt":"Estimation and Inference Estimation is the application of an algorithm, to estimate parameter, e.g. mean, variance, etc. Inference involves putting an accuracy on the estimated value ? Statistical significancy Machine Learning and Statistical inference are similar. ML uses data to learn/infer qualities of a distirbution that generated the data, which...","categories": ["IBM Machine Learning"],
         "tags": ["EDA","Week4"],
-        "url": "/ibm/eda4/",
+        "url": "/ibm-machine-learning/eda4/",
         "teaser": null
       },{
         "title": "Quick-Start Guide",
