@@ -29,8 +29,11 @@
     <meta charset="utf-8" />
 
     <!-- begin _includes/seo.html -->
-    <title>Feature Engineering - Hun’s Blog</title>
-    <meta name="description" content="Exploratory Data Analysis" />
+    <title>Decision Tree - Hun’s Blog</title>
+    <meta
+      name="description"
+      content="Supervised Machine Learning (Classification)"
+    />
 
     <meta name="author" content="Younghun Lee" />
 
@@ -39,22 +42,25 @@
     <meta property="og:type" content="article" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="Hun's Blog" />
-    <meta property="og:title" content="Feature Engineering" />
-    <meta property="og:url" content="https://leeway00.github.io/ibm/eda3/" />
+    <meta property="og:title" content="Decision Tree" />
+    <meta property="og:url" content="https://leeway00.github.io/ibm/cls3/" />
 
-    <meta property="og:description" content="Exploratory Data Analysis" />
+    <meta
+      property="og:description"
+      content="Supervised Machine Learning (Classification)"
+    />
 
     <meta
       property="article:published_time"
-      content="2022-05-04T00:00:00+00:00"
+      content="2022-05-05T00:00:00+00:00"
     />
 
     <meta
       property="article:modified_time"
-      content="2022-05-07T06:01:30+00:00"
+      content="2022-05-07T06:01:31+00:00"
     />
 
-    <link rel="canonical" href="https://leeway00.github.io/ibm/eda3/" />
+    <link rel="canonical" href="https://leeway00.github.io/ibm/cls3/" />
 
     <script type="application/ld+json">
       {
@@ -354,10 +360,13 @@
           itemscope
           itemtype="https://schema.org/CreativeWork"
         >
-          <meta itemprop="headline" content="Feature Engineering" />
-          <meta itemprop="description" content="Exploratory Data Analysis" />
-          <meta itemprop="datePublished" content="2022-05-04T00:00:00+00:00" />
-          <meta itemprop="dateModified" content="2022-05-07T06:01:30+00:00" />
+          <meta itemprop="headline" content="Decision Tree" />
+          <meta
+            itemprop="description"
+            content="Supervised Machine Learning (Classification)"
+          />
+          <meta itemprop="datePublished" content="2022-05-05T00:00:00+00:00" />
+          <meta itemprop="dateModified" content="2022-05-07T06:01:31+00:00" />
 
           <div class="page__inner-wrap">
             <header>
@@ -367,10 +376,10 @@
                 itemprop="headline"
               >
                 <a
-                  href="https://leeway00.github.io/ibm/eda3/"
+                  href="https://leeway00.github.io/ibm/cls3/"
                   class="u-url"
                   itemprop="url"
-                  >Feature Engineering
+                  >Decision Tree
                 </a>
               </h1>
             </header>
@@ -384,10 +393,24 @@
                   </strong>
                   <span itemprop="keywords">
                     <a
-                      href="/tags/eda"
+                      href="/tags/classification"
                       class="page__taxonomy-item p-category"
                       rel="tag"
-                      >EDA</a
+                      >Classification</a
+                    ><span class="sep">, </span>
+
+                    <a
+                      href="/tags/decision-tree"
+                      class="page__taxonomy-item p-category"
+                      rel="tag"
+                      >Decision Tree</a
+                    ><span class="sep">, </span>
+
+                    <a
+                      href="/tags/supervised"
+                      class="page__taxonomy-item p-category"
+                      rel="tag"
+                      >Supervised</a
                     ><span class="sep">, </span>
 
                     <a
@@ -440,185 +463,475 @@
                   </header>
                   <ul class="toc__menu">
                     <li>
-                      <a href="#variable-transformation"
-                        >Variable Transformation</a
-                      >
+                      <a href="#decision-tree">Decision Tree</a>
                       <ul>
                         <li>
-                          <a href="#log-transformation">Log transformation</a>
+                          <a href="#spliting-criteria">Spliting Criteria</a>
                         </li>
                         <li>
-                          <a href="#polynomial-features">Polynomial Features</a>
+                          <a href="#characteristics-of-a-decision-tree"
+                            >Characteristics of a Decision Tree</a
+                          >
                         </li>
                       </ul>
                     </li>
-                    <li><a href="#feature-encoding">Feature Encoding</a></li>
                     <li>
-                      <a href="#feature-scaling">Feature Scaling</a>
+                      <a href="#ensamble">Ensamble</a>
                       <ul>
-                        <li><a href="#why-problematic">Why problematic?</a></li>
-                        <li><a href="#approach">Approach</a></li>
+                        <li><a href="#bagging">Bagging</a></li>
                       </ul>
                     </li>
-                    <li>
-                      <a href="#common-variable-transformation"
-                        >Common Variable Transformation</a
-                      >
-                    </li>
-                    <li><a href="#etc">ETC</a></li>
                   </ul>
                 </nav>
               </aside>
-              <h2 id="variable-transformation">Variable Transformation</h2>
+              <h2 id="decision-tree">Decision Tree</h2>
+
+              <p>Building a decision tree</p>
+              <ol>
+                <li>select a feature</li>
+                <li>split the data into two groups.</li>
+                <li>
+                  Split until
+                  <ol>
+                    <li>the leaf node are pure (only one class remains)</li>
+                    <li>Maximum depth of the tree is reached</li>
+                    <li>A performance metric is achieved</li>
+                  </ol>
+                </li>
+              </ol>
+
               <p>
-                We often assume normally distributed data. But often skewed
-                -&gt; Data transformation solve this
+                Decision tree uses greedy search to find the best split at each
+                step. The <strong>Best Split</strong> is the split that
+                minimizes the <strong>information</strong>.\
               </p>
 
-              <h3 id="log-transformation">Log transformation</h3>
+              <h3 id="spliting-criteria">Spliting Criteria</h3>
+              <p>Classification Error Equation</p>
+
+              <span class="katex-display"
+                ><span class="katex"
+                  ><span class="katex-mathml"
+                    ><math
+                      xmlns="http://www.w3.org/1998/Math/MathML"
+                      display="block"
+                      ><semantics
+                        ><mrow
+                          ><mi>E</mi><mo stretchy="false">(</mo><mi>t</mi
+                          ><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn
+                          ><mo>−</mo><mi>m</mi><mi>a</mi
+                          ><msub><mi>x</mi><mi>i</mi></msub
+                          ><mo stretchy="false">[</mo><mi>P</mi
+                          ><mo stretchy="false">(</mo><mi>i</mi
+                          ><mi mathvariant="normal">∣</mi><mi>t</mi
+                          ><mo stretchy="false">)</mo
+                          ><mo stretchy="false">]</mo></mrow
+                        ><annotation encoding="application/x-tex"
+                          >E(t) = 1-max_i[P(i|t)]</annotation
+                        ></semantics
+                      ></math
+                    ></span
+                  ><span class="katex-html" aria-hidden="true"
+                    ><span class="base"
+                      ><span
+                        class="strut"
+                        style="height: 1em; vertical-align: -0.25em"
+                      ></span
+                      ><span
+                        class="mord mathnormal"
+                        style="margin-right: 0.05764em"
+                        >E</span
+                      ><span class="mopen">(</span
+                      ><span class="mord mathnormal">t</span
+                      ><span class="mclose">)</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2778em"
+                      ></span
+                      ><span class="mrel">=</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2778em"
+                      ></span></span
+                    ><span class="base"
+                      ><span
+                        class="strut"
+                        style="height: 0.7278em; vertical-align: -0.0833em"
+                      ></span
+                      ><span class="mord">1</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2222em"
+                      ></span
+                      ><span class="mbin">−</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2222em"
+                      ></span></span
+                    ><span class="base"
+                      ><span
+                        class="strut"
+                        style="height: 1em; vertical-align: -0.25em"
+                      ></span
+                      ><span class="mord mathnormal">ma</span
+                      ><span class="mord"
+                        ><span class="mord mathnormal">x</span
+                        ><span class="msupsub"
+                          ><span class="vlist-t vlist-t2"
+                            ><span class="vlist-r"
+                              ><span class="vlist" style="height: 0.3117em"
+                                ><span
+                                  style="
+                                    top: -2.55em;
+                                    margin-left: 0em;
+                                    margin-right: 0.05em;
+                                  "
+                                  ><span
+                                    class="pstrut"
+                                    style="height: 2.7em"
+                                  ></span
+                                  ><span class="sizing reset-size6 size3 mtight"
+                                    ><span class="mord mathnormal mtight"
+                                      >i</span
+                                    ></span
+                                  ></span
+                                ></span
+                              ><span class="vlist-s">​</span></span
+                            ><span class="vlist-r"
+                              ><span class="vlist" style="height: 0.15em"
+                                ><span></span></span></span></span></span></span
+                      ><span class="mopen">[</span
+                      ><span
+                        class="mord mathnormal"
+                        style="margin-right: 0.13889em"
+                        >P</span
+                      ><span class="mopen">(</span
+                      ><span class="mord mathnormal">i</span
+                      ><span class="mord">∣</span
+                      ><span class="mord mathnormal">t</span
+                      ><span class="mclose">)]</span></span
+                    ></span
+                  ></span
+                ></span
+              >
+
               <p>
-                Log transformation is a transformation that takes the natural
-                log of the data. Useful for linear regression. Solve right
-                skewed
+                But this metric does not change overall Error rate when parent
+                node error is compared with weighted average of child node
+                error.\
               </p>
 
-              <h3 id="polynomial-features">Polynomial Features</h3>
-              <p>higher order relationship</p>
+              <p>Thus, we use Entroy Equation</p>
+
+              <span class="katex-display"
+                ><span class="katex"
+                  ><span class="katex-mathml"
+                    ><math
+                      xmlns="http://www.w3.org/1998/Math/MathML"
+                      display="block"
+                      ><semantics
+                        ><mrow
+                          ><mi>H</mi><mo stretchy="false">(</mo><mi>t</mi
+                          ><mo stretchy="false">)</mo><mo>=</mo><mo>−</mo
+                          ><munder><mo>∑</mo><mi>i</mi></munder
+                          ><mo stretchy="false">[</mo><mi>P</mi
+                          ><mo stretchy="false">(</mo><mi>i</mi
+                          ><mi mathvariant="normal">∣</mi><mi>t</mi
+                          ><mo stretchy="false">)</mo><mi>l</mi><mi>o</mi
+                          ><msub><mi>g</mi><mn>2</mn></msub
+                          ><mo stretchy="false">(</mo><mi>P</mi
+                          ><mo stretchy="false">(</mo><mi>i</mi
+                          ><mi mathvariant="normal">∣</mi><mi>t</mi
+                          ><mo stretchy="false">)</mo><mo stretchy="false">)</mo
+                          ><mo stretchy="false">]</mo></mrow
+                        ><annotation encoding="application/x-tex"
+                          >H(t) = -\sum_i[P(i|t)log_2(P(i|t))]</annotation
+                        ></semantics
+                      ></math
+                    ></span
+                  ><span class="katex-html" aria-hidden="true"
+                    ><span class="base"
+                      ><span
+                        class="strut"
+                        style="height: 1em; vertical-align: -0.25em"
+                      ></span
+                      ><span
+                        class="mord mathnormal"
+                        style="margin-right: 0.08125em"
+                        >H</span
+                      ><span class="mopen">(</span
+                      ><span class="mord mathnormal">t</span
+                      ><span class="mclose">)</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2778em"
+                      ></span
+                      ><span class="mrel">=</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2778em"
+                      ></span></span
+                    ><span class="base"
+                      ><span
+                        class="strut"
+                        style="height: 2.3277em; vertical-align: -1.2777em"
+                      ></span
+                      ><span class="mord">−</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.1667em"
+                      ></span
+                      ><span class="mop op-limits"
+                        ><span class="vlist-t vlist-t2"
+                          ><span class="vlist-r"
+                            ><span class="vlist" style="height: 1.05em"
+                              ><span style="top: -1.8723em; margin-left: 0em"
+                                ><span
+                                  class="pstrut"
+                                  style="height: 3.05em"
+                                ></span
+                                ><span class="sizing reset-size6 size3 mtight"
+                                  ><span class="mord mathnormal mtight"
+                                    >i</span
+                                  ></span
+                                ></span
+                              ><span style="top: -3.05em"
+                                ><span
+                                  class="pstrut"
+                                  style="height: 3.05em"
+                                ></span
+                                ><span
+                                  ><span class="mop op-symbol large-op"
+                                    >∑</span
+                                  ></span
+                                ></span
+                              ></span
+                            ><span class="vlist-s">​</span></span
+                          ><span class="vlist-r"
+                            ><span class="vlist" style="height: 1.2777em"
+                              ><span></span></span></span></span></span
+                      ><span class="mopen">[</span
+                      ><span
+                        class="mord mathnormal"
+                        style="margin-right: 0.13889em"
+                        >P</span
+                      ><span class="mopen">(</span
+                      ><span class="mord mathnormal">i</span
+                      ><span class="mord">∣</span
+                      ><span class="mord mathnormal">t</span
+                      ><span class="mclose">)</span
+                      ><span
+                        class="mord mathnormal"
+                        style="margin-right: 0.01968em"
+                        >l</span
+                      ><span class="mord mathnormal">o</span
+                      ><span class="mord"
+                        ><span
+                          class="mord mathnormal"
+                          style="margin-right: 0.03588em"
+                          >g</span
+                        ><span class="msupsub"
+                          ><span class="vlist-t vlist-t2"
+                            ><span class="vlist-r"
+                              ><span class="vlist" style="height: 0.3011em"
+                                ><span
+                                  style="
+                                    top: -2.55em;
+                                    margin-left: -0.0359em;
+                                    margin-right: 0.05em;
+                                  "
+                                  ><span
+                                    class="pstrut"
+                                    style="height: 2.7em"
+                                  ></span
+                                  ><span class="sizing reset-size6 size3 mtight"
+                                    ><span class="mord mtight">2</span></span
+                                  ></span
+                                ></span
+                              ><span class="vlist-s">​</span></span
+                            ><span class="vlist-r"
+                              ><span class="vlist" style="height: 0.15em"
+                                ><span></span></span></span></span></span></span
+                      ><span class="mopen">(</span
+                      ><span
+                        class="mord mathnormal"
+                        style="margin-right: 0.13889em"
+                        >P</span
+                      ><span class="mopen">(</span
+                      ><span class="mord mathnormal">i</span
+                      ><span class="mord">∣</span
+                      ><span class="mord mathnormal">t</span
+                      ><span class="mclose">))]</span></span
+                    ></span
+                  ></span
+                ></span
+              >
+
+              <p><img src="/images/IBM/DT_error.png" alt="small" /></p>
+
+              <p>The Gini index is also used</p>
+
+              <span class="katex-display"
+                ><span class="katex"
+                  ><span class="katex-mathml"
+                    ><math
+                      xmlns="http://www.w3.org/1998/Math/MathML"
+                      display="block"
+                      ><semantics
+                        ><mrow
+                          ><mi>G</mi><mo stretchy="false">(</mo><mi>T</mi
+                          ><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn
+                          ><mo>−</mo><munder><mo>∑</mo><mi>i</mi></munder
+                          ><mi>P</mi><mo stretchy="false">(</mo><mi>i</mi
+                          ><mi mathvariant="normal">∣</mi><mi>t</mi
+                          ><msup
+                            ><mo stretchy="false">)</mo><mn>2</mn></msup
+                          ></mrow
+                        ><annotation encoding="application/x-tex"
+                          >G(T) = 1-\sum_i P(i|t)^2</annotation
+                        ></semantics
+                      ></math
+                    ></span
+                  ><span class="katex-html" aria-hidden="true"
+                    ><span class="base"
+                      ><span
+                        class="strut"
+                        style="height: 1em; vertical-align: -0.25em"
+                      ></span
+                      ><span class="mord mathnormal">G</span
+                      ><span class="mopen">(</span
+                      ><span
+                        class="mord mathnormal"
+                        style="margin-right: 0.13889em"
+                        >T</span
+                      ><span class="mclose">)</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2778em"
+                      ></span
+                      ><span class="mrel">=</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2778em"
+                      ></span></span
+                    ><span class="base"
+                      ><span
+                        class="strut"
+                        style="height: 0.7278em; vertical-align: -0.0833em"
+                      ></span
+                      ><span class="mord">1</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2222em"
+                      ></span
+                      ><span class="mbin">−</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2222em"
+                      ></span></span
+                    ><span class="base"
+                      ><span
+                        class="strut"
+                        style="height: 2.3277em; vertical-align: -1.2777em"
+                      ></span
+                      ><span class="mop op-limits"
+                        ><span class="vlist-t vlist-t2"
+                          ><span class="vlist-r"
+                            ><span class="vlist" style="height: 1.05em"
+                              ><span style="top: -1.8723em; margin-left: 0em"
+                                ><span
+                                  class="pstrut"
+                                  style="height: 3.05em"
+                                ></span
+                                ><span class="sizing reset-size6 size3 mtight"
+                                  ><span class="mord mathnormal mtight"
+                                    >i</span
+                                  ></span
+                                ></span
+                              ><span style="top: -3.05em"
+                                ><span
+                                  class="pstrut"
+                                  style="height: 3.05em"
+                                ></span
+                                ><span
+                                  ><span class="mop op-symbol large-op"
+                                    >∑</span
+                                  ></span
+                                ></span
+                              ></span
+                            ><span class="vlist-s">​</span></span
+                          ><span class="vlist-r"
+                            ><span class="vlist" style="height: 1.2777em"
+                              ><span></span></span></span></span></span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.1667em"
+                      ></span
+                      ><span
+                        class="mord mathnormal"
+                        style="margin-right: 0.13889em"
+                        >P</span
+                      ><span class="mopen">(</span
+                      ><span class="mord mathnormal">i</span
+                      ><span class="mord">∣</span
+                      ><span class="mord mathnormal">t</span
+                      ><span class="mclose"
+                        ><span class="mclose">)</span
+                        ><span class="msupsub"
+                          ><span class="vlist-t"
+                            ><span class="vlist-r"
+                              ><span class="vlist" style="height: 0.8641em"
+                                ><span
+                                  style="top: -3.113em; margin-right: 0.05em"
+                                  ><span
+                                    class="pstrut"
+                                    style="height: 2.7em"
+                                  ></span
+                                  ><span class="sizing reset-size6 size3 mtight"
+                                    ><span class="mord mtight">2</span></span
+                                  ></span
+                                ></span
+                              ></span
+                            ></span
+                          ></span
+                        ></span
+                      ></span
+                    ></span
+                  ></span
+                ></span
+              >
+
+              <h3 id="characteristics-of-a-decision-tree">
+                Characteristics of a Decision Tree
+              </h3>
+              <p>
+                Since DT easily ovefitted, we use pruning. Prune based on
+                classification error threshold. Pros is that it is easy to
+                interpret and implement.
+              </p>
+
+              <p><img src="/images/IBM/DT_purity-error.png" alt="small" /></p>
+
               <div class="language-python highlighter-rouge">
                 <div class="highlight">
                   <pre
                     class="highlight"
-                  ><code><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
-<span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">polyfeat</span> <span class="o">=</span> <span class="n">poly</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">polyfeat</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+                  ><code><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="n">DTC</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">criterion</span><span class="o">=</span><span class="s">'Gini'</span><span class="p">,</span> <span class="n">max_Features</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">DTC</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">DTC</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 </code></pre>
                 </div>
               </div>
 
-              <h2 id="feature-encoding">Feature Encoding</h2>
-              <p>Variable selection involves choosing the set of features</p>
-              <ul>
-                <li>
-                  Encoding: converting non-numeric features to numeric features
-                  <ul>
-                    <li>
-                      applied to categorical features
-                      <ul>
-                        <li>Nominal: Red, blue</li>
-                        <li>Ordinal: high, medium, low</li>
-                      </ul>
-                    </li>
-                    <li>Binary encoding: 0, 1</li>
-                    <li>
-                      One-hot encoding: multiple columns for each category with
-                      binary vaiables
-                    </li>
-                    <li>
-                      Ordinal encoding: converting ordered categories to
-                      numerical values. (e.g. 0,1,2,3,…)
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  Scailing: converting the scale of numeric data so they are
-                  comparable
-                </li>
-              </ul>
-
-              <h2 id="feature-scaling">Feature Scaling</h2>
+              <h2 id="ensamble">Ensamble</h2>
               <p>
-                Adjusting a variable scale, so that comparison of variables with
-                different scales
+                Combining prediction to reduce variance. We can reduce variance
+                by pruning but pruning may lost generlization
               </p>
-              <h3 id="why-problematic">Why problematic?</h3>
-              <p>If scale is so small, it will be hard to compare.</p>
-              <h3 id="approach">Approach</h3>
-              <ul>
-                <li>
-                  Standard scailing: convert features to standard normal
-                  variable
-                </li>
-                <li>
-                  Min-max scailing: convert features to min-max. It is sensitive
-                  to outliers
-                </li>
-                <li>
-                  Robust scaling: similar to min-max but maps the interquartile
-                  range 1Q to 0 and 3Q to 1. Other range takes values outside of
-                  the (0,1) interval.
-                </li>
-              </ul>
 
-              <h2 id="common-variable-transformation">
-                Common Variable Transformation
-              </h2>
-              <p>Feature type</p>
-              <ul>
-                <li>
-                  Continuous: Standard, Min-max, Robust scaling
-                  <ul>
-                    <li>
-                      <code class="language-plaintext highlighter-rouge"
-                        >from sklearn.preprocessing import StandardScaler,
-                        MinMaxScaler, RobustScaler</code
-                      >
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  Nominla: Categorical, unordered features: Binanry, One-hot
-                  encoding
-                  <ul>
-                    <li>
-                      <code class="language-plaintext highlighter-rouge"
-                        >from sklearn.preprocessing import LabelEncoder,
-                        LabelBinarizer, OneHotEncoder</code
-                      >
-                    </li>
-                    <li>
-                      <code class="language-plaintext highlighter-rouge"
-                        >from pandas import get_dummies</code
-                      >
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  Ordinal: Categorical, ordered features: Ordinal encoding
-                  <ul>
-                    <li>
-                      <code class="language-plaintext highlighter-rouge"
-                        >from sklearn.feature_extraction import
-                        DictVectorizer</code
-                      >
-                    </li>
-                    <li>
-                      <code class="language-plaintext highlighter-rouge"
-                        >from sklearn.preprocessing import OrdinalEncoder</code
-                      >
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-
-              <h2 id="etc">ETC</h2>
-              <ol>
-                <li>
-                  <dl>
-                    <dt>
-                      <a
-                        href="https://www.statisticshowto.com/box-cox-transformation/"
-                        >Boxcox transformation</a
-                      >
-                    </dt>
-                    <dd>
-                      A Box Cox transformation is a transformation of non-normal
-                      dependent variables into a normal shape.
-                    </dd>
-                  </dl>
-                </li>
-                <li></li>
-              </ol>
+              <h3 id="bagging">Bagging</h3>
+              <p>Bagging is bootstrap aggregating. h</p>
             </section>
 
             <footer class="page__meta"></footer>
@@ -627,7 +940,7 @@
               <h4 class="page__share-title">Share on</h4>
 
               <a
-                href="https://twitter.com/intent/tweet?text=Feature+Engineering%20https%3A%2F%2Fleeway00.github.io%2Fibm%2Feda3%2F"
+                href="https://twitter.com/intent/tweet?text=Decision+Tree%20https%3A%2F%2Fleeway00.github.io%2Fibm%2Fcls3%2F"
                 class="btn btn--twitter"
                 onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
                 title="Share on Twitter"
@@ -636,7 +949,7 @@
               >
 
               <a
-                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fleeway00.github.io%2Fibm%2Feda3%2F"
+                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fleeway00.github.io%2Fibm%2Fcls3%2F"
                 class="btn btn--facebook"
                 onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
                 title="Share on Facebook"
@@ -645,7 +958,7 @@
               >
 
               <a
-                href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fleeway00.github.io%2Fibm%2Feda3%2F"
+                href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fleeway00.github.io%2Fibm%2Fcls3%2F"
                 class="btn btn--linkedin"
                 onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
                 title="Share on LinkedIn"
@@ -656,17 +969,17 @@
 
             <nav class="pagination">
               <a
-                href="/ibm/eda2/"
+                href="/ibm/cls2/"
                 class="pagination--pager"
-                title="Data Cleaning
+                title="KNN and SVM
 "
                 >Previous</a
               >
 
               <a
-                href="/ibm/eda4/"
+                href="/ibm/add/"
                 class="pagination--pager"
-                title="Inferential Statistics and Hypothesis Testing
+                title="Additional ML sources from IBM
 "
                 >Next</a
               >
@@ -677,7 +990,7 @@
             <h4 class="page__comments-title">Leave a comment</h4>
             <section
               class="fb-comments"
-              data-href="https://leeway00.github.io/ibm/eda3/"
+              data-href="https://leeway00.github.io/ibm/cls3/"
               data-mobile="true"
               data-num-posts="5"
               data-width="100%"

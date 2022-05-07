@@ -47,6 +47,12 @@ var store = [{
         "url": "/ibm/cls2/",
         "teaser": null
       },{
+        "title": "Decision Tree",
+        "excerpt":"Decision Tree Building a decision tree select a feature split the data into two groups. Split until the leaf node are pure (only one class remains) Maximum depth of the tree is reached A performance metric is achieved Decision tree uses greedy search to find the best split at each...","categories": ["IBM Machine Learning"],
+        "tags": ["Supervised","Classification","Week3","Decision Tree"],
+        "url": "/ibm/cls3/",
+        "teaser": null
+      },{
         "title": "Additional ML sources from IBM",
         "excerpt":"From IBM  Random Forest  https://www.ibm.com/cloud/learn/random-forest  ","categories": ["IBM Machine Learning"],
         "tags": ["Additional"],
