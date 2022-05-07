@@ -53,6 +53,12 @@ var store = [{
         "url": "/ibm/cls3/",
         "teaser": null
       },{
+        "title": "Unbalanced Classes",
+        "excerpt":"Unbalanced classes Classiferes are built to optimize accuracy and hence will often perform poorly on unbalanced classes/unrepresented classes. Downsampling deleted data from the training set to balance the classes. Upsampling duplicate data Resampling limit the value of larger class by sampling and increase smaller class by upsampling. cf) Weighting used...","categories": ["IBM Machine Learning"],
+        "tags": ["Supervised","Classification","Week4","IBM"],
+        "url": "/ibm/cls4/",
+        "teaser": null
+      },{
         "title": "Additional ML sources from IBM",
         "excerpt":"From IBM  Random Forest  https://www.ibm.com/cloud/learn/random-forest  ","categories": ["IBM Machine Learning"],
         "tags": ["Additional"],

@@ -57,7 +57,7 @@
 
     <meta
       property="article:modified_time"
-      content="2022-05-07T07:24:49+00:00"
+      content="2022-05-07T09:08:43+00:00"
     />
 
     <link rel="canonical" href="https://leeway00.github.io/ibm/cls3/" />
@@ -314,7 +314,7 @@
                 <span style="font-family: 'Cafe24Oneprettynight'"
                   >Total Posts #</span
                 >
-                <span style="font-family: 'Coming Soon'">13</span>
+                <span style="font-family: 'Coming Soon'">14</span>
                 <span style="font-family: 'Cafe24Oneprettynight'"></span>
               </li>
               <li>
@@ -327,7 +327,7 @@
 
                   <li>
                     <a href="/categories/ibm-machine-learning" class=""
-                      >IBM (10)</a
+                      >IBM (11)</a
                     >
                   </li>
                 </ul>
@@ -366,7 +366,7 @@
             content="Supervised Machine Learning (Classification)"
           />
           <meta itemprop="datePublished" content="2022-05-05T00:00:00+00:00" />
-          <meta itemprop="dateModified" content="2022-05-07T07:24:49+00:00" />
+          <meta itemprop="dateModified" content="2022-05-07T09:08:43+00:00" />
 
           <div class="page__inner-wrap">
             <header>
@@ -481,6 +481,9 @@
                         <li>
                           <a href="#bagging">Bagging</a>
                           <ul>
+                            <li>
+                              <a href="#out-of-bag-score">Out-of-Bag Score</a>
+                            </li>
                             <li><a href="#random-forest">Random Forest</a></li>
                           </ul>
                         </li>
@@ -971,8 +974,287 @@
                 model that averages the predictions of multiple models reduces
                 the variance of a single model and has high chances to
                 generalize well when scoring new data.<br />
-                Heterogeneous input data allowed, no preprocessing needed
+                <strong>Pasting</strong> is when bootstrapping is held without
+                replacement.
               </p>
+
+              <p>Heterogeneous input data allowed, no preprocessing needed</p>
+
+              <h4 id="out-of-bag-score">Out-of-Bag Score</h4>
+              <p>
+                OOB Scoring is the chance of not being selected<br />
+                When there are
+                <span class="katex"
+                  ><span class="katex-mathml"
+                    ><math xmlns="http://www.w3.org/1998/Math/MathML"
+                      ><semantics
+                        ><mrow><mi>n</mi></mrow
+                        ><annotation encoding="application/x-tex"
+                          >n</annotation
+                        ></semantics
+                      ></math
+                    ></span
+                  ><span class="katex-html" aria-hidden="true"
+                    ><span class="base"
+                      ><span class="strut" style="height: 0.4306em"></span
+                      ><span class="mord mathnormal">n</span></span
+                    ></span
+                  ></span
+                >
+                samples, the chance for a sample not being selected is
+                <span class="katex"
+                  ><span class="katex-mathml"
+                    ><math xmlns="http://www.w3.org/1998/Math/MathML"
+                      ><semantics
+                        ><mrow
+                          ><mn>1</mn><mo>−</mo
+                          ><mfrac><mn>1</mn><mi>n</mi></mfrac></mrow
+                        ><annotation encoding="application/x-tex"
+                          >1 - \frac{1}{n}</annotation
+                        ></semantics
+                      ></math
+                    ></span
+                  ><span class="katex-html" aria-hidden="true"
+                    ><span class="base"
+                      ><span
+                        class="strut"
+                        style="height: 0.7278em; vertical-align: -0.0833em"
+                      ></span
+                      ><span class="mord">1</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2222em"
+                      ></span
+                      ><span class="mbin">−</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2222em"
+                      ></span></span
+                    ><span class="base"
+                      ><span
+                        class="strut"
+                        style="height: 1.1901em; vertical-align: -0.345em"
+                      ></span
+                      ><span class="mord"
+                        ><span class="mopen nulldelimiter"></span
+                        ><span class="mfrac"
+                          ><span class="vlist-t vlist-t2"
+                            ><span class="vlist-r"
+                              ><span class="vlist" style="height: 0.8451em"
+                                ><span style="top: -2.655em"
+                                  ><span
+                                    class="pstrut"
+                                    style="height: 3em"
+                                  ></span
+                                  ><span class="sizing reset-size6 size3 mtight"
+                                    ><span class="mord mtight"
+                                      ><span class="mord mathnormal mtight"
+                                        >n</span
+                                      ></span
+                                    ></span
+                                  ></span
+                                ><span style="top: -3.23em"
+                                  ><span
+                                    class="pstrut"
+                                    style="height: 3em"
+                                  ></span
+                                  ><span
+                                    class="frac-line"
+                                    style="border-bottom-width: 0.04em"
+                                  ></span></span
+                                ><span style="top: -3.394em"
+                                  ><span
+                                    class="pstrut"
+                                    style="height: 3em"
+                                  ></span
+                                  ><span class="sizing reset-size6 size3 mtight"
+                                    ><span class="mord mtight"
+                                      ><span class="mord mtight">1</span></span
+                                    ></span
+                                  ></span
+                                ></span
+                              ><span class="vlist-s">​</span></span
+                            ><span class="vlist-r"
+                              ><span class="vlist" style="height: 0.345em"
+                                ><span></span></span></span></span></span
+                        ><span
+                          class="mclose nulldelimiter"
+                        ></span></span></span></span></span
+                >. Thus, probability of a sample being not selected after n
+                draws is
+                <span class="katex"
+                  ><span class="katex-mathml"
+                    ><math xmlns="http://www.w3.org/1998/Math/MathML"
+                      ><semantics
+                        ><mrow
+                          ><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo
+                          ><mfrac><mn>1</mn><mi>n</mi></mfrac
+                          ><msup
+                            ><mo stretchy="false">)</mo><mi>n</mi></msup
+                          ></mrow
+                        ><annotation encoding="application/x-tex"
+                          >(1-\frac{1}{n})^n</annotation
+                        ></semantics
+                      ></math
+                    ></span
+                  ><span class="katex-html" aria-hidden="true"
+                    ><span class="base"
+                      ><span
+                        class="strut"
+                        style="height: 1em; vertical-align: -0.25em"
+                      ></span
+                      ><span class="mopen">(</span><span class="mord">1</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2222em"
+                      ></span
+                      ><span class="mbin">−</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2222em"
+                      ></span></span
+                    ><span class="base"
+                      ><span
+                        class="strut"
+                        style="height: 1.1901em; vertical-align: -0.345em"
+                      ></span
+                      ><span class="mord"
+                        ><span class="mopen nulldelimiter"></span
+                        ><span class="mfrac"
+                          ><span class="vlist-t vlist-t2"
+                            ><span class="vlist-r"
+                              ><span class="vlist" style="height: 0.8451em"
+                                ><span style="top: -2.655em"
+                                  ><span
+                                    class="pstrut"
+                                    style="height: 3em"
+                                  ></span
+                                  ><span class="sizing reset-size6 size3 mtight"
+                                    ><span class="mord mtight"
+                                      ><span class="mord mathnormal mtight"
+                                        >n</span
+                                      ></span
+                                    ></span
+                                  ></span
+                                ><span style="top: -3.23em"
+                                  ><span
+                                    class="pstrut"
+                                    style="height: 3em"
+                                  ></span
+                                  ><span
+                                    class="frac-line"
+                                    style="border-bottom-width: 0.04em"
+                                  ></span></span
+                                ><span style="top: -3.394em"
+                                  ><span
+                                    class="pstrut"
+                                    style="height: 3em"
+                                  ></span
+                                  ><span class="sizing reset-size6 size3 mtight"
+                                    ><span class="mord mtight"
+                                      ><span class="mord mtight">1</span></span
+                                    ></span
+                                  ></span
+                                ></span
+                              ><span class="vlist-s">​</span></span
+                            ><span class="vlist-r"
+                              ><span class="vlist" style="height: 0.345em"
+                                ><span></span></span></span></span></span
+                        ><span class="mclose nulldelimiter"></span></span
+                      ><span class="mclose"
+                        ><span class="mclose">)</span
+                        ><span class="msupsub"
+                          ><span class="vlist-t"
+                            ><span class="vlist-r"
+                              ><span class="vlist" style="height: 0.6644em"
+                                ><span
+                                  style="top: -3.063em; margin-right: 0.05em"
+                                  ><span
+                                    class="pstrut"
+                                    style="height: 2.7em"
+                                  ></span
+                                  ><span class="sizing reset-size6 size3 mtight"
+                                    ><span class="mord mathnormal mtight"
+                                      >n</span
+                                    ></span
+                                  ></span
+                                ></span
+                              ></span
+                            ></span
+                          ></span
+                        ></span
+                      ></span
+                    ></span
+                  ></span
+                >. When
+                <span class="katex"
+                  ><span class="katex-mathml"
+                    ><math xmlns="http://www.w3.org/1998/Math/MathML"
+                      ><semantics
+                        ><mrow
+                          ><mi>n</mi><mo>→</mo
+                          ><mi mathvariant="normal">∞</mi></mrow
+                        ><annotation encoding="application/x-tex"
+                          >n \to \infty</annotation
+                        ></semantics
+                      ></math
+                    ></span
+                  ><span class="katex-html" aria-hidden="true"
+                    ><span class="base"
+                      ><span class="strut" style="height: 0.4306em"></span
+                      ><span class="mord mathnormal">n</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2778em"
+                      ></span
+                      ><span class="mrel">→</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2778em"
+                      ></span></span
+                    ><span class="base"
+                      ><span class="strut" style="height: 0.4306em"></span
+                      ><span class="mord">∞</span></span
+                    ></span
+                  ></span
+                >, the probability converges to
+                <span class="katex"
+                  ><span class="katex-mathml"
+                    ><math xmlns="http://www.w3.org/1998/Math/MathML"
+                      ><semantics
+                        ><mrow
+                          ><mn>1</mn><mi mathvariant="normal">/</mi><mi>e</mi
+                          ><mo>=</mo><mn>0.3678</mn></mrow
+                        ><annotation encoding="application/x-tex"
+                          >1/e = 0.3678</annotation
+                        ></semantics
+                      ></math
+                    ></span
+                  ><span class="katex-html" aria-hidden="true"
+                    ><span class="base"
+                      ><span
+                        class="strut"
+                        style="height: 1em; vertical-align: -0.25em"
+                      ></span
+                      ><span class="mord">1/</span
+                      ><span class="mord mathnormal">e</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2778em"
+                      ></span
+                      ><span class="mrel">=</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2778em"
+                      ></span></span
+                    ><span class="base"
+                      ><span class="strut" style="height: 0.6444em"></span
+                      ><span class="mord">0.3678</span></span
+                    ></span
+                  ></span
+                >.
+              </p>
+
               <div class="language-python highlighter-rouge">
                 <div class="highlight">
                   <pre
@@ -1610,9 +1892,9 @@ M834 80h400000v40h-400000z"
               >
 
               <a
-                href="/ibm/add/"
+                href="/ibm/cls4/"
                 class="pagination--pager"
-                title="Additional ML sources from IBM
+                title="Unbalanced Classes
 "
                 >Next</a
               >
