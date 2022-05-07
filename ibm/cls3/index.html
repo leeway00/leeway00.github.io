@@ -57,7 +57,7 @@
 
     <meta
       property="article:modified_time"
-      content="2022-05-07T06:33:04+00:00"
+      content="2022-05-07T07:24:49+00:00"
     />
 
     <link rel="canonical" href="https://leeway00.github.io/ibm/cls3/" />
@@ -366,7 +366,7 @@
             content="Supervised Machine Learning (Classification)"
           />
           <meta itemprop="datePublished" content="2022-05-05T00:00:00+00:00" />
-          <meta itemprop="dateModified" content="2022-05-07T06:33:04+00:00" />
+          <meta itemprop="dateModified" content="2022-05-07T07:24:49+00:00" />
 
           <div class="page__inner-wrap">
             <header>
@@ -486,7 +486,27 @@
                         </li>
                       </ul>
                     </li>
-                    <li><a href="#boosting">Boosting</a></li>
+                    <li>
+                      <a href="#boosting">Boosting</a>
+                      <ul>
+                        <li>
+                          <a href="#gradient-boosting-functions"
+                            >Gradient Boosting Functions</a
+                          >
+                        </li>
+                        <li><a href="#hyperparameters">Hyperparameters</a></li>
+                        <li>
+                          <a href="#stacking">Stacking</a>
+                          <ul>
+                            <li>
+                              <a href="#hard-voting-vs-soft-voting"
+                                >Hard voting vs Soft voting</a
+                              >
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
                   </ul>
                 </nav>
               </aside>
@@ -1248,7 +1268,7 @@ M834 80h400000v40h-400000z"
 <span class="n">rf</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">rf</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
-<span class="kn">from</span> <span class="nn">sklearn.ensmable</span> <span class="kn">import</span> <span class="n">ExtraTreesClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensamble</span> <span class="kn">import</span> <span class="n">ExtraTreesClassifier</span>
 <span class="n">ec</span> <span class="o">=</span> <span class="n">ExtraTreesClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">ec</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">ec</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
@@ -1307,8 +1327,244 @@ M834 80h400000v40h-400000z"
                     ></span
                   ></span
                 >
-                helps lessening the overfitting cases.
+                helps lessening the overfitting cases.<br />
+                Boosting fit entire data set and base trees created
+                successively, using residuals from previous models. Also this
+                up-weight miscalssified points.
               </p>
+
+              <h3 id="gradient-boosting-functions">
+                Gradient Boosting Functions
+              </h3>
+              <ol>
+                <li>
+                  0-1 loss function ignores observations that were correctly
+                  classified. The shape of this loss function makes it difficult
+                  to optimize.
+                </li>
+                <li>
+                  Adaboost is an adaptive boosting using
+                  <span class="katex"
+                    ><span class="katex-mathml"
+                      ><math xmlns="http://www.w3.org/1998/Math/MathML"
+                        ><semantics
+                          ><mrow
+                            ><msup
+                              ><mi>e</mi
+                              ><mrow
+                                ><mo>−</mo><mi>m</mi><mi>a</mi><mi>r</mi
+                                ><mi>g</mi><mi>i</mi><mi>n</mi><mi>a</mi
+                                ><mi>l</mi></mrow
+                              ></msup
+                            ></mrow
+                          ><annotation encoding="application/x-tex"
+                            >e^{-marginal}</annotation
+                          ></semantics
+                        ></math
+                      ></span
+                    ><span class="katex-html" aria-hidden="true"
+                      ><span class="base"
+                        ><span class="strut" style="height: 0.8491em"></span
+                        ><span class="mord"
+                          ><span class="mord mathnormal">e</span
+                          ><span class="msupsub"
+                            ><span class="vlist-t"
+                              ><span class="vlist-r"
+                                ><span class="vlist" style="height: 0.8491em"
+                                  ><span
+                                    style="top: -3.063em; margin-right: 0.05em"
+                                    ><span
+                                      class="pstrut"
+                                      style="height: 2.7em"
+                                    ></span
+                                    ><span
+                                      class="sizing reset-size6 size3 mtight"
+                                      ><span class="mord mtight"
+                                        ><span class="mord mtight">−</span
+                                        ><span class="mord mathnormal mtight"
+                                          >ma</span
+                                        ><span
+                                          class="mord mathnormal mtight"
+                                          style="margin-right: 0.02778em"
+                                          >r</span
+                                        ><span
+                                          class="mord mathnormal mtight"
+                                          style="margin-right: 0.03588em"
+                                          >g</span
+                                        ><span class="mord mathnormal mtight"
+                                          >ina</span
+                                        ><span
+                                          class="mord mathnormal mtight"
+                                          style="margin-right: 0.01968em"
+                                          >l</span
+                                        ></span
+                                      ></span
+                                    ></span
+                                  ></span
+                                ></span
+                              ></span
+                            ></span
+                          ></span
+                        ></span
+                      ></span
+                    ></span
+                  >
+                  as the loss function. 3. Gradient boosting uses
+                  <span class="katex"
+                    ><span class="katex-mathml"
+                      ><math xmlns="http://www.w3.org/1998/Math/MathML"
+                        ><semantics
+                          ><mrow
+                            ><mi>l</mi><mi>o</mi><mi>g</mi
+                            ><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo
+                            ><msup
+                              ><mi>e</mi
+                              ><mrow
+                                ><mo>−</mo><mi>m</mi><mi>a</mi><mi>r</mi
+                                ><mi>g</mi><mi>i</mi><mi>n</mi></mrow
+                              ></msup
+                            ><mo stretchy="false">)</mo></mrow
+                          ><annotation encoding="application/x-tex"
+                            >log(1+e^{-margin})</annotation
+                          ></semantics
+                        ></math
+                      ></span
+                    ><span class="katex-html" aria-hidden="true"
+                      ><span class="base"
+                        ><span
+                          class="strut"
+                          style="height: 1em; vertical-align: -0.25em"
+                        ></span
+                        ><span
+                          class="mord mathnormal"
+                          style="margin-right: 0.01968em"
+                          >l</span
+                        ><span class="mord mathnormal">o</span
+                        ><span
+                          class="mord mathnormal"
+                          style="margin-right: 0.03588em"
+                          >g</span
+                        ><span class="mopen">(</span><span class="mord">1</span
+                        ><span
+                          class="mspace"
+                          style="margin-right: 0.2222em"
+                        ></span
+                        ><span class="mbin">+</span
+                        ><span
+                          class="mspace"
+                          style="margin-right: 0.2222em"
+                        ></span></span
+                      ><span class="base"
+                        ><span
+                          class="strut"
+                          style="height: 1.0747em; vertical-align: -0.25em"
+                        ></span
+                        ><span class="mord"
+                          ><span class="mord mathnormal">e</span
+                          ><span class="msupsub"
+                            ><span class="vlist-t"
+                              ><span class="vlist-r"
+                                ><span class="vlist" style="height: 0.8247em"
+                                  ><span
+                                    style="top: -3.063em; margin-right: 0.05em"
+                                    ><span
+                                      class="pstrut"
+                                      style="height: 2.7em"
+                                    ></span
+                                    ><span
+                                      class="sizing reset-size6 size3 mtight"
+                                      ><span class="mord mtight"
+                                        ><span class="mord mtight">−</span
+                                        ><span class="mord mathnormal mtight"
+                                          >ma</span
+                                        ><span
+                                          class="mord mathnormal mtight"
+                                          style="margin-right: 0.02778em"
+                                          >r</span
+                                        ><span
+                                          class="mord mathnormal mtight"
+                                          style="margin-right: 0.03588em"
+                                          >g</span
+                                        ><span class="mord mathnormal mtight"
+                                          >in</span
+                                        ></span
+                                      ></span
+                                    ></span
+                                  ></span
+                                ></span
+                              ></span
+                            ></span
+                          ></span
+                        ><span class="mclose">)</span></span
+                      ></span
+                    ></span
+                  >
+                  as the loss function.
+                </li>
+              </ol>
+
+              <h3 id="hyperparameters">Hyperparameters</h3>
+              <ul>
+                <li>
+                  <code class="language-plaintext highlighter-rouge"
+                    >learning rate</code
+                  >
+                  for shrinkage
+                </li>
+                <li>
+                  <code class="language-plaintext highlighter-rouge"
+                    >Stochastic gradient boosting</code
+                  >
+                  subsample to use fraction of data for base learners
+                </li>
+                <li>
+                  <code class="language-plaintext highlighter-rouge"
+                    >max_features</code
+                  >
+                  number of features to use for each base learner But since we
+                  cannot parallel trees, needs logn time.
+                </li>
+              </ul>
+
+              <div class="language-python highlighter-rouge">
+                <div class="highlight">
+                  <pre
+                    class="highlight"
+                  ><code><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">AdaBoostClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingClassifier</span>
+<span class="n">gbc</span> <span class="o">=</span> <span class="n">GradientBoostingClassifier</span><span class="p">(</span><span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">abc</span> <span class="o">=</span> <span class="n">AdaBoostClassifier</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">gbc</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="c1"># we set max_dept from gbc.
+</span><span class="n">gbc</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">gbc</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</code></pre>
+                </div>
+              </div>
+
+              <h3 id="stacking">Stacking</h3>
+              <p>
+                Stacking is a way to combine multiple models, but should be
+                aware of increasing model complexity. The model prediction can
+                be done by voting or with another model.
+              </p>
+              <h4 id="hard-voting-vs-soft-voting">
+                Hard voting vs Soft voting
+              </h4>
+
+              <div class="language-python highlighter-rouge">
+                <div class="highlight">
+                  <pre
+                    class="highlight"
+                  ><code><span class="kn">from</span> <span class="nn">sklearn.ensamble</span> <span class="kn">import</span> <span class="n">VotingClassifier</span>
+<span class="n">vc</span> <span class="o">=</span> <span class="n">VotingClassifier</span><span class="p">(</span><span class="n">estimators</span><span class="o">=</span><span class="p">[(</span><span class="s">'rf'</span><span class="p">,</span> <span class="n">rf</span><span class="p">),</span> <span class="p">(</span><span class="s">'gbc'</span><span class="p">,</span> <span class="n">gbc</span><span class="p">),</span> <span class="p">(</span><span class="s">'abc'</span><span class="p">,</span> <span class="n">abc</span><span class="p">)],</span> <span class="n">voting</span><span class="o">=</span><span class="s">'hard'</span><span class="p">)</span>
+<span class="n">vc</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">vc</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.emsable</span> <span class="kn">import</span> <span class="n">StakingClassifier</span> <span class="c1">#work similarly
+</span></code></pre>
+                </div>
+              </div>
             </section>
 
             <footer class="page__meta"></footer>
