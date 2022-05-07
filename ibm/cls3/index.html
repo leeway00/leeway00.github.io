@@ -57,7 +57,7 @@
 
     <meta
       property="article:modified_time"
-      content="2022-05-07T06:12:59+00:00"
+      content="2022-05-07T06:33:04+00:00"
     />
 
     <link rel="canonical" href="https://leeway00.github.io/ibm/cls3/" />
@@ -366,7 +366,7 @@
             content="Supervised Machine Learning (Classification)"
           />
           <meta itemprop="datePublished" content="2022-05-05T00:00:00+00:00" />
-          <meta itemprop="dateModified" content="2022-05-07T06:12:59+00:00" />
+          <meta itemprop="dateModified" content="2022-05-07T06:33:04+00:00" />
 
           <div class="page__inner-wrap">
             <header>
@@ -486,6 +486,7 @@
                         </li>
                       </ul>
                     </li>
+                    <li><a href="#boosting">Boosting</a></li>
                   </ul>
                 </nav>
               </aside>
@@ -772,7 +773,9 @@
                 ></span
               >
 
-              <p><img src="/images/IBM/DT_error.png" alt="small" /></p>
+              <p>
+                <img src="/assets/images/IBM/DT_error.png" alt="smallcenter" />
+              </p>
 
               <p>The Gini index is also used</p>
 
@@ -916,7 +919,10 @@
               </p>
 
               <p>
-                <img src="/images/IBM/DT_purity-error.png" alt="smallcenter" />
+                <img
+                  src="/assets/images/IBM/DT_purity-error.png"
+                  alt="smallcenter"
+                />
               </p>
 
               <div class="language-python highlighter-rouge">
@@ -1229,7 +1235,7 @@ M834 80h400000v40h-400000z"
                 >.
               </p>
 
-              <p><img src="/images/IBM/RFM.png" alt="smallcenter" /></p>
+              <p><img src="/assets/images/IBM/RFM.png" alt="smallcenter" /></p>
 
               <div class="language-python highlighter-rouge">
                 <div class="highlight">
@@ -1249,6 +1255,60 @@ M834 80h400000v40h-400000z"
 </code></pre>
                 </div>
               </div>
+
+              <h2 id="boosting">Boosting</h2>
+              <p>
+                Weighting different trees differently to imporve. So we lower
+                the weights of the records that the first model got right, and
+                increase the weights of the ones that are wrongly classified and
+                that’s the major idea here in boosting. And we put
+                <span class="katex"
+                  ><span class="katex-mathml"
+                    ><math xmlns="http://www.w3.org/1998/Math/MathML"
+                      ><semantics
+                        ><mrow><mi>λ</mi></mrow
+                        ><annotation encoding="application/x-tex"
+                          >\lambda</annotation
+                        ></semantics
+                      ></math
+                    ></span
+                  ><span class="katex-html" aria-hidden="true"
+                    ><span class="base"
+                      ><span class="strut" style="height: 0.6944em"></span
+                      ><span class="mord mathnormal">λ</span></span
+                    ></span
+                  ></span
+                >
+                to control the weight of each trees. Using a learning rate
+                <span class="katex"
+                  ><span class="katex-mathml"
+                    ><math xmlns="http://www.w3.org/1998/Math/MathML"
+                      ><semantics
+                        ><mrow><mo>&lt;</mo><mn>1.0</mn></mrow
+                        ><annotation encoding="application/x-tex"
+                          >&lt; 1.0</annotation
+                        ></semantics
+                      ></math
+                    ></span
+                  ><span class="katex-html" aria-hidden="true"
+                    ><span class="base"
+                      ><span
+                        class="strut"
+                        style="height: 0.5782em; vertical-align: -0.0391em"
+                      ></span
+                      ><span class="mrel">&lt;</span
+                      ><span
+                        class="mspace"
+                        style="margin-right: 0.2778em"
+                      ></span></span
+                    ><span class="base"
+                      ><span class="strut" style="height: 0.6444em"></span
+                      ><span class="mord">1.0</span></span
+                    ></span
+                  ></span
+                >
+                helps lessening the overfitting cases.
+              </p>
             </section>
 
             <footer class="page__meta"></footer>
