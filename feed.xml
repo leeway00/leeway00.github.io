@@ -1,4 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://leeway00.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://leeway00.github.io/" rel="alternate" type="text/html" /><updated>2022-05-07T09:08:32+00:00</updated><id>https://leeway00.github.io/feed.xml</id><title type="html">Hun’s Blog</title><subtitle>Blog nebie</subtitle><author><name>Younghun Lee</name></author><entry><title type="html">Logistic Regression</title><link href="https://leeway00.github.io/ibm/cls1/" rel="alternate" type="text/html" title="Logistic Regression" /><published>2022-05-05T00:00:00+00:00</published><updated>2022-05-07T09:08:45+00:00</updated><id>https://leeway00.github.io/ibm/Class%20w1</id><content type="html" xml:base="https://leeway00.github.io/ibm/cls1/"><![CDATA[<h2 id="logistic-regression">Logistic Regression</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://leeway00.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://leeway00.github.io/" rel="alternate" type="text/html" /><updated>2022-05-10T10:26:48+00:00</updated><id>https://leeway00.github.io/feed.xml</id><title type="html">Hun’s Blog</title><subtitle>Blog nebie</subtitle><author><name>Younghun Lee</name></author><entry><title type="html">Regression</title><link href="https://leeway00.github.io/ibm/reg/" rel="alternate" type="text/html" title="Regression" /><published>2022-05-08T00:00:00+00:00</published><updated>2022-05-10T10:27:02+00:00</updated><id>https://leeway00.github.io/ibm/Reg%20w1</id><content type="html" xml:base="https://leeway00.github.io/ibm/reg/"><![CDATA[<h2 id="box-cox-transformation">Box Cox Transformation</h2>
+
+<p>The box cox transformation is a parametrized transformation that tries to get distributions “as close to a normal distribution as possible”
+It is defined as:</p>
+
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>boxcox</mtext><mo stretchy="false">(</mo><msub><mi>y</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><msubsup><mi>y</mi><mi>i</mi><mi>λ</mi></msubsup><mo>−</mo><mn>1</mn></mrow><mi>λ</mi></mfrac></mrow><annotation encoding="application/x-tex">\text{boxcox}(y_i) = \frac{y_i^{\lambda} - 1}{\lambda}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">boxcox</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.2121em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.5261em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">λ</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-2.4413em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">λ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2587em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+
+<p>You can think of it as a generalization of the square root function: the square root function uses the exponent of 0.5, but box cox lets its exponent vary so it can find the best one.</p>]]></content><author><name>Younghun Lee</name></author><category term="IBM Machine Learning" /><category term="Supervised" /><category term="Regression" /><category term="IBM" /><summary type="html"><![CDATA[Box Cox Transformation]]></summary></entry><entry><title type="html">Logistic Regression</title><link href="https://leeway00.github.io/ibm/cls1/" rel="alternate" type="text/html" title="Logistic Regression" /><published>2022-05-05T00:00:00+00:00</published><updated>2022-05-10T10:27:02+00:00</updated><id>https://leeway00.github.io/ibm/Class%20w1</id><content type="html" xml:base="https://leeway00.github.io/ibm/cls1/"><![CDATA[<h2 id="logistic-regression">Logistic Regression</h2>
 
 <h3 id="sigmoid-function">Sigmoid function</h3>
 
@@ -97,7 +104,7 @@ Better for data with imbalanced classes.</p>
 <span class="n">accuracy_value</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predict</span><span class="p">)</span>
 
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">,</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">precision_recall_curve</span>
-</code></pre></div></div>]]></content><author><name>Younghun Lee</name></author><category term="IBM Machine Learning" /><category term="Supervised" /><category term="Classification" /><category term="Week2" /><category term="Logistic" /><summary type="html"><![CDATA[Supervised Machine Learning (Classification)]]></summary></entry><entry><title type="html">KNN and SVM</title><link href="https://leeway00.github.io/ibm/cls2/" rel="alternate" type="text/html" title="KNN and SVM" /><published>2022-05-05T00:00:00+00:00</published><updated>2022-05-07T09:08:45+00:00</updated><id>https://leeway00.github.io/ibm/Class%20w2</id><content type="html" xml:base="https://leeway00.github.io/ibm/cls2/"><![CDATA[<h2 id="k-nearest-neighbours">K Nearest Neighbours</h2>
+</code></pre></div></div>]]></content><author><name>Younghun Lee</name></author><category term="IBM Machine Learning" /><category term="Supervised" /><category term="Classification" /><category term="Week2" /><category term="Logistic" /><summary type="html"><![CDATA[Supervised Machine Learning (Classification)]]></summary></entry><entry><title type="html">KNN and SVM</title><link href="https://leeway00.github.io/ibm/cls2/" rel="alternate" type="text/html" title="KNN and SVM" /><published>2022-05-05T00:00:00+00:00</published><updated>2022-05-10T10:27:02+00:00</updated><id>https://leeway00.github.io/ibm/Class%20w2</id><content type="html" xml:base="https://leeway00.github.io/ibm/cls2/"><![CDATA[<h2 id="k-nearest-neighbours">K Nearest Neighbours</h2>
 <p>KNN is predicting the unknown value of the point based on the values nearby.</p>
 
 <h3 id="decision-boundary">Decision Boundary</h3>
@@ -200,7 +207,7 @@ Higher <code class="language-plaintext highlighter-rouge">C</code> and <code cla
       <td>ADd features, Logistic, LinarSVC or Kernel Approx</td>
     </tr>
   </tbody>
-</table>]]></content><author><name>Younghun Lee</name></author><category term="IBM Machine Learning" /><category term="Supervised" /><category term="Classification" /><category term="Week3" /><category term="KNN" /><category term="SVM" /><summary type="html"><![CDATA[Supervised Machine Learning (Classification)]]></summary></entry><entry><title type="html">Decision Tree</title><link href="https://leeway00.github.io/ibm/cls3/" rel="alternate" type="text/html" title="Decision Tree" /><published>2022-05-05T00:00:00+00:00</published><updated>2022-05-07T09:08:45+00:00</updated><id>https://leeway00.github.io/ibm/Class%20w3</id><content type="html" xml:base="https://leeway00.github.io/ibm/cls3/"><![CDATA[<h2 id="decision-tree">Decision Tree</h2>
+</table>]]></content><author><name>Younghun Lee</name></author><category term="IBM Machine Learning" /><category term="Supervised" /><category term="Classification" /><category term="Week3" /><category term="KNN" /><category term="SVM" /><summary type="html"><![CDATA[Supervised Machine Learning (Classification)]]></summary></entry><entry><title type="html">Decision Tree</title><link href="https://leeway00.github.io/ibm/cls3/" rel="alternate" type="text/html" title="Decision Tree" /><published>2022-05-05T00:00:00+00:00</published><updated>2022-05-10T10:27:02+00:00</updated><id>https://leeway00.github.io/ibm/Class%20w3</id><content type="html" xml:base="https://leeway00.github.io/ibm/cls3/"><![CDATA[<h2 id="decision-tree">Decision Tree</h2>
 
 <p>Building a decision tree</p>
 <ol>
@@ -209,15 +216,15 @@ Higher <code class="language-plaintext highlighter-rouge">C</code> and <code cla
   <li>Split until
     <ol>
       <li>the leaf node are pure (only one class remains)</li>
-      <li>Maximum depth of the tree is reached</li>
+      <li>The maximum depth of the tree is reached</li>
       <li>A performance metric is achieved</li>
     </ol>
   </li>
 </ol>
 
-<p>Decision tree uses greedy search to find the best split at each step. The <strong>Best Split</strong> is the split that minimizes the <strong>information</strong>.\</p>
+<p>The decision tree uses a greedy search to find the best split at each step. The <strong>Best Split</strong> is the split that minimizes the <strong>information</strong>.\</p>
 
-<h3 id="spliting-criteria">Spliting Criteria</h3>
+<h3 id="splitting-criteria">Splitting Criteria</h3>
 <p>Classification Error Equation</p>
 
 <span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>E</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn><mo>−</mo><mi>m</mi><mi>a</mi><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">[</mo><mi>P</mi><mo stretchy="false">(</mo><mi>i</mi><mi mathvariant="normal">∣</mi><mi>t</mi><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">E(t) = 1-max_i[P(i|t)]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">ma</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mord">∣</span><span class="mord mathnormal">t</span><span class="mclose">)]</span></span></span></span></span>
@@ -245,7 +252,7 @@ Higher <code class="language-plaintext highlighter-rouge">C</code> and <code cla
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">DTC</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 </code></pre></div></div>
 
-<h2 id="ensamble">Ensamble</h2>
+<h2 id="ensemble">Ensemble</h2>
 <p>Combining prediction to reduce variance. We can reduce variance by pruning but pruning may lost generlization</p>
 
 <h3 id="bagging">Bagging</h3>
@@ -332,7 +339,7 @@ But since we cannot parallel trees, needs logn time.</li>
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">vc</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
 <span class="kn">from</span> <span class="nn">sklearn.emsable</span> <span class="kn">import</span> <span class="n">StakingClassifier</span> <span class="c1">#work similarly
-</span></code></pre></div></div>]]></content><author><name>Younghun Lee</name></author><category term="IBM Machine Learning" /><category term="Supervised" /><category term="Classification" /><category term="Week3" /><category term="Decision Tree" /><summary type="html"><![CDATA[Supervised Machine Learning (Classification)]]></summary></entry><entry><title type="html">Unbalanced Classes</title><link href="https://leeway00.github.io/ibm/cls4/" rel="alternate" type="text/html" title="Unbalanced Classes" /><published>2022-05-05T00:00:00+00:00</published><updated>2022-05-07T09:08:45+00:00</updated><id>https://leeway00.github.io/ibm/Class%20w4</id><content type="html" xml:base="https://leeway00.github.io/ibm/cls4/"><![CDATA[<h2 id="unbalanced-classes">Unbalanced classes</h2>
+</span></code></pre></div></div>]]></content><author><name>Younghun Lee</name></author><category term="IBM Machine Learning" /><category term="Supervised" /><category term="Classification" /><category term="Week3" /><category term="Decision Tree" /><summary type="html"><![CDATA[Supervised Machine Learning (Classification)]]></summary></entry><entry><title type="html">Unbalanced Classes</title><link href="https://leeway00.github.io/ibm/cls4/" rel="alternate" type="text/html" title="Unbalanced Classes" /><published>2022-05-05T00:00:00+00:00</published><updated>2022-05-10T10:27:02+00:00</updated><id>https://leeway00.github.io/ibm/Class%20w4</id><content type="html" xml:base="https://leeway00.github.io/ibm/cls4/"><![CDATA[<h2 id="unbalanced-classes">Unbalanced classes</h2>
 <p>Classiferes are built to optimize accuracy and hence will often perform poorly on unbalanced classes/unrepresented classes.</p>
 
 <p><strong>Downsampling</strong> deleted data from the training set to balance the classes.<br />
@@ -403,9 +410,9 @@ Another approach is to <strong>Synthetic Oversampling</strong>. Start with a poi
 <p>This remove points that don’t agree with neighbors</p>
 
 <h2 id="blagging">Blagging</h2>
-<p>Blagging is balanced bagging. While bootstrapping, it balance each sample by downsampling. Also, for last prediction it uses majority vote.</p>]]></content><author><name>Younghun Lee</name></author><category term="IBM Machine Learning" /><category term="Supervised" /><category term="Classification" /><category term="Week4" /><category term="IBM" /><summary type="html"><![CDATA[Supervised Machine Learning (Classification)]]></summary></entry><entry><title type="html">Additional ML sources from IBM</title><link href="https://leeway00.github.io/ibm/add/" rel="alternate" type="text/html" title="Additional ML sources from IBM" /><published>2022-05-05T00:00:00+00:00</published><updated>2022-05-07T09:08:45+00:00</updated><id>https://leeway00.github.io/ibm/IBM</id><content type="html" xml:base="https://leeway00.github.io/ibm/add/"><![CDATA[<h2 id="from-ibm">From IBM</h2>
+<p>Blagging is balanced bagging. While bootstrapping, it balance each sample by downsampling. Also, for last prediction it uses majority vote.</p>]]></content><author><name>Younghun Lee</name></author><category term="IBM Machine Learning" /><category term="Supervised" /><category term="Classification" /><category term="Week4" /><category term="IBM" /><summary type="html"><![CDATA[Supervised Machine Learning (Classification)]]></summary></entry><entry><title type="html">Additional ML sources from IBM</title><link href="https://leeway00.github.io/ibm/add/" rel="alternate" type="text/html" title="Additional ML sources from IBM" /><published>2022-05-05T00:00:00+00:00</published><updated>2022-05-10T10:27:02+00:00</updated><id>https://leeway00.github.io/ibm/IBM</id><content type="html" xml:base="https://leeway00.github.io/ibm/add/"><![CDATA[<h2 id="from-ibm">From IBM</h2>
 <h3 id="random-forest">Random Forest</h3>
-<p>https://www.ibm.com/cloud/learn/random-forest</p>]]></content><author><name>Younghun Lee</name></author><category term="IBM Machine Learning" /><category term="Additional" /><summary type="html"><![CDATA[From IBM Random Forest https://www.ibm.com/cloud/learn/random-forest]]></summary></entry><entry><title type="html">K-Means</title><link href="https://leeway00.github.io/ibm/uml1/" rel="alternate" type="text/html" title="K-Means" /><published>2022-05-05T00:00:00+00:00</published><updated>2022-05-07T09:08:45+00:00</updated><id>https://leeway00.github.io/ibm/UML%20w1</id><content type="html" xml:base="https://leeway00.github.io/ibm/uml1/"><![CDATA[<h2 id="k-means">K-Means</h2>
+<p>https://www.ibm.com/cloud/learn/random-forest</p>]]></content><author><name>Younghun Lee</name></author><category term="IBM Machine Learning" /><category term="Additional" /><summary type="html"><![CDATA[From IBM Random Forest https://www.ibm.com/cloud/learn/random-forest]]></summary></entry><entry><title type="html">K-Means</title><link href="https://leeway00.github.io/ibm/uml1/" rel="alternate" type="text/html" title="K-Means" /><published>2022-05-05T00:00:00+00:00</published><updated>2022-05-10T10:27:02+00:00</updated><id>https://leeway00.github.io/ibm/UML%20w1</id><content type="html" xml:base="https://leeway00.github.io/ibm/uml1/"><![CDATA[<h2 id="k-means">K-Means</h2>
 <h3 id="algorithm">algorithm</h3>
 <ol>
   <li>taking K random points as centroids.</li>
@@ -459,7 +466,7 @@ Find a point where the decrement of value is lower.</p>
     <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="n">k</span><span class="p">)</span>
     <span class="n">kmenas</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X1</span><span class="p">)</span>
     <span class="n">inertia</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">kmeans</span><span class="p">.</span><span class="n">inertia_</span><span class="p">)</span>
-</code></pre></div></div>]]></content><author><name>Younghun Lee</name></author><category term="IBM Machine Learning" /><category term="Unsupervised" /><category term="Week1" /><category term="K-Means" /><summary type="html"><![CDATA[Unsupervised Machine Learning]]></summary></entry><entry><title type="html">Clustering Algorithms</title><link href="https://leeway00.github.io/ibm/uml2/" rel="alternate" type="text/html" title="Clustering Algorithms" /><published>2022-05-05T00:00:00+00:00</published><updated>2022-05-07T09:08:45+00:00</updated><id>https://leeway00.github.io/ibm/UML%20w2</id><content type="html" xml:base="https://leeway00.github.io/ibm/uml2/"><![CDATA[<h2 id="distant-metrics">Distant Metrics</h2>
+</code></pre></div></div>]]></content><author><name>Younghun Lee</name></author><category term="IBM Machine Learning" /><category term="Unsupervised" /><category term="Week1" /><category term="K-Means" /><summary type="html"><![CDATA[Unsupervised Machine Learning]]></summary></entry><entry><title type="html">Clustering Algorithms</title><link href="https://leeway00.github.io/ibm/uml2/" rel="alternate" type="text/html" title="Clustering Algorithms" /><published>2022-05-05T00:00:00+00:00</published><updated>2022-05-10T10:27:02+00:00</updated><id>https://leeway00.github.io/ibm/UML%20w2</id><content type="html" xml:base="https://leeway00.github.io/ibm/uml2/"><![CDATA[<h2 id="distant-metrics">Distant Metrics</h2>
 
 <h3 id="manhattan-distance-l1-distance">Manhattan Distance, L1 distance</h3>
 <p>Another distance metric is the L1 distance or the Manhattan distance, and instead of squaring each term we are adding up the absolute value of each term. It will always be larger than the L2 distance, unless they lie on the same axis. We use this in business cases where there is very high dimensionality.</p>
@@ -624,7 +631,7 @@ depend on window(bandwith), slection of window is hard to find.</p>
 </code></pre></div></div>
 
 <h2 id="summary">Summary</h2>
-<p><img src="/assets/images/IBM/clustering_summary.png" alt="" /></p>]]></content><author><name>Younghun Lee</name></author><category term="IBM Machine Learning" /><category term="Unsupervised" /><category term="Week2" /><category term="Clustering" /><summary type="html"><![CDATA[Unsupervised Machine Learning]]></summary></entry><entry><title type="html">Dimensionality Reduction</title><link href="https://leeway00.github.io/ibm/uml3/" rel="alternate" type="text/html" title="Dimensionality Reduction" /><published>2022-05-05T00:00:00+00:00</published><updated>2022-05-07T09:08:45+00:00</updated><id>https://leeway00.github.io/ibm/UML%20w3</id><content type="html" xml:base="https://leeway00.github.io/ibm/uml3/"><![CDATA[<h2 id="dimensionality-reduction">Dimensionality Reduction</h2>
+<p><img src="/assets/images/IBM/clustering_summary.png" alt="" /></p>]]></content><author><name>Younghun Lee</name></author><category term="IBM Machine Learning" /><category term="Unsupervised" /><category term="Week2" /><category term="Clustering" /><summary type="html"><![CDATA[Unsupervised Machine Learning]]></summary></entry><entry><title type="html">Dimensionality Reduction</title><link href="https://leeway00.github.io/ibm/uml3/" rel="alternate" type="text/html" title="Dimensionality Reduction" /><published>2022-05-05T00:00:00+00:00</published><updated>2022-05-10T10:27:02+00:00</updated><id>https://leeway00.github.io/ibm/UML%20w3</id><content type="html" xml:base="https://leeway00.github.io/ibm/uml3/"><![CDATA[<h2 id="dimensionality-reduction">Dimensionality Reduction</h2>
 <p>Too many features leads to worse performance. Distance measures perform poorly and the indicent of outliers increases. Data can be represented in a lower dimensional space. Reduce dimensionality by selecting subset (feature elimination). Combine with linear and non-linear transformation.</p>
 
 <h2 id="pca">PCA</h2>
@@ -675,7 +682,7 @@ Thus NMF are non othogonal.</p>
 <h2 id="summary">Summary</h2>
 <p><img src="/assets/images/IBM/dimension_summary.png" alt="" /></p>
 
-<h3 id="example-of-dim-redcution">Example of Dim Redcution</h3>]]></content><author><name>Younghun Lee</name></author><category term="IBM Machine Learning" /><category term="Unsupervised" /><category term="Week3" /><category term="PCA" /><summary type="html"><![CDATA[Unsupervised Machine Learning]]></summary></entry><entry><title type="html">Data Cleaning</title><link href="https://leeway00.github.io/ibm/eda2/" rel="alternate" type="text/html" title="Data Cleaning" /><published>2022-05-04T00:00:00+00:00</published><updated>2022-05-07T09:08:45+00:00</updated><id>https://leeway00.github.io/ibm/EDA%20w2</id><content type="html" xml:base="https://leeway00.github.io/ibm/eda2/"><![CDATA[<h2 id="data-cleaning">Data Cleaning</h2>
+<h3 id="example-of-dim-redcution">Example of Dim Redcution</h3>]]></content><author><name>Younghun Lee</name></author><category term="IBM Machine Learning" /><category term="Unsupervised" /><category term="Week3" /><category term="PCA" /><summary type="html"><![CDATA[Unsupervised Machine Learning]]></summary></entry><entry><title type="html">Data Cleaning</title><link href="https://leeway00.github.io/ibm/eda2/" rel="alternate" type="text/html" title="Data Cleaning" /><published>2022-05-04T00:00:00+00:00</published><updated>2022-05-10T10:27:02+00:00</updated><id>https://leeway00.github.io/ibm/EDA%20w2</id><content type="html" xml:base="https://leeway00.github.io/ibm/eda2/"><![CDATA[<h2 id="data-cleaning">Data Cleaning</h2>
 
 <h3 id="why-important">Why important?</h3>
 <p>Key aspects of ML depend on clened data
@@ -749,81 +756,4 @@ c-1 5-5 9-11 9h-2L532 67 19 159h-2c-5 0-9-4-11-9l-5-22c-1-6 2-12 8-13z'/></svg><
   <li>assign mean or median</li>
   <li>Transform</li>
   <li>predict: using similar obeservation, or regression</li>
-</ol>]]></content><author><name>Younghun Lee</name></author><category term="IBM Machine Learning" /><category term="EDA" /><category term="Week2" /><summary type="html"><![CDATA[Exploratory Data Analysis]]></summary></entry><entry><title type="html">Feature Engineering</title><link href="https://leeway00.github.io/ibm/eda3/" rel="alternate" type="text/html" title="Feature Engineering" /><published>2022-05-04T00:00:00+00:00</published><updated>2022-05-07T09:08:45+00:00</updated><id>https://leeway00.github.io/ibm/EDA%20w3</id><content type="html" xml:base="https://leeway00.github.io/ibm/eda3/"><![CDATA[<h2 id="variable-transformation">Variable Transformation</h2>
-<p>We often assume normally distributed data. But often skewed -&gt; Data transformation solve this</p>
-
-<h3 id="log-transformation">Log transformation</h3>
-<p>Log transformation is a transformation that takes the natural log of the data.
-Useful for linear regression.
-Solve right skewed</p>
-
-<h3 id="polynomial-features">Polynomial Features</h3>
-<p>higher order relationship</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
-<span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">polyfeat</span> <span class="o">=</span> <span class="n">poly</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">polyfeat</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</code></pre></div></div>
-
-<h2 id="feature-encoding">Feature Encoding</h2>
-<p>Variable selection involves choosing the set of features</p>
-<ul>
-  <li>Encoding: converting non-numeric features to numeric features
-    <ul>
-      <li>applied to categorical features
-        <ul>
-          <li>Nominal: Red, blue</li>
-          <li>Ordinal: high, medium, low</li>
-        </ul>
-      </li>
-      <li>Binary encoding: 0, 1</li>
-      <li>One-hot encoding: multiple columns for each category with binary vaiables</li>
-      <li>Ordinal encoding: converting ordered categories to numerical values. (e.g. 0,1,2,3,…)</li>
-    </ul>
-  </li>
-  <li>Scailing: converting the scale of numeric data so they are comparable</li>
-</ul>
-
-<h2 id="feature-scaling">Feature Scaling</h2>
-<p>Adjusting a variable scale, so that comparison of variables with different scales</p>
-<h3 id="why-problematic">Why problematic?</h3>
-<p>If scale is so small, it will be hard to compare.</p>
-<h3 id="approach">Approach</h3>
-<ul>
-  <li>Standard scailing: convert features to standard normal variable</li>
-  <li>Min-max scailing: convert features to min-max. It is sensitive to outliers</li>
-  <li>Robust scaling: similar to min-max but maps the interquartile range 1Q to 0 and 3Q to 1. Other range takes values outside of the (0,1) interval.</li>
-</ul>
-
-<h2 id="common-variable-transformation">Common Variable Transformation</h2>
-<p>Feature type</p>
-<ul>
-  <li>Continuous: Standard, Min-max, Robust scaling
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">from sklearn.preprocessing import StandardScaler, MinMaxScaler, RobustScaler</code></li>
-    </ul>
-  </li>
-  <li>Nominla: Categorical, unordered features: Binanry, One-hot encoding
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">from sklearn.preprocessing import LabelEncoder, LabelBinarizer, OneHotEncoder</code></li>
-      <li><code class="language-plaintext highlighter-rouge">from pandas import get_dummies</code></li>
-    </ul>
-  </li>
-  <li>Ordinal: Categorical, ordered features: Ordinal encoding
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">from sklearn.feature_extraction import DictVectorizer</code></li>
-      <li><code class="language-plaintext highlighter-rouge">from sklearn.preprocessing import OrdinalEncoder</code></li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="etc">ETC</h2>
-<ol>
-  <li>
-    <dl>
-      <dt><a href="https://www.statisticshowto.com/box-cox-transformation/">Boxcox transformation</a></dt>
-      <dd>A Box Cox transformation is a transformation of non-normal dependent variables into a normal shape.</dd>
-    </dl>
-  </li>
-  <li></li>
-</ol>]]></content><author><name>Younghun Lee</name></author><category term="IBM Machine Learning" /><category term="EDA" /><category term="Week3" /><summary type="html"><![CDATA[Exploratory Data Analysis]]></summary></entry></feed>
+</ol>]]></content><author><name>Younghun Lee</name></author><category term="IBM Machine Learning" /><category term="EDA" /><category term="Week2" /><summary type="html"><![CDATA[Exploratory Data Analysis]]></summary></entry></feed>

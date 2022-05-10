@@ -48,7 +48,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Decision Tree",
-        "excerpt":"Decision Tree Building a decision tree select a feature split the data into two groups. Split until the leaf node are pure (only one class remains) Maximum depth of the tree is reached A performance metric is achieved Decision tree uses greedy search to find the best split at each...","categories": ["IBM Machine Learning"],
+        "excerpt":"Decision Tree Building a decision tree select a feature split the data into two groups. Split until the leaf node are pure (only one class remains) The maximum depth of the tree is reached A performance metric is achieved The decision tree uses a greedy search to find the best...","categories": ["IBM Machine Learning"],
         "tags": ["Supervised","Classification","Week3","Decision Tree"],
         "url": "/ibm/cls3/",
         "teaser": null
@@ -81,5 +81,11 @@ var store = [{
         "excerpt":"Dimensionality Reduction Too many features leads to worse performance. Distance measures perform poorly and the indicent of outliers increases. Data can be represented in a lower dimensional space. Reduce dimensionality by selecting subset (feature elimination). Combine with linear and non-linear transformation. PCA Principal Component Analysis (PCA) is a dimensionality reduction...","categories": ["IBM Machine Learning"],
         "tags": ["Unsupervised","Week3","PCA"],
         "url": "/ibm/uml3/",
+        "teaser": null
+      },{
+        "title": "Regression",
+        "excerpt":"Box Cox Transformation The box cox transformation is a parametrized transformation that tries to get distributions “as close to a normal distribution as possible” It is defined as: boxcox(yi)=yiλ−1λ\\text{boxcox}(y_i) = \\frac{y_i^{\\lambda} - 1}{\\lambda}boxcox(yi​)=λyiλ​−1​ You can think of it as a generalization of the square root function: the square root function...","categories": ["IBM Machine Learning"],
+        "tags": ["Supervised","Regression","IBM"],
+        "url": "/ibm/reg/",
         "teaser": null
       }]
