@@ -88,4 +88,16 @@ var store = [{
         "tags": ["Supervised","Regression","IBM"],
         "url": "/ibm/reg/",
         "teaser": null
+      },{
+        "title": "Deep Learning",
+        "excerpt":"Learning and Regularization Tecniques Dropout - This is a mechanism in which at each training iteration (batch) we randomly remove a subset of neurons. This prevents a neural network from relying too much on individual pathways, making it more robust. At test time the weight of the neuron is rescaled...","categories": ["IBM Machine Learning"],
+        "tags": ["Deep Learning","IBM"],
+        "url": "/ibm/dl/",
+        "teaser": null
+      },{
+        "title": "RNN",
+        "excerpt":"RNN Vanila RNN Context? use the notion of recurrence. Two outputs: Prediction and State (state of recurrent neural network) Learning goals Let r = input vector dimension, s = hidden state dimension, and t = output dimension. Us×r,Ws×s,Vt×ssi=f(UiTx+WiTsi+bi)U_{s\\times r}, W_{s\\times s}, V_{t\\times s}\\\\ s_i = f(U_i^T x + W_i^T s_i...","categories": ["IBM Machine Learning"],
+        "tags": ["Deep Learning","IBM","Week4"],
+        "url": "/ibm/dl4/",
+        "teaser": null
       }]
