@@ -100,4 +100,22 @@ var store = [{
         "tags": ["Deep Learning","IBM","Week4"],
         "url": "/ibm/dl4/",
         "teaser": null
+      },{
+        "title": "Using Machine Learning in Trading and Finance",
+        "excerpt":"Endogenous and Exogenous trading rule Endo: long/short decision based on price data Exgo: uses other factors to make decision Are stock price and voluem data sufficient to enter a trade Can patterns of past predict? Extrapolate data pattern? E.g. Monetary policy Geopolitical Derivative market Excit rules Profit-exit Bid-ask spread, Brokerage...","categories": ["Quant"],
+        "tags": ["Deep Learning","Finance","Trading","Coursera"],
+        "url": "/quant/mltf/",
+        "teaser": null
+      },{
+        "title": "Autoencoder and GAN",
+        "excerpt":"Autoencoder Several applications: Dimensional reduction Preprocessing for classification Identifying essential elements of the input data and filtering out noise. Deal with some of these PCA limitations: PCA has learned features that are linear combinations of original features. VAE: Variational Autoencoder Data are assumed to be represented by a set of...","categories": ["IBM Machine Learning"],
+        "tags": ["Deep Learning","IBM","Week5"],
+        "url": "/ibm/dl5/",
+        "teaser": null
+      },{
+        "title": "Reinforcement Learning",
+        "excerpt":"Reinforcement Learning Agents interact with an Environment Choose from a set of available actions Actions impact the environment, which impacts agents via rewards Rewards are unknown and must be estimated by the agent Solutions represent a Policy by which Agents choose Actions in response to the State Agents typically maximize...","categories": ["IBM Machine Learning"],
+        "tags": ["Deep Learning","IBM","Week6"],
+        "url": "/ibm/dl6/",
+        "teaser": null
       }]
