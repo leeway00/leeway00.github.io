@@ -138,3 +138,29 @@ where $\mu$ is offset, $a_t$ is white noise at time t.\
 > $Var[X_t] = \phi^2 Var[X_{t-1}] + 2\phi Var[X_{t-1}, a_t] \sigma_a^2 = \phi^2 Var[X_{t-1}]+\sigma_a^2$\
 > Since stationary or Causal time series, 지금의 관측치는 미래의 노이즈와는 무관하다. so, middle part =0
 
+### Stationary condition of AR(1)
+If a model is stationary,
+- $E(y_t) = E(y_{t-1}) = \cdots = E(y_1) = \mu$
+- $E[\epsilon_t] =0$
+
+Thus,
+
+$$\begin{aligned} E(y_t) &= E(\phi_0 + \phi_1 y_{t-1} + \epsilon_t) \\ &= \phi_0 + \phi_1 E(y_{t-1}) + 0 \end{aligned}$$
+
+and by using a stationary condition $E(y_t) = E(y_{t-1}) = \mu$,
+
+$$\begin{aligned} \mu &= \phi_0 + \phi_1 \mu\\ \mu &= \frac{\phi_0}{1-\phi_1} \end{aligned}$$
+
+Embedding $\phi_0 = \mu (1-\phi_1)$ to a model of AR(1), and compute variance and use the definition of stationary.
+
+$$\begin{aligned} 
+y_t &= \phi_0 + \phi_1 y_{t-1} + \epsilon_t\\ 
+y_t &= \mu(1-\phi_1) + \phi_1 y_{t-1} + \epsilon_t\\ 
+y_t - \mu &= \phi_1(y_{t-1} - \mu) + \epsilon_t \\ 
+\:\\ 
+Var(y_t) &= \phi_1^2 Var(y_{t-1}) + Var(\epsilon_t)\\ 
+Var(y_t) &= \frac{Var(\epsilon_t)}{1-\phi_1^2} \geq 0 \ (\because Var(y_t) = Var(y_{t-1}) ) 
+\end{aligned}$$
+
+Thus, 
+$$\phi_1^2 \leq 1$$
