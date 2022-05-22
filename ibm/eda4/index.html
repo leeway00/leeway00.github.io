@@ -54,7 +54,7 @@
 
     <meta
       property="article:modified_time"
-      content="2022-05-22T14:42:06+00:00"
+      content="2022-05-22T14:55:14+00:00"
     />
 
     <link rel="canonical" href="https://leeway00.github.io/ibm/eda4/" />
@@ -135,6 +135,9 @@
               <span class="site-subtitle">Powered by Yobi Isi❤️</span>
             </a>
             <ul class="visible-links">
+              <li class="masthead__menu-item">
+                <a href="/categories/projects/">Project Notes</a>
+              </li>
               <li class="masthead__menu-item">
                 <a href="/categories/ibm-machine-learning/">IBM Notes</a>
               </li>
@@ -324,11 +327,13 @@
 
                   <li>
                     <a href="/categories/ibm-machine-learning" class=""
-                      >IBM (17)</a
+                      >IBM (16)</a
                     >
                   </li>
                 </ul>
                 <!--ul>
+                
+                    
                 
                     
                 
@@ -349,6 +354,12 @@
                     >
                   </li>
                 </ul>
+                <span class="nav__sub-title">Projects</span>
+                <ul>
+                  <li>
+                    <a href="/categories/projects" class="">Time Series (1)</a>
+                  </li>
+                </ul>
               </li>
             </ul>
           </nav>
@@ -365,7 +376,7 @@
           />
           <meta itemprop="description" content="Exploratory Data Analysis" />
           <meta itemprop="datePublished" content="2022-05-04T00:00:00+00:00" />
-          <meta itemprop="dateModified" content="2022-05-22T14:42:06+00:00" />
+          <meta itemprop="dateModified" content="2022-05-22T14:55:14+00:00" />
 
           <div class="page__inner-wrap">
             <header>
@@ -517,12 +528,18 @@
               </p>
 
               <h3 id="codes">Codes</h3>
-              <pre><code class="language-{.python}">sns.barplot(x="variable", y="value", data=df)
-sns.barplot(y, x=pd.cut(df.variable, bins=#), data=df)
-pairplot = data[['x', 'y', 'z']]
-sns.pairplot(pairplot, hue = "variable")
-sns.jointplot(x="x", y="y", data=df, kind='hex') # hexbin plot
-</code></pre>
+              <div class="language-python highlighter-rouge">
+                <div class="highlight">
+                  <pre
+                    class="highlight"
+                  ><code><span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"variable"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"value"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">pd</span><span class="p">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">variable</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="c1">#), data=df)
+</span><span class="n">pairplot</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s">'x'</span><span class="p">,</span> <span class="s">'y'</span><span class="p">,</span> <span class="s">'z'</span><span class="p">]]</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">pairplot</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s">"variable"</span><span class="p">)</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"y"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">'hex'</span><span class="p">)</span> <span class="c1"># hexbin plot
+</span></code></pre>
+                </div>
+              </div>
 
               <h3 id="parametric-vs-non-parametric">
                 Parametric vs Non-parametric
