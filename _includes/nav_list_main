@@ -25,8 +25,8 @@
             </ul>
             <!--ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "STL" %}
-                        <li><a href="/categories/stl" class="">C++ STL & 표준 ({{category[1].size}})</a></li>
+                    {% if category[0] == "Project" %}
+                        <li><a href="/categories/projects" class="">Projects ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul-->
@@ -35,6 +35,14 @@
                 {% for category in site.categories %}
                     {% if category[0] == "Time Series" %}
                         <li><a href="/categories/time-series" class="">Time Series ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        <span class="nav__sub-title">Projects</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Projects" %}
+                        <li><a href="/categories/projects" class="">Time Series ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>

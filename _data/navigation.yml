@@ -1,5 +1,7 @@
 # main links
 main:
+  - title: "Project Notes"
+    url: "/categories/projects/"
   - title: "IBM Notes"
     url: "/categories/ibm-machine-learning/"
   - title: "Time Series"

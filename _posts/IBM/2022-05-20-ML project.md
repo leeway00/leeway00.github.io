@@ -1,8 +1,8 @@
 ---
 title: "Machine Learning on Apple stock daily return"
-category: IBM Machine Learning
+category: Projects
 tags:
-  - [Machine Learning, IBM, Project]
+  - [Machine Learning, IBM]
 permalink: /ibm/proj1/
 last_modified_at: Now
 
