@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 ```
 
-# 1. Data
+## 1. Data
 
 
 ```python
@@ -54,25 +54,25 @@ aapl.columns
 
 
 
-### 1-2-1 Determining Normality
+### 1-1 Determining Normality
 
 #### BoxCox Transformation
 
 
 ```python
-# from scipy.stats.mstats import normaltest # D'Agostino K^2 Test
-# from scipy.stats import boxcox # Not doing this since it's time series data and not normally distributed
+## from scipy.stats.mstats import normaltest ## D'Agostino K^2 Test
+## from scipy.stats import boxcox ## Not doing this since it's time series data and not normally distributed
 
-# # Adding boxcox value
-# aapl_cut = aapl.drop(['Date','daily_ret'], axis=1)
-# nomres = normaltest(aapl_cut)
-# aapl_cut = aapl_cut.iloc[:,np.where(nomres[0] > 0.05)[0].tolist()]
-# for i in aapl_cut.columns:
-#     bc_res = boxcox(aapl_cut[i])
-#     aapl['box_'+i] = bc_res[0]
+## ## Adding boxcox value
+## aapl_cut = aapl.drop(['Date','daily_ret'], axis=1)
+## nomres = normaltest(aapl_cut)
+## aapl_cut = aapl_cut.iloc[:,np.where(nomres[0] > 0.05)[0].tolist()]
+## for i in aapl_cut.columns:
+##     bc_res = boxcox(aapl_cut[i])
+##     aapl['box_'+i] = bc_res[0]
 ```
 
-### Using dummy variables
+#### Using dummy variables
 Making dummy variable based on categorized data
 - vix, vix change
 - sp500, sp500 change
@@ -81,24 +81,24 @@ Making dummy variable based on categorized data
 ```python
 opt = True
 if opt:
-    one_hot_encode_cols = aapl.dtypes[aapl.dtypes == aapl.vix_cat.dtype]  # filtering by string categoricals
-    one_hot_encode_cols = one_hot_encode_cols.index.tolist()  # list of categorical fields
+    one_hot_encode_cols = aapl.dtypes[aapl.dtypes == aapl.vix_cat.dtype]  ## filtering by string categoricals
+    one_hot_encode_cols = one_hot_encode_cols.index.tolist()  ## list of categorical fields
 
-    # Do the one hot encoding
+    ## Do the one hot encoding
     df = pd.get_dummies(aapl, columns=one_hot_encode_cols, drop_first=True).reset_index(drop=True)
 
-    # # Combination of dummy variables: Not useful since it takes a lot of computing power
-    # pd.options.mode.chained_assignment = None
-    # temp = pd.DataFrame()
-    # for i in [one_hot_encode_cols[0],one_hot_encode_cols[2]]:
-    #     lists = df.columns[1:]
-    #     for name in lists:
-    #         if name in "daily_ret":
-    #             continue
-    #         if name[:-2] not in one_hot_encode_cols:
-    #             for j in range(2,5):
-    #                 temp[name+'*'+i+'_'+str(j)] = df[name]*df[i+'_'+str(j)]
-    # df = pd.concat([df, temp], axis=1)
+    ## ## Combination of dummy variables: Not useful since it takes a lot of computing power
+    ## pd.options.mode.chained_assignment = None
+    ## temp = pd.DataFrame()
+    ## for i in [one_hot_encode_cols[0],one_hot_encode_cols[2]]:
+    ##     lists = df.columns[1:]
+    ##     for name in lists:
+    ##         if name in "daily_ret":
+    ##             continue
+    ##         if name[:-2] not in one_hot_encode_cols:
+    ##             for j in range(2,5):
+    ##                 temp[name+'*'+i+'_'+str(j)] = df[name]*df[i+'_'+str(j)]
+    ## df = pd.concat([df, temp], axis=1)
 else:
     df = aapl
     
@@ -140,7 +140,7 @@ singular_test(df)
 
 
 
-# 2. Sklearn learing model
+## 2. Sklearn learing model
 
 
 ```python
@@ -152,7 +152,7 @@ from sklearn.model_selection import TimeSeriesSplit, cross_validate, \
 from sklearn.pipeline import Pipeline
 ```
 
-### Testing learning model
+#### Testing learning model
 
 
 ```python
@@ -170,10 +170,10 @@ def evaluate(model, X, y, cv,
 
 def regress_test(data, regressor, params = None,
             target ='daily_ret', window = 120, pred_window = 30):
-    # training with 6month(120days) and predict 3month(60days)
+    ## training with 6month(120days) and predict 3month(60days)
     X = data.drop([target], axis=1)
     y = data[target]
-    tscv = TimeSeriesSplit() # n_splits=_num_batch
+    tscv = TimeSeriesSplit() ## n_splits=_num_batch
 
     pf = PolynomialFeatures(degree=1)
     alphas = np.geomspace(50, 800, 20)
@@ -190,10 +190,10 @@ def regress_test(data, regressor, params = None,
         scores.append(np.mean(r2))
     plt.plot(alphas, scores)
 
-# regress_test(df, Ridge())
+## regress_test(df, Ridge())
 ```
 
-### Learning Model
+#### Learning Model
 
 
 ```python
@@ -208,7 +208,7 @@ def Xy(df, target, cls):
 
 def execute_CV(model, param_grid, X, y, cv, poly = None, gridsearch = True, **kwargs):
     if poly != None:
-        # when both polynomial features and parameter grid are used
+        ## when both polynomial features and parameter grid are used
         scores = {}
         poly_able = (X.dtypes != 'uint8').values
         X_poly, X_non = X.iloc[:, poly_able], X.iloc[:, ~poly_able]
@@ -227,7 +227,7 @@ def execute_CV(model, param_grid, X, y, cv, poly = None, gridsearch = True, **kw
         return mxx[1]
     
     else:
-        # When only parameter grid are used
+        ## When only parameter grid are used
         if gridsearch:
             CV_ =  GridSearchCV(model, param_grid, cv=cv, verbose = 1, **kwargs)
         else:
@@ -282,7 +282,7 @@ def learning(data: pd.DataFrame, regressor, params = None, clss = False, pred = 
             n_jobs = None, poly = None, scores = None, Date = 'Date', gridsearch = True,
             target ='daily_ret', window = 400, pred_window = 15, prnt = True, refit = True):
 
-    # training with 6month(120days) and predict 3month(60days)
+    ## training with 6month(120days) and predict 3month(60days)
     if pred == True:
         data, data_pred = train_test_split(data, test_size=0.1, shuffle = False)
     X, y = Xy(data, target, clss)
@@ -303,7 +303,7 @@ def learning(data: pd.DataFrame, regressor, params = None, clss = False, pred = 
         else:
             return cvres, None
     else:
-        # cross validation only with polynomial features
+        ## cross validation only with polynomial features
         if poly != None:
             scores = {}
             poly_able = (X.dtypes != 'uint8').values
@@ -318,7 +318,7 @@ def learning(data: pd.DataFrame, regressor, params = None, clss = False, pred = 
                     print(scores)
             return regressor.fit(X2, y), scores
         else:
-            # no cross validation
+            ## no cross validation
             res = []
             reg = regressor.fit(X, y)
             if pred:
@@ -338,7 +338,7 @@ def learning(data: pd.DataFrame, regressor, params = None, clss = False, pred = 
         
 ```
 
-# 3. Regression
+## 3. Regression
 
 
 ```python
@@ -347,7 +347,7 @@ from sklearn.linear_model import LinearRegression, Lasso, Ridge, \
 from sklearn.ensemble import GradientBoostingRegressor
 ```
 
-### Ridge Regression
+#### Ridge Regression
 
 
 ```python
@@ -433,7 +433,7 @@ regressor = Pipeline([
 
 reg = learning(data = df, regressor = regressor, params = params, pred=  True)
 res = reg.cv_results_
-# print(plt.plot(res['param_ElasticNet__alpha'], res['mean_test_score']))
+## print(plt.plot(res['param_ElasticNet__alpha'], res['mean_test_score']))
 print(plt.plot(res['param_ElasticNet__l1_ratio'], res['mean_test_score']))
 ```
 
@@ -450,7 +450,7 @@ print(plt.plot(res['param_ElasticNet__l1_ratio'], res['mean_test_score']))
     
 
 
-### Latex stuff
+#### Latex stuff
 
 
 ```python
@@ -528,10 +528,10 @@ print(plt.plot(res['param_ridge_regression__alpha'].data, res['mean_test_r2']))
     
 
 
-### SGD Regression
+#### SGD Regression
 - Requires alpha, rmse, l1 ratio from elasticnet?
 
-### GBR
+#### GBR
 
 
 ```python
@@ -590,7 +590,7 @@ plt.plot(res['param_GBR__max_depth'], res['mean_test_score'])
 lr = GradientBoostingRegressor(random_state=717, 
                                learning_rate = 0.005, max_depth = 5)
 params = {
-    # 'GBR__max_depth': np.arange(2, 10, 2),
+    ## 'GBR__max_depth': np.arange(2, 10, 2),
     'GBR__n_estimators': np.arange(100, 150, 20),
 }
 regressor = Pipeline([
@@ -632,7 +632,7 @@ plt.plot(res['param_GBR__n_estimators'], res['mean_test_score'])
     
 
 
-# 3. Classification
+## 3. Classification
 
 
 ```python
@@ -643,9 +643,9 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
 ```
 
-### 3-1 Basic classification models
+#### 3-1 Basic classification models
 
-#### 3-1-1 Logistic Regression
+##### 3-1-1 Logistic Regression
 
 
 ```python
@@ -700,7 +700,7 @@ reg
     
 
 
-#### 3-1-2 Tree based modelm
+##### 3-1-2 Tree based modelm
 
 
 ```python
@@ -712,7 +712,7 @@ import pydotplus
 
 
 ```python
-# Estimate dtc model and report outcomes
+## Estimate dtc model and report outcomes
 dt1 = DecisionTreeClassifier()
 dt1, rpt = learning(data = df, regressor = dt1,
     clss = True, pred = True, prnt = False)
@@ -720,7 +720,7 @@ dt1, rpt = learning(data = df, regressor = dt1,
 
 
 ```python
-# Estimate dtc model and report outcomes
+## Estimate dtc model and report outcomes
 dtc = DecisionTreeClassifier()
 params = {'max_depth':range(1, dt1.tree_.max_depth+1, 2),
               'max_features': range(1, len(dt1.feature_importances_)+1)}
@@ -770,18 +770,18 @@ plt.plot(res['param_max_depth'].data, res['mean_test_score'])
 
 
 ```python
-### BEGIN SOLUTION
-# Create an output destination for the file
+#### BEGIN SOLUTION
+## Create an output destination for the file
 dot_data = StringIO()
 
 export_graphviz(reg.best_estimator_, out_file=dot_data, filled=True)
 graph = pydotplus.graph_from_dot_data(dot_data.getvalue())
 
-# View the tree image
+## View the tree image
 filename = 'wine_tree_prune.png'
 graph.write_png(filename)
 Image(filename=filename) 
-### END SOLUTION
+#### END SOLUTION
 ```
 
 
@@ -793,11 +793,11 @@ Image(filename=filename)
 
 
 
-#### 3-1-3 KNN
+##### 3-1-3 KNN
 
 
 ```python
-# Estimate KNN model and report outcomes
+## Estimate KNN model and report outcomes
 knn = KNeighborsClassifier()
 params = {
     'knn__n_neighbors': np.arange(50, 150, 5),
@@ -838,7 +838,7 @@ print(reg.best_params_)
 
 
 ```python
-### BEGIN SOLUTION
+#### BEGIN SOLUTION
 train, test = train_test_split(df, test_size=0.2, shuffle = False)
 X_train = train.drop(['daily_ret', 'Date'], axis=1)
 y_train = train['daily_ret']>0
@@ -848,7 +848,7 @@ y_test = test['daily_ret']>0
 
 max_k = 40
 f1_scores = list()
-error_rates = list() # 1-accuracy
+error_rates = list() ## 1-accuracy
 
 for k in range(1, max_k):
     
@@ -864,7 +864,7 @@ for k in range(1, max_k):
 f1_results = pd.DataFrame(f1_scores, columns=['K', 'F1 Score'])
 error_results = pd.DataFrame(error_rates, columns=['K', 'Error Rate'])
 
-# Plot F1 results
+## Plot F1 results
 sns.set_context('talk')
 sns.set_style('ticks')
 
@@ -873,7 +873,7 @@ ax = f1_results.set_index('K').plot(color=colors[0])
 ax.set(xlabel='K', ylabel='F1 Score')
 ax.set_xticks(range(1, max_k, 2));
 plt.title('KNN F1 Score')
-# plt.savefig('knn_f1.png')
+## plt.savefig('knn_f1.png')
 ```
 
 
@@ -895,7 +895,7 @@ plt.title('KNN F1 Score')
 
 
 ```python
-# Plot Accuracy (Error Rate) results
+## Plot Accuracy (Error Rate) results
 sns.set_context('talk')
 sns.set_style('ticks')
 
@@ -925,7 +925,7 @@ plt.title('KNN Elbow Curve')
     
 
 
-### 3-2 Linear Decision boundary
+#### 3-2 Linear Decision boundary
 
 
 ```python
@@ -950,7 +950,7 @@ ax = plt.axes()
 ax.scatter(
     X_color.iloc[:, 0], X_color.iloc[:, 1],
     color=y_color, alpha=1)
-# -----------
+## -----------
 x_axis, y_axis = np.arange(0, 1.005, .005), np.arange(0, 1.005, .005)
 xx, yy = np.meshgrid(x_axis, y_axis)
 xx_ravel = xx.ravel()
@@ -959,7 +959,7 @@ X_grid = pd.DataFrame([xx_ravel, yy_ravel]).T
 y_grid_predictions = LSVC.predict(X_grid)
 y_grid_predictions = y_grid_predictions.reshape(xx.shape)
 ax.contourf(xx, yy, y_grid_predictions, cmap=plt.cm.autumn_r, alpha=.3)
-# -----------
+## -----------
 ax.set(
     xlabel=fields[0],
     ylabel=fields[1],
@@ -1102,7 +1102,7 @@ for C in Cs:
     
 
 
-#### Classifcation
+##### Classifcation
 - SVC, nystroem converge time
 - Tree model
 
@@ -1149,7 +1149,7 @@ sgd.fit(X2_transformed, y2)
 
 ```python
 train_test_full_error
-### END SOLUTION
+#### END SOLUTION
 ```
 
 
@@ -1206,7 +1206,7 @@ train_test_full_error
 
 
 ```python
-### BEGIN SOLUTION
+#### BEGIN SOLUTION
 from sklearn.model_selection import GridSearchCV
 
 param_grid = {'max_depth':range(1, dt.tree_.max_depth+1, 2),
@@ -1313,11 +1313,11 @@ confusion_plot(y_test, y_test_pred_gr)
     
 
 
-### 3-3 Classification Ensamble
+#### 3-3 Classification Ensamble
 
 
 ```python
-# Estimate dtc model and report outcomes
+## Estimate dtc model and report outcomes
 gbc = GradientBoostingClassifier(random_state=777, n_iter_no_change= 10)
 gbc, rpt = learning(data = df, regressor = gbc, clss = True, pred = True, prnt = False)
 
@@ -1360,27 +1360,27 @@ ax.set(ylabel='Feature');
     
 
 
-# 4. Unsupervised
+## 4. Unsupervised
 
 
 ```python
 aapl2 = pd.read_csv('./data/aapl2.csv').dropna()
-# float_columns = [i for i in aapl2.columns if i not in ['Date']]
-# no_cols = [i for i in aapl.columns if i not in float_columns]
-# aapl2 = pd.merge(aapl[no_cols], aapl2, on='Date', how = 'left')
+## float_columns = [i for i in aapl2.columns if i not in ['Date']]
+## no_cols = [i for i in aapl.columns if i not in float_columns]
+## aapl2 = pd.merge(aapl[no_cols], aapl2, on='Date', how = 'left')
 float_columns = [i for i in aapl2.columns if aapl2.dtypes[i] != object]
 ```
 
 
 ```python
-# sets backend to render higher res images
+## sets backend to render higher res images
 %config InlineBackend.figure_formats = ['retina']
 import numpy as np, pandas as pd, seaborn as sns, matplotlib.pyplot as plt
 from sklearn.preprocessing import scale, StandardScaler, MinMaxScaler
 from sklearn.cluster import KMeans, AgglomerativeClustering
 ```
 
-### 4-1 K-means clustering
+#### 4-1 K-means clustering
 
 
 ```python
@@ -1391,17 +1391,17 @@ sns.set_context("talk")
 
 
 ```python
-# helper function that allows us to display data in 2 dimensions an highlights the clusters
-# def display_cluster(X,kmeans):
-#     plt.scatter(X[:,0], 
-#                 X[:,1])
+## helper function that allows us to display data in 2 dimensions an highlights the clusters
+## def display_cluster(X,kmeans):
+##     plt.scatter(X[:,0], 
+##                 X[:,1])
 
-#     # Plot the clusters 
-#     plt.scatter(kmeans.cluster_centers_[:, 0], 
-#                 kmeans.cluster_centers_[:, 1], 
-#                 s=200,                             # Set centroid size
-#                 c='red')                           # Set centroid color
-#     plt.show()
+##     ## Plot the clusters 
+##     plt.scatter(kmeans.cluster_centers_[:, 0], 
+##                 kmeans.cluster_centers_[:, 1], 
+##                 s=200,                             ## Set centroid size
+##                 c='red')                           ## Set centroid color
+##     plt.show()
 def display_cluster(X,km=[],num_clusters=0):
     color = 'brgcmyk'
     alpha = 0.5
@@ -1423,7 +1423,7 @@ cdf = StandardScaler().fit(X_cdf).transform(X_cdf)
 
 ```python
 num_clusters = 5
-km = KMeans(n_clusters=num_clusters, n_init=10) # n_init, number of times the K-mean algorithm will run
+km = KMeans(n_clusters=num_clusters, n_init=10) ## n_init, number of times the K-mean algorithm will run
 km.fit(cdf)
 display_cluster(cdf, km, num_clusters=num_clusters)
 ```
@@ -1436,7 +1436,6 @@ display_cluster(cdf, km, num_clusters=num_clusters)
 
 
 ```python
-### BEGIN SOLUTION
 inertia = []
 list_num_clusters = list(range(1,11))
 for num_clusters in list_num_clusters:
@@ -1448,7 +1447,6 @@ plt.plot(list_num_clusters,inertia)
 plt.scatter(list_num_clusters,inertia)
 plt.xlabel('Number of Clusters')
 plt.ylabel('Inertia');
-### END SOLUTION
 ```
 
 
@@ -1457,7 +1455,7 @@ plt.ylabel('Inertia');
     
 
 
-### 4-2 Comparing in multidimension
+#### 4-2 Comparing in multidimension
 
 
 ```python
@@ -1478,7 +1476,6 @@ ax = plot_data.plot(marker='o',ls='-')
 ax.set_xticks(range(0,21,2))
 ax.set_xlim(0,21)
 ax.set(xlabel='Cluster', ylabel='Inertia');
-### END SOLUTION
 ```
 
     /Users/hun/miniforge3/envs/hun/lib/python3.9/site-packages/pandas/core/indexes/base.py:6982: FutureWarning: In a future version, the Index constructor will not infer numeric dtypes when passed object-dtype sequences (matching Series behavior)
@@ -1494,7 +1491,6 @@ ax.set(xlabel='Cluster', ylabel='Inertia');
 
 ```python
 
-### BEGIN SOLUTION
 res = pd.DataFrame()
 res['daily_ret'] = aapl2.daily_ret
 data = StandardScaler().fit(aapl2[float_columns]).transform(aapl2[float_columns])
@@ -1502,7 +1498,6 @@ km = KMeans(n_clusters=5, n_init=20, random_state=777)
 km = km.fit(data)
 res['kmeans'] = km.predict(data)
 
-### BEGIN SOLUTION
 ag = AgglomerativeClustering(n_clusters=5, linkage='ward', compute_full_tree=True)
 ag = ag.fit(data)
 res['agglom'] = ag.fit_predict(data)
@@ -1562,9 +1557,9 @@ print(res2.to_latex())
 
 
 ```python
-# First, we import the cluster hierarchy module from SciPy (described above) to obtain the linkage and dendrogram functions.
+## First, we import the cluster hierarchy module from SciPy (described above) to obtain the linkage and dendrogram functions.
 from scipy.cluster import hierarchy
-# Some color setup
+## Some color setup
 red,blue = colors[2], colors[0]
 
 Z = hierarchy.linkage(ag.children_, method='ward')
@@ -1574,7 +1569,6 @@ den = hierarchy.dendrogram(Z, orientation='top',
                            p=30, truncate_mode='lastp',
                            show_leaf_counts=True, ax=ax,
                            above_threshold_color=blue)
-### END SOLUTION
 ```
 
 
@@ -1583,7 +1577,7 @@ den = hierarchy.dendrogram(Z, orientation='top',
     
 
 
-### 4-3 utilizing in regression
+#### 4-3 utilizing in regression
 
 
 ```python
@@ -1593,19 +1587,19 @@ km = KMeans(n_clusters=5, n_init=20, random_state=777)
 km = km.fit(data)
 aapl['kmeans'] = km.predict(data)[1:]
 
-### BEGIN SOLUTION
+#### BEGIN SOLUTION
 ag = AgglomerativeClustering(n_clusters=5, linkage='ward', compute_full_tree=True)
 ag = ag.fit(data)
 aapl['agglom'] = ag.fit_predict(data)[1:]
 
-one_hot_encode_cols = ['kmeans','agglom']  # list of categorical fields
+one_hot_encode_cols = ['kmeans','agglom']  ## list of categorical fields
 df = pd.get_dummies(aapl, columns=one_hot_encode_cols, drop_first=True).reset_index(drop=True)
 
 ```
 
 
 ```python
-# Estimate dtc model and report outcomes
+## Estimate dtc model and report outcomes
 gbc = GradientBoostingClassifier(random_state=777, n_iter_no_change= 10)
 gbc = learning(data = df, regressor = gbc, clss = True, pred = True, prnt = False)
 
@@ -1641,7 +1635,7 @@ print(reg.best_params_)
     
 
 
-## 4-2 PCA
+### 4-2 PCA
 
 
 ```python
@@ -1650,20 +1644,20 @@ from sklearn.decomposition import PCA
 pca_list = list()
 feature_weight_list = list()
 
-# Fit a range of PCA models
+## Fit a range of PCA models
 data = StandardScaler().fit(aapl2[float_columns]).transform(aapl2[float_columns])
 
 for n in range(6, 10):
     
-    # Create and fit the model
+    ## Create and fit the model
     PCAmod = PCA(n_components=n)
     PCAmod.fit(data)
     
-    # Store the model and variance
+    ## Store the model and variance
     pca_list.append(pd.Series({'n':n, 'model':PCAmod,
                                'var': PCAmod.explained_variance_ratio_.sum()}))
     
-    # Calculate and store feature importances
+    ## Calculate and store feature importances
     abs_feature_values = np.abs(PCAmod.components_).sum(axis=0)
     feature_weight_list.append(pd.DataFrame({'n':n, 
                                              'features': float_columns,
@@ -1889,7 +1883,7 @@ from sklearn.decomposition import KernelPCA
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import mean_squared_error
 
-# Custom scorer--use negative rmse of inverse transform
+## Custom scorer--use negative rmse of inverse transform
 def scorer(pcamodel, X, y=None):
 
     try:
@@ -1897,21 +1891,21 @@ def scorer(pcamodel, X, y=None):
     except:
         X_val = X
         
-    # Calculate and inverse transform the data
+    ## Calculate and inverse transform the data
     data_inv = pcamodel.fit(X_val).transform(X_val)
     data_inv = pcamodel.inverse_transform(data_inv)
     
-    # The error calculation
+    ## The error calculation
     mse = mean_squared_error(data_inv.ravel(), X_val.ravel())
     
-    # Larger values are better for scorers, so take negative value
+    ## Larger values are better for scorers, so take negative value
     return -1.0 * mse
 
-# The grid search parameters
+## The grid search parameters
 param_grid = {'gamma':[0.001, 0.01, 0.05, 0.1, 0.5, 1.0],
               'n_components': [2, 3, 4]}
 
-# The grid search
+## The grid search
 kernelPCA = GridSearchCV(KernelPCA(kernel='rbf', fit_inverse_transform=True),
                          param_grid=param_grid,
                          scoring=scorer,
@@ -1993,11 +1987,11 @@ ax.grid(True)
     
 
 
-# ETC
+## ETC
 
 
 ```python
-## How to make pipeline by features?
+### How to make pipeline by features?
 
 from sklearn.pipeline import make_union, make_pipeline
 from sklearn.preprocessing import FunctionTransformer
