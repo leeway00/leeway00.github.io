@@ -193,7 +193,7 @@ def regress_test(data, regressor, params = None,
 ## regress_test(df, Ridge())
 ```
 
-#### Learning Model
+### Learning Model
 
 What is the problem here?
 ```python
@@ -689,7 +689,7 @@ reg
     
 
 
-##### 3-1-2 Tree based modelm
+#### 3-1-2 Tree based modelm
 
 
 ```python
@@ -827,7 +827,6 @@ print(reg.best_params_)
 
 
 ```python
-#### BEGIN SOLUTION
 train, test = train_test_split(df, test_size=0.2, shuffle = False)
 X_train = train.drop(['daily_ret', 'Date'], axis=1)
 y_train = train['daily_ret']>0
@@ -1624,7 +1623,7 @@ print(reg.best_params_)
     
 
 
-### 4-2 PCA
+### 4-4 PCA
 
 
 ```python
