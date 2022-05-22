@@ -152,7 +152,7 @@ from sklearn.model_selection import TimeSeriesSplit, cross_validate, \
 from sklearn.pipeline import Pipeline
 ```
 
-#### Testing learning model
+### Testing learning model
 
 
 ```python
@@ -195,7 +195,7 @@ def regress_test(data, regressor, params = None,
 
 #### Learning Model
 
-
+What is the problem here?
 ```python
 
 from tqdm import tqdm
@@ -208,7 +208,7 @@ def Xy(df, target, cls):
 
 def execute_CV(model, param_grid, X, y, cv, poly = None, gridsearch = True, **kwargs):
     if poly != None:
-        ## when both polynomial features and parameter grid are used
+        # when both polynomial features and parameter grid are used
         scores = {}
         poly_able = (X.dtypes != 'uint8').values
         X_poly, X_non = X.iloc[:, poly_able], X.iloc[:, ~poly_able]
@@ -333,9 +333,6 @@ def learning(data: pd.DataFrame, regressor, params = None, clss = False, pred = 
             else:
                 res = evaluate(reg, X, y, tscv, clss)
             return reg, res
-             
-    
-        
 ```
 
 ## 3. Regression
@@ -347,7 +344,7 @@ from sklearn.linear_model import LinearRegression, Lasso, Ridge, \
 from sklearn.ensemble import GradientBoostingRegressor
 ```
 
-#### Ridge Regression
+### Ridge Regression
 
 
 ```python
@@ -477,18 +474,10 @@ print(pd.DataFrame(reg).to_latex())
       print(pd.DataFrame(reg).to_latex())
 
 
-
 ```python
 df.shape
 ```
-
-
-
-
     (2266, 57)
-
-
-
 
 ```python
 lr = LinearRegression()
@@ -528,10 +517,10 @@ print(plt.plot(res['param_ridge_regression__alpha'].data, res['mean_test_r2']))
     
 
 
-#### SGD Regression
+### SGD Regression
 - Requires alpha, rmse, l1 ratio from elasticnet?
 
-#### GBR
+### GBR
 
 
 ```python
@@ -643,9 +632,9 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
 ```
 
-#### 3-1 Basic classification models
+### 3-1 Basic classification models
 
-##### 3-1-1 Logistic Regression
+#### 3-1-1 Logistic Regression
 
 
 ```python
@@ -793,7 +782,7 @@ Image(filename=filename)
 
 
 
-##### 3-1-3 KNN
+#### 3-1-3 KNN
 
 
 ```python
@@ -925,7 +914,7 @@ plt.title('KNN Elbow Curve')
     
 
 
-#### 3-2 Linear Decision boundary
+### 3-2 Linear Decision boundary
 
 
 ```python
@@ -1102,7 +1091,7 @@ for C in Cs:
     
 
 
-##### Classifcation
+#### Classifcation
 - SVC, nystroem converge time
 - Tree model
 
@@ -1206,7 +1195,7 @@ train_test_full_error
 
 
 ```python
-#### BEGIN SOLUTION
+
 from sklearn.model_selection import GridSearchCV
 
 param_grid = {'max_depth':range(1, dt.tree_.max_depth+1, 2),
@@ -1313,7 +1302,7 @@ confusion_plot(y_test, y_test_pred_gr)
     
 
 
-#### 3-3 Classification Ensamble
+### 3-3 Classification Ensamble
 
 
 ```python
@@ -1380,7 +1369,7 @@ from sklearn.preprocessing import scale, StandardScaler, MinMaxScaler
 from sklearn.cluster import KMeans, AgglomerativeClustering
 ```
 
-#### 4-1 K-means clustering
+### 4-1 K-means clustering
 
 
 ```python
@@ -1455,7 +1444,7 @@ plt.ylabel('Inertia');
     
 
 
-#### 4-2 Comparing in multidimension
+### 4-2 Comparing in multidimension
 
 
 ```python
@@ -1577,7 +1566,7 @@ den = hierarchy.dendrogram(Z, orientation='top',
     
 
 
-#### 4-3 utilizing in regression
+### 4-3 utilizing in regression
 
 
 ```python
