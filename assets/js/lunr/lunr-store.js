@@ -118,4 +118,10 @@ var store = [{
         "tags": ["Deep Learning","IBM","Week6"],
         "url": "/ibm/dl6/",
         "teaser": null
+      },{
+        "title": "Machine Learning on Apple stock daily return",
+        "excerpt":"import numpy as np import pandas as pd import os import matplotlib.pyplot as plt %matplotlib inline import seaborn as sns 1. Data aapl = pd.read_csv('./data/aapl.csv') X = aapl.drop(['Date','daily_ret'], axis=1) y = aapl['daily_ret'] aapl.columns Index(['Date', 'Close', 'Volume', 'Lo', 'HO', 'CO', 'support_low', 'support_open', 'support_high', 'std20', 'std120', 'std_open20', 'std_high20', 'std_intra', 'ma20', 'ma120', 'daily_ret',...","categories": ["IBM Machine Learning"],
+        "tags": ["Machine Learning","IBM","Project"],
+        "url": "/ibm/proj1/",
+        "teaser": null
       }]

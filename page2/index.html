@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <!-- start custom head snippets -->
+
+    <!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+    <!-- Github Button
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script> -->
+
+    <!--<![endif]-->
+    <!-- end custom head snippets -->
+
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+    ></script>
+    <script src="/assets/js/typewrite.min.js"></script>
+
+    <meta charset="utf-8" />
+
+    <!-- begin _includes/seo.html -->
+    <title>
+      Statistics and Machine Learning in Finance - Hun’s Blog - Page 2
+    </title>
+    <meta name="description" content="Blog nebie" />
+
+    <meta name="author" content="Younghun Lee" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Hun's Blog" />
+    <meta
+      property="og:title"
+      content="Statistics and Machine Learning in Finance"
+    />
+    <meta property="og:url" content="https://leeway00.github.io/page2/" />
+
+    <meta property="og:description" content="Blog nebie" />
+
+    <link rel="canonical" href="https://leeway00.github.io/page2/" />
+
+    <link rel="prev" href="https://leeway00.github.io/" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+
+        "@type": "Person",
+        "name": "Younghun Lee",
+        "url": "https://leeway00.github.io/"
+      }
+    </script>
+
+    <!-- end _includes/seo.html -->
+
+    <link
+      href="/feed.xml"
+      type="application/atom+xml"
+      rel="alternate"
+      title="Hun's Blog Feed"
+    />
+
+    <!-- https://t.co/dKP3o1e -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script>
+      document.documentElement.className =
+        document.documentElement.className.replace(/\bno-js\b/g, "") + " js ";
+    </script>
+
+    <!-- For all browsers -->
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"
+    /></noscript>
+  </head>
+
+  <body class="layout--home">
+    <nav class="skip-links">
+      <ul>
+        <li>
+          <a href="#site-nav" class="screen-reader-shortcut"
+            >Skip to primary navigation</a
+          >
+        </li>
+        <li>
+          <a href="#main" class="screen-reader-shortcut">Skip to content</a>
+        </li>
+        <li>
+          <a href="#footer" class="screen-reader-shortcut">Skip to footer</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!--[if lt IE 9]>
+      <div class="notice--danger align-center" style="margin: 0">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience.
+      </div>
+    <![endif]-->
+
+    <div class="masthead">
+      <div class="masthead__inner-wrap">
+        <div class="masthead__menu">
+          <nav id="site-nav" class="greedy-nav">
+            <a class="site-title" href="/">
+              Hun's Blog
+              <span class="site-subtitle">Powered by Yobi Isi❤️</span>
+            </a>
+            <ul class="visible-links">
+              <li class="masthead__menu-item">
+                <a href="/categories/ibm-machine-learning/">IBM Notes</a>
+              </li>
+              <li class="masthead__menu-item">
+                <a href="/categories/time-series/">Time Series</a>
+              </li>
+              <li class="masthead__menu-item"></li>
+            </ul>
+
+            <button class="greedy-nav__toggle hidden" type="button">
+              <span class="visually-hidden">Toggle menu</span>
+              <div class="navicon"></div>
+            </button>
+            <ul class="hidden-links hidden"></ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <!-- <script>
+    var elements = document.querySelectorAll('.page__content.e-content').childNodes; // 수정1 
+    var addContent = false;
+    var contentsToAdd = [];
+    var expandtags = null;
+    var detailText = null;
+    var detailsTag = null;
+    var summaryTag = null;
+    var detailsContent = null;
+    for (var i=elements.length - 1; i > -1; i--){
+        el = elements[i]
+        if (el.innerHTML == '[/expand]'){
+            addContent = true
+            detailsContent = document.createElement('div')
+            detailsContent.className = 'collaspe-content'
+            detailsContent.setAttribute('markdown', '1')
+            el.parentNode.removeChild(el)
+        } else if (el.innerHTML == '[expand]' || (el.nodeName == 'P' && el.innerHTML.includes('[expand]summary:'))) {
+            addContent = false
+            expandtags = el.innerHTML.split('summary:')
+            if (expandtags.length == 1){
+                detailText = 'Details'
+            } else {
+                detailText = expandtags[1]
+            }
+            detailsTag = document.createElement('details')
+            detailsTag.className = 'collaspe-article'
+            summaryTag = document.createElement('summary')
+            summaryTag.appendChild(document.createTextNode(detailText))
+            detailsTag.appendChild(summaryTag)
+            for (var j=contentsToAdd.length - 1; j > -1; j--) {
+                detailsContent.appendChild(contentsToAdd[j])
+            }
+            detailsTag.appendChild(detailsContent)
+            el.parentNode.replaceChild(detailsTag, el)
+            contentsToAdd = []
+        } else {
+            if (addContent) {
+                contentsToAdd.push(el)
+            }
+        }
+    }
+</script> -->
+
+    <div class="initial-content">
+      <!-- <script>
+    $(document).ready(function () {
+      $("#typewriteText").typewrite({
+        actions: [{ type: "Math, Stats, and Finance!" }]
+
+    });
+  </script> -->
+      <!-- Changes:
+1. 220406 uncommented the github star, fork 
+/assets/images/
+
+background-color: var(--main-background-color) !important;
+
+-->
+      <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/mrvautin/typewrite/master/dist/typewrite.min.js"></script> -->
+
+      <style>
+        /* change cover_img in config.yml */
+        .jumbotron {
+          background-image: url("/assets/images/hero_ferrari.jpeg");
+        }
+      </style>
+
+      <!-- home hero section -->
+      <div class="jumbotron">
+        <img class="author-profile-img" src="/assets/images/profile_yh.png" />
+        <p class="jumbotron-heading">Hi, I am Younghun Lee !</p>
+
+        <script>
+          $(document).ready(function () {
+            $("#typewriteText").typewrite({
+              actions: [
+                { type: "Hello. " },
+                { type: "<br>" },
+                { type: "Weclome " },
+                { delay: 1500 },
+                { remove: { num: 1, type: "stepped" } },
+                { select: { from: 11, to: 16 } },
+                { delay: 2000 },
+                { remove: { num: 5, type: "whole" } },
+                { delay: 300 },
+                { type: "lcome to typewrite. " },
+                { type: "<br>" },
+                { type: "It's just so easy to setup and use." },
+              ],
+            });
+          });
+        </script>
+
+        <p class="lead" id="typewriteText">
+          Statistics and Machine Learning in Finance
+        </p>
+
+        <div class="jumbotron-btns">
+          <!-- <a href="https://leeway00.github.io/get-started">
+      <button class="btn btn-md btn-warning"> <strong>Get Started</strong> </button>
+    </a>
+    <a id="olvy-target">
+      <button class="btn btn-md btn-default"> <strong>What's New</strong> </button>
+    </a>
+    <a href="https://www.linkedin.com/in/">
+      <button class="btn btn-md btn-default"><i class="fab fa-fw fa-linkedin"></i>LinkedIn</button>
+    </a> -->
+
+          <!-- 
+<button class="btn btn-md btn-default">
+  <i class="fas fa-fw fa-map-marker-alt" > <strong itemprop="name" class="p-locality">Somewhere</strong> </button>
+ -->
+
+          <a
+            href="mailto:leeyh0920@gmail.com"
+            rel="nofollow noopener noreferrer me"
+            ><button class="btn btn-md btn-default">
+              <i class="fas fa-fw fa-envelope-square"></i
+              ><strong>Personal Email</strong>
+            </button></a
+          >
+
+          <a
+            href="https://leeway00@github.com/"
+            rel="nofollow noopener noreferrer me"
+            ><button class="btn btn-md btn-default">
+              <i class="fab fa-fw fa-github"></i><strong>GitHub</strong>
+            </button></a
+          >
+
+          <a
+            href="https://linkedin.com/in/younghunlee"
+            rel="nofollow noopener noreferrer me"
+            ><button class="btn btn-md btn-default">
+              <i class="fab fa-fw fa-linkedin"></i><strong>linkedin</strong>
+            </button></a
+          >
+
+          <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+        </div>
+      </div>
+
+      <div id="main" role="main">
+        <div class="archive">
+          <h3 class="archive__subtitle">Recent posts</h3>
+
+          <div class="entries-list">
+            <div class="list__item">
+              <article class="archive-item">
+                <div>
+                  <small>
+                    <!--Archive page 용-: (post -> page)-->
+                    <!--page__taxonomy.html에서 가져 옴-->
+
+                    <span class="page__taxonomy">
+                      <span itemprop="keywords"
+                        ><a
+                          href="/categories/mathematical-statistics"
+                          class="page__taxonomy-item-category"
+                          rel="tag"
+                          >Mathematical Statistics</a
+                        >
+
+                        <a
+                          href="/tags/distribution"
+                          class="page__taxonomy-item-tag"
+                          rel="tag"
+                          >Distribution</a
+                        >
+                      </span>
+                    </span>
+                  </small>
+                  <span>
+                    <a href="/math-stat/ch3/">Chapter3 Special Distributions</a>
+                  </span>
+                  <small>
+                    <i class="fas fa-fw fa-calendar-alt" aria-hidden="true">
+                    </i>
+                    2022.03.31
+                  </small>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <nav class="pagination">
+            <ul>
+              <li><a href="/">Previous</a></li>
+
+              <li><a href="/">1</a></li>
+
+              <li><a href="#" class="disabled current">2</a></li>
+
+              <li>
+                <a href="#" class="disabled"
+                  ><span aria-hidden="true">Next</span></a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+        <!-- end custom footer snippets -->
+        <!-- <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div> -->
+
+        <div class="page__footer-copyright">
+          &copy; 2022 Younghun Lee. Powered by
+          <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp;
+          <a
+            href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/"
+            rel="nofollow"
+            >Minimal Mistakes</a
+          >.
+        </div>
+      </footer>
+    </div>
+
+    <script src="/assets/js/main.min.js"></script>
+  </body>
+</html>

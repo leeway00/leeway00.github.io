@@ -47,6 +47,8 @@
 
     <link rel="canonical" href="https://leeway00.github.io/" />
 
+    <link rel="next" href="https://leeway00.github.io/page2/" />
+
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -297,6 +299,59 @@ background-color: var(--main-background-color) !important;
           <h3 class="archive__subtitle">Recent posts</h3>
 
           <div class="entries-list">
+            <div class="list__item">
+              <article class="archive-item">
+                <div>
+                  <small>
+                    <!--Archive page 용-: (post -> page)-->
+                    <!--page__taxonomy.html에서 가져 옴-->
+
+                    <span class="page__taxonomy">
+                      <span itemprop="keywords"
+                        ><a
+                          href="/categories/ibm-machine-learning"
+                          class="page__taxonomy-item-category"
+                          rel="tag"
+                          >IBM Machine Learning</a
+                        >
+
+                        <a
+                          href="/tags/ibm"
+                          class="page__taxonomy-item-tag"
+                          rel="tag"
+                          >IBM</a
+                        ><span class="sep"> </span>
+
+                        <a
+                          href="/tags/machine-learning"
+                          class="page__taxonomy-item-tag"
+                          rel="tag"
+                          >Machine Learning</a
+                        ><span class="sep"> </span>
+
+                        <a
+                          href="/tags/project"
+                          class="page__taxonomy-item-tag"
+                          rel="tag"
+                          >Project</a
+                        >
+                      </span>
+                    </span>
+                  </small>
+                  <span>
+                    <a href="/ibm/proj1/"
+                      >Machine Learning on Apple stock daily return</a
+                    >
+                  </span>
+                  <small>
+                    <i class="fas fa-fw fa-calendar-alt" aria-hidden="true">
+                    </i>
+                    2022.05.20
+                  </small>
+                </div>
+              </article>
+            </div>
+
             <div class="list__item">
               <article class="archive-item">
                 <div>
@@ -1262,44 +1317,23 @@ background-color: var(--main-background-color) !important;
                 </div>
               </article>
             </div>
-
-            <div class="list__item">
-              <article class="archive-item">
-                <div>
-                  <small>
-                    <!--Archive page 용-: (post -> page)-->
-                    <!--page__taxonomy.html에서 가져 옴-->
-
-                    <span class="page__taxonomy">
-                      <span itemprop="keywords"
-                        ><a
-                          href="/categories/mathematical-statistics"
-                          class="page__taxonomy-item-category"
-                          rel="tag"
-                          >Mathematical Statistics</a
-                        >
-
-                        <a
-                          href="/tags/distribution"
-                          class="page__taxonomy-item-tag"
-                          rel="tag"
-                          >Distribution</a
-                        >
-                      </span>
-                    </span>
-                  </small>
-                  <span>
-                    <a href="/math-stat/ch3/">Chapter3 Special Distributions</a>
-                  </span>
-                  <small>
-                    <i class="fas fa-fw fa-calendar-alt" aria-hidden="true">
-                    </i>
-                    2022.03.31
-                  </small>
-                </div>
-              </article>
-            </div>
           </div>
+
+          <nav class="pagination">
+            <ul>
+              <li>
+                <a href="#" class="disabled"
+                  ><span aria-hidden="true">Previous</span></a
+                >
+              </li>
+
+              <li><a href="#" class="disabled current">1</a></li>
+
+              <li><a href="/page2/">2</a></li>
+
+              <li><a href="/page2/">Next</a></li>
+            </ul>
+          </nav>
         </div>
       </div>
     </div>
