@@ -29,7 +29,7 @@
     <meta charset="utf-8" />
 
     <!-- begin _includes/seo.html -->
-    <title>Machine Learning on Apple stock daily return - Hun’s Blog</title>
+    <title>Machine Learning on Apple stock daily return2 - Hun’s Blog</title>
     <meta
       name="description"
       content="import numpy as np import pandas as pd import os import matplotlib.pyplot as plt %matplotlib inline import seaborn as sns"
@@ -44,9 +44,9 @@
     <meta property="og:site_name" content="Hun's Blog" />
     <meta
       property="og:title"
-      content="Machine Learning on Apple stock daily return"
+      content="Machine Learning on Apple stock daily return2"
     />
-    <meta property="og:url" content="https://leeway00.github.io/ibm/proj1/" />
+    <meta property="og:url" content="https://leeway00.github.io/ibm/proj2/" />
 
     <meta
       property="og:description"
@@ -55,15 +55,15 @@
 
     <meta
       property="article:published_time"
-      content="2022-05-20T00:00:00+00:00"
+      content="2022-05-21T00:00:00+00:00"
     />
 
     <meta
       property="article:modified_time"
-      content="2022-08-16T23:41:47+00:00"
+      content="2022-08-16T23:41:48+00:00"
     />
 
-    <link rel="canonical" href="https://leeway00.github.io/ibm/proj1/" />
+    <link rel="canonical" href="https://leeway00.github.io/ibm/proj2/" />
 
     <script type="application/ld+json">
       {
@@ -377,14 +377,14 @@
         >
           <meta
             itemprop="headline"
-            content="Machine Learning on Apple stock daily return"
+            content="Machine Learning on Apple stock daily return2"
           />
           <meta
             itemprop="description"
             content="import numpy as npimport pandas as pdimport osimport matplotlib.pyplot as plt%matplotlib inlineimport seaborn as sns"
           />
-          <meta itemprop="datePublished" content="2022-05-20T00:00:00+00:00" />
-          <meta itemprop="dateModified" content="2022-08-16T23:41:47+00:00" />
+          <meta itemprop="datePublished" content="2022-05-21T00:00:00+00:00" />
+          <meta itemprop="dateModified" content="2022-08-16T23:41:48+00:00" />
 
           <div class="page__inner-wrap">
             <header>
@@ -394,10 +394,10 @@
                 itemprop="headline"
               >
                 <a
-                  href="https://leeway00.github.io/ibm/proj1/"
+                  href="https://leeway00.github.io/ibm/proj2/"
                   class="u-url"
                   itemprop="url"
-                  >Machine Learning on Apple stock daily return
+                  >Machine Learning on Apple stock daily return2
                 </a>
               </h1>
             </header>
@@ -499,19 +499,6 @@
                           >
                         </li>
                         <li><a href="#learning-model">Learning Model</a></li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a href="#3-regression">3. Regression</a>
-                      <ul>
-                        <li>
-                          <a href="#ridge-regression">Ridge Regression</a>
-                          <ul>
-                            <li><a href="#latex-stuff">Latex stuff</a></li>
-                          </ul>
-                        </li>
-                        <li><a href="#sgd-regression">SGD Regression</a></li>
-                        <li><a href="#gbr">GBR</a></li>
                       </ul>
                     </li>
                     <li>
@@ -932,410 +919,6 @@
 </code></pre>
                 </div>
               </div>
-
-              <h2 id="3-regression">3. Regression</h2>
-
-              <div class="language-python highlighter-rouge">
-                <div class="highlight">
-                  <pre
-                    class="highlight"
-                  ><code><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span><span class="p">,</span> <span class="n">Lasso</span><span class="p">,</span> <span class="n">Ridge</span><span class="p">,</span> \
-    <span class="n">ElasticNet</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingRegressor</span>
-</code></pre>
-                </div>
-              </div>
-
-              <h3 id="ridge-regression">Ridge Regression</h3>
-
-              <div class="language-python highlighter-rouge">
-                <div class="highlight">
-                  <pre
-                    class="highlight"
-                  ><code><span class="n">lr</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">3000</span><span class="p">)</span>
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">'ridge_regression__alpha'</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">geomspace</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="n">regressor</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
-    <span class="p">(</span><span class="s">"ridge_regression"</span><span class="p">,</span> <span class="n">lr</span><span class="p">)])</span>
-
-<span class="n">reg</span> <span class="o">=</span> <span class="n">learning</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">regressor</span> <span class="o">=</span> <span class="n">regressor</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">params</span><span class="p">,</span> <span class="n">pred</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">reg</span><span class="p">.</span><span class="n">cv_results_</span>
-</code></pre>
-                </div>
-              </div>
-
-              <div class="language-plaintext highlighter-rouge">
-                <div class="highlight">
-                  <pre
-                    class="highlight"
-                  ><code>Fitting 5 folds for each of 10 candidates, totalling 50 fits
-Best score: -0.004782872997843679
-0.0018543351779481965
-AxesSubplot(0.125,0.125;0.62x0.755)
-</code></pre>
-                </div>
-              </div>
-
-              <p>
-                <img
-                  src="/assets/images/ibm_assignment_files/ibm_assignment_19_1.png"
-                  alt="png"
-                />
-              </p>
-
-              <div class="language-python highlighter-rouge">
-                <div class="highlight">
-                  <pre
-                    class="highlight"
-                  ><code><span class="k">print</span><span class="p">(</span><span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s">'param_ridge_regression__alpha'</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="s">'mean_test_score'</span><span class="p">]))</span>
-</code></pre>
-                </div>
-              </div>
-
-              <div class="language-plaintext highlighter-rouge">
-                <div class="highlight">
-                  <pre
-                    class="highlight"
-                  ><code>[&lt;matplotlib.lines.Line2D object at 0x157a00eb0&gt;]
-</code></pre>
-                </div>
-              </div>
-
-              <p>
-                <img
-                  src="/assets/images/ibm_assignment_files/ibm_assignment_20_1.png"
-                  alt="png"
-                />
-              </p>
-
-              <div class="language-python highlighter-rouge">
-                <div class="highlight">
-                  <pre
-                    class="highlight"
-                  ><code><span class="n">lr</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">3000</span><span class="p">)</span>
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">'ridge_regression__alpha'</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">geomspace</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="n">regressor</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
-    <span class="p">(</span><span class="s">"ridge_regression"</span><span class="p">,</span> <span class="n">lr</span><span class="p">)])</span>
-
-<span class="n">reg</span> <span class="o">=</span> <span class="n">learning</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">regressor</span> <span class="o">=</span> <span class="n">regressor</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">params</span><span class="p">,</span> <span class="n">pred</span><span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">reg</span><span class="p">.</span><span class="n">cv_results_</span>
-<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s">'param_ridge_regression__alpha'</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="s">'mean_test_score'</span><span class="p">])</span>
-</code></pre>
-                </div>
-              </div>
-
-              <div class="language-plaintext highlighter-rouge">
-                <div class="highlight">
-                  <pre
-                    class="highlight"
-                  ><code>Fitting 5 folds for each of 10 candidates, totalling 50 fits
-Best score: -0.0015480943621106746
--0.0002423279793632993
-AxesSubplot(0.125,0.125;0.62x0.755)
-
-
-
-
-
-[&lt;matplotlib.lines.Line2D at 0x28795ba00&gt;]
-</code></pre>
-                </div>
-              </div>
-
-              <p>
-                <img
-                  src="/assets/images/ibm_assignment_files/ibm_assignment_21_2.png"
-                  alt="png"
-                />
-              </p>
-
-              <div class="language-python highlighter-rouge">
-                <div class="highlight">
-                  <pre
-                    class="highlight"
-                  ><code><span class="n">lr</span> <span class="o">=</span> <span class="n">ElasticNet</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">50000</span><span class="p">)</span>
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">'ElasticNet__alpha'</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">geomspace</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
-    <span class="s">'ElasticNet__l1_ratio'</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="n">regressor</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
-    <span class="p">(</span><span class="s">"ElasticNet"</span><span class="p">,</span> <span class="n">lr</span><span class="p">)])</span>
-
-<span class="n">reg</span> <span class="o">=</span> <span class="n">learning</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">regressor</span> <span class="o">=</span> <span class="n">regressor</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">params</span><span class="p">,</span> <span class="n">pred</span><span class="o">=</span>  <span class="bp">True</span><span class="p">)</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">reg</span><span class="p">.</span><span class="n">cv_results_</span>
-<span class="c1">## print(plt.plot(res['param_ElasticNet__alpha'], res['mean_test_score']))
-</span><span class="k">print</span><span class="p">(</span><span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s">'param_ElasticNet__l1_ratio'</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="s">'mean_test_score'</span><span class="p">]))</span>
-</code></pre>
-                </div>
-              </div>
-
-              <div class="language-plaintext highlighter-rouge">
-                <div class="highlight">
-                  <pre
-                    class="highlight"
-                  ><code>Fitting 5 folds for each of 100 candidates, totalling 500 fits
-Best score: -0.0015480943621106746
--0.0002423279793632993
-AxesSubplot(0.125,0.125;0.62x0.755)
-[&lt;matplotlib.lines.Line2D object at 0x28633eca0&gt;]
-</code></pre>
-                </div>
-              </div>
-
-              <p>
-                <img
-                  src="/assets/images/ibm_assignment_files/ibm_assignment_22_1.png"
-                  alt="png"
-                />
-              </p>
-
-              <h4 id="latex-stuff">Latex stuff</h4>
-
-              <div class="language-python highlighter-rouge">
-                <div class="highlight">
-                  <pre
-                    class="highlight"
-                  ><code><span class="n">lr</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
-<span class="n">reg</span> <span class="o">=</span> <span class="n">learning</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">regressor</span> <span class="o">=</span> <span class="n">lr</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">reg</span><span class="p">).</span><span class="n">to_latex</span><span class="p">())</span>
-</code></pre>
-                </div>
-              </div>
-
-              <div class="language-plaintext highlighter-rouge">
-                <div class="highlight">
-                  <pre class="highlight"><code>\begin{tabular}{lrrrr}
-\toprule
-{} &amp;  fit\_time &amp;  score\_time &amp;    test\_r2 &amp;  test\_neg\_mean\_squared\_error \\
-\midrule
-0 &amp;  0.005983 &amp;    0.006344 &amp; -25.157695 &amp;                    -0.007231 \\
-1 &amp;  0.083999 &amp;    0.002470 &amp;  -1.262275 &amp;                    -0.000328 \\
-2 &amp;  0.016528 &amp;    0.002174 &amp;   0.339044 &amp;                    -0.000204 \\
-3 &amp;  0.014251 &amp;    0.007031 &amp;  -1.576393 &amp;                    -0.001622 \\
-4 &amp;  0.016815 &amp;    0.003716 &amp;   0.262219 &amp;                    -0.000214 \\
-\bottomrule
-\end{tabular}
-
-
-
-/var/folders/1t/_7p_zm4x449blqs7bvqvb0rm0000gn/T/ipykernel_66451/1592972210.py:3: FutureWarning: In future versions `DataFrame.to_latex` is expected to utilise the base implementation of `Styler.to_latex` for formatting and rendering. The arguments signature may therefore change. It is recommended instead to use `DataFrame.style.to_latex` which also contains additional functionality.
-  print(pd.DataFrame(reg).to_latex())
-</code></pre>
-                </div>
-              </div>
-
-              <div class="language-python highlighter-rouge">
-                <div class="highlight">
-                  <pre
-                    class="highlight"
-                  ><code><span class="n">df</span><span class="p">.</span><span class="n">shape</span>
-</code></pre>
-                </div>
-              </div>
-              <div class="language-plaintext highlighter-rouge">
-                <div class="highlight">
-                  <pre class="highlight"><code>(2266, 57)
-</code></pre>
-                </div>
-              </div>
-
-              <div class="language-python highlighter-rouge">
-                <div class="highlight">
-                  <pre
-                    class="highlight"
-                  ><code><span class="n">lr</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
-<span class="n">regressor</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
-    <span class="p">(</span><span class="s">"standard_scaler"</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
-    <span class="p">(</span><span class="s">'poly'</span><span class="p">,</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">)),</span>
-    <span class="p">(</span><span class="s">"ridge_regression"</span><span class="p">,</span> <span class="n">lr</span><span class="p">)])</span>
-<span class="n">reg</span> <span class="o">=</span> <span class="n">learning</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">regressor</span> <span class="o">=</span> <span class="n">regressor</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">reg</span><span class="p">).</span><span class="n">to_latex</span><span class="p">())</span>
-</code></pre>
-                </div>
-              </div>
-
-              <div class="language-python highlighter-rouge">
-                <div class="highlight">
-                  <pre
-                    class="highlight"
-                  ><code><span class="n">lr</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">3000</span><span class="p">)</span>
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">'ridge_regression__alpha'</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">geomspace</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="n">regressor</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
-    <span class="p">(</span><span class="s">"ridge_regression"</span><span class="p">,</span> <span class="n">lr</span><span class="p">)])</span>
-
-<span class="n">reg</span> <span class="o">=</span> <span class="n">learning</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">regressor</span> <span class="o">=</span> <span class="n">regressor</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">params</span><span class="p">,</span>
-               <span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="s">'r2'</span><span class="p">,</span> <span class="s">'neg_mean_squared_error'</span><span class="p">],</span> <span class="n">refit</span> <span class="o">=</span> <span class="s">'r2'</span><span class="p">)</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">reg</span><span class="p">.</span><span class="n">cv_results_</span>
-<span class="k">print</span><span class="p">(</span><span class="n">reg</span><span class="p">.</span><span class="n">best_params_</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s">'param_ridge_regression__alpha'</span><span class="p">].</span><span class="n">data</span><span class="p">,</span> <span class="n">res</span><span class="p">[</span><span class="s">'mean_test_r2'</span><span class="p">]))</span>
-</code></pre>
-                </div>
-              </div>
-
-              <div class="language-plaintext highlighter-rouge">
-                <div class="highlight">
-                  <pre
-                    class="highlight"
-                  ><code>Fitting 5 folds for each of 10 candidates, totalling 50 fits
-Best score: -0.0037675812365856264
-{'ridge_regression__alpha': 800.0}
-[&lt;matplotlib.lines.Line2D object at 0x2878eea90&gt;]
-</code></pre>
-                </div>
-              </div>
-
-              <p>
-                <img
-                  src="/assets/images/ibm_assignment_files/ibm_assignment_27_1.png"
-                  alt="png"
-                />
-              </p>
-
-              <h3 id="sgd-regression">SGD Regression</h3>
-              <ul>
-                <li>Requires alpha, rmse, l1 ratio from elasticnet?</li>
-              </ul>
-
-              <h3 id="gbr">GBR</h3>
-
-              <div class="language-python highlighter-rouge">
-                <div class="highlight">
-                  <pre
-                    class="highlight"
-                  ><code><span class="n">lr</span> <span class="o">=</span> <span class="n">GradientBoostingRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">717</span><span class="p">)</span>
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">'GBR__learning_rate'</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
-    <span class="s">'GBR__max_depth'</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
-<span class="p">}</span>
-<span class="n">regressor</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
-    <span class="p">(</span><span class="s">"GBR"</span><span class="p">,</span> <span class="n">lr</span><span class="p">)])</span>
-
-<span class="n">reg</span> <span class="o">=</span> <span class="n">learning</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">regressor</span> <span class="o">=</span> <span class="n">regressor</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">params</span><span class="p">)</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">reg</span><span class="p">.</span><span class="n">cv_results_</span>
-<span class="k">print</span><span class="p">(</span><span class="n">reg</span><span class="p">.</span><span class="n">best_params_</span><span class="p">)</span>
-<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s">'param_GBR__learning_rate'</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="s">'mean_test_score'</span><span class="p">])</span>
-</code></pre>
-                </div>
-              </div>
-
-              <div class="language-plaintext highlighter-rouge">
-                <div class="highlight">
-                  <pre
-                    class="highlight"
-                  ><code>Fitting 5 folds for each of 27 candidates, totalling 135 fits
-0.312927684076205
-{'GBR__learning_rate': 0.01, 'GBR__max_depth': 5}
-
-
-
-
-
-[&lt;matplotlib.lines.Line2D at 0x298c75160&gt;]
-</code></pre>
-                </div>
-              </div>
-
-              <p>
-                <img
-                  src="/assets/images/ibm_assignment_files/ibm_assignment_30_2.png"
-                  alt="png"
-                />
-              </p>
-
-              <div class="language-python highlighter-rouge">
-                <div class="highlight">
-                  <pre
-                    class="highlight"
-                  ><code><span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s">'param_GBR__max_depth'</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="s">'mean_test_score'</span><span class="p">])</span>
-</code></pre>
-                </div>
-              </div>
-
-              <div class="language-plaintext highlighter-rouge">
-                <div class="highlight">
-                  <pre
-                    class="highlight"
-                  ><code>[&lt;matplotlib.lines.Line2D at 0x298686700&gt;]
-</code></pre>
-                </div>
-              </div>
-
-              <p>
-                <img
-                  src="/assets/images/ibm_assignment_files/ibm_assignment_31_1.png"
-                  alt="png"
-                />
-              </p>
-
-              <div class="language-python highlighter-rouge">
-                <div class="highlight">
-                  <pre
-                    class="highlight"
-                  ><code><span class="n">lr</span> <span class="o">=</span> <span class="n">GradientBoostingRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">717</span><span class="p">,</span> 
-                               <span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.005</span><span class="p">,</span> <span class="n">max_depth</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="c1">## 'GBR__max_depth': np.arange(2, 10, 2),
-</span>    <span class="s">'GBR__n_estimators'</span><span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span>
-<span class="p">}</span>
-<span class="n">regressor</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
-    <span class="p">(</span><span class="s">"GBR"</span><span class="p">,</span> <span class="n">lr</span><span class="p">)])</span>
-
-<span class="n">reg</span> <span class="o">=</span> <span class="n">learning</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">regressor</span> <span class="o">=</span> <span class="n">regressor</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">params</span><span class="p">,</span> <span class="n">pred</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">reg</span><span class="p">.</span><span class="n">cv_results_</span>
-<span class="k">print</span><span class="p">(</span><span class="n">reg</span><span class="p">.</span><span class="n">best_params_</span><span class="p">)</span>
-</code></pre>
-                </div>
-              </div>
-
-              <div class="language-plaintext highlighter-rouge">
-                <div class="highlight">
-                  <pre
-                    class="highlight"
-                  ><code>Fitting 5 folds for each of 3 candidates, totalling 15 fits
-Best score: -0.028233698083682923
--0.017464138185920186
-AxesSubplot(0.125,0.125;0.62x0.755)
-{'GBR__n_estimators': 100}
-</code></pre>
-                </div>
-              </div>
-
-              <p>
-                <img
-                  src="/assets/images/ibm_assignment_files/ibm_assignment_32_1.png"
-                  alt="png"
-                />
-              </p>
-
-              <div class="language-python highlighter-rouge">
-                <div class="highlight">
-                  <pre
-                    class="highlight"
-                  ><code><span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s">'param_GBR__n_estimators'</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="s">'mean_test_score'</span><span class="p">])</span>
-</code></pre>
-                </div>
-              </div>
-
-              <div class="language-plaintext highlighter-rouge">
-                <div class="highlight">
-                  <pre
-                    class="highlight"
-                  ><code>[&lt;matplotlib.lines.Line2D at 0x169d50d60&gt;]
-</code></pre>
-                </div>
-              </div>
-
-              <p>
-                <img
-                  src="/assets/images/ibm_assignment_files/ibm_assignment_33_1.png"
-                  alt="png"
-                />
-              </p>
 
               <h2 id="3-classification">3. Classification</h2>
 
@@ -3006,7 +2589,7 @@ AxesSubplot(0.125,0.125;0.62x0.755)
               <h4 class="page__share-title">Share on</h4>
 
               <a
-                href="https://twitter.com/intent/tweet?text=Machine+Learning+on+Apple+stock+daily+return%20https%3A%2F%2Fleeway00.github.io%2Fibm%2Fproj1%2F"
+                href="https://twitter.com/intent/tweet?text=Machine+Learning+on+Apple+stock+daily+return2%20https%3A%2F%2Fleeway00.github.io%2Fibm%2Fproj2%2F"
                 class="btn btn--twitter"
                 onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
                 title="Share on Twitter"
@@ -3015,7 +2598,7 @@ AxesSubplot(0.125,0.125;0.62x0.755)
               >
 
               <a
-                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fleeway00.github.io%2Fibm%2Fproj1%2F"
+                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fleeway00.github.io%2Fibm%2Fproj2%2F"
                 class="btn btn--facebook"
                 onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
                 title="Share on Facebook"
@@ -3024,7 +2607,7 @@ AxesSubplot(0.125,0.125;0.62x0.755)
               >
 
               <a
-                href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fleeway00.github.io%2Fibm%2Fproj1%2F"
+                href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fleeway00.github.io%2Fibm%2Fproj2%2F"
                 class="btn btn--linkedin"
                 onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
                 title="Share on LinkedIn"
@@ -3035,17 +2618,17 @@ AxesSubplot(0.125,0.125;0.62x0.755)
 
             <nav class="pagination">
               <a
-                href="/ibm/dl6/"
+                href="/ibm/proj1/"
                 class="pagination--pager"
-                title="Reinforcement Learning
+                title="Machine Learning on Apple stock daily return
 "
                 >Previous</a
               >
 
               <a
-                href="/ibm/proj2/"
+                href="/rl/policy2/"
                 class="pagination--pager"
-                title="Machine Learning on Apple stock daily return2
+                title="Policy Gradient Method
 "
                 >Next</a
               >
@@ -3056,7 +2639,7 @@ AxesSubplot(0.125,0.125;0.62x0.755)
             <h4 class="page__comments-title">Leave a comment</h4>
             <section
               class="fb-comments"
-              data-href="https://leeway00.github.io/ibm/proj1/"
+              data-href="https://leeway00.github.io/ibm/proj2/"
               data-mobile="true"
               data-num-posts="5"
               data-width="100%"
@@ -3101,8 +2684,8 @@ AxesSubplot(0.125,0.125;0.62x0.755)
                 itemtype="https://schema.org/CreativeWork"
               >
                 <h2 class="archive__item-title no_toc" itemprop="headline">
-                  <a href="/ibm/proj2/" rel="permalink"
-                    >Machine Learning on Apple stock daily return2
+                  <a href="/ibm/proj1/" rel="permalink"
+                    >Machine Learning on Apple stock daily return
                   </a>
                 </h2>
 
@@ -3110,7 +2693,7 @@ AxesSubplot(0.125,0.125;0.62x0.755)
                   <span class="page__meta-readtime">
                     <i class="far fa-clock" aria-hidden="true"></i>
 
-                    17 minute read
+                    19 minute read
                   </span>
                 </p>
 
