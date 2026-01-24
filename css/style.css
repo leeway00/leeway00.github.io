@@ -1,0 +1,957 @@
+/*
+ * Daniel R. Jiang Webpage Design/Template
+ *
+ * ============================================================================
+ * To adapt this site for your own use, modify these key variables:
+ *
+ * COLORS:
+ *   --highlight-color-r/g/b: RGB values for the green highlighter effect
+ *   --color-black through --color-white: Grayscale palette
+ *
+ * TYPOGRAPHY:
+ *   --font-display: Serif font for headings (default: Cormorant Garamond)
+ *   --font-body: Sans-serif font for body text (default: Inter)
+ *
+ * SIZING:
+ *   --max-width: Maximum content width (default: 750px)
+ *   --photo-size: Profile photo size
+ *   --icon-size: Publication icon size
+ *
+ * RESPONSIVE:
+ *   All font sizes use clamp(min, preferred, max) for fluid scaling.
+ *   The middle value (e.g., 2.1vw) controls how fast it scales.
+ * ============================================================================
+ *
+ * Table of Contents:
+ * 1. CSS Variables
+ * 2. Reset & Base
+ * 3. Typography
+ * 4. Layout Containers
+ * 5. Bio Card
+ * 6. Section Headers & Collapsible
+ * 7. Tag System (filters + publication tags)
+ * 8. Content Rows (shared: publications, courses, projects)
+ * 9. Publications
+ * 10. Teaching
+ * 11. Footer & Utilities
+ * 12. Responsive
+ * 13. Print
+ */
+
+/* ==========================================================================
+   1. CSS Variables
+   ========================================================================== */
+
+:root {
+    /* Highlight Color (RGB components for use in rgba()) */
+    --highlight-color-r: 60;
+    --highlight-color-g: 140;
+    --highlight-color-b: 80;
+    --highlight-gradient: linear-gradient(
+        98deg,
+        rgba(var(--highlight-color-r), var(--highlight-color-g), var(--highlight-color-b), 0) 0%,
+        rgba(var(--highlight-color-r), var(--highlight-color-g), var(--highlight-color-b), 0.20) 1.5%,
+        rgba(var(--highlight-color-r), var(--highlight-color-g), var(--highlight-color-b), 0.10) 8%,
+        rgba(var(--highlight-color-r), var(--highlight-color-g), var(--highlight-color-b), 0.13) 92%,
+        rgba(var(--highlight-color-r), var(--highlight-color-g), var(--highlight-color-b), 0.18) 98.5%,
+        rgba(var(--highlight-color-r), var(--highlight-color-g), var(--highlight-color-b), 0) 100%
+    );
+
+    /* Grayscale Palette */
+    --color-black: #121212;
+    --color-ink: #1a1a1a;
+    --color-gray-dark: #333333;
+    --color-gray: #666666;
+    --color-gray-light: #999999;
+    --color-gray-pale: #e8e8e8;
+    --color-white: #ffffff;
+
+    /* Typography */
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --bio-font-size: clamp(0.55rem, 2.05vw, 0.9rem);
+    --bio-contact-font-size: clamp(0.65rem, 2.05vw, 0.9rem);
+    --bio-line-height: 1.7;
+    --bio-line-height-compact: 1.6;
+    --bio-line-height-compact-2: 1.48;
+    --publication-title-font-size: clamp(0.45rem, 2.1vw, 0.85rem);
+    --publication-authors-font-size: clamp(0.4rem, 2.0vw, 0.8rem);
+    --publication-venue-font-size: clamp(0.4rem, 2.0vw, 0.8rem);
+    --publication-description-font-size: clamp(0.35rem, 1.8vw, 0.72rem);
+    --publication-links-font-size: clamp(0.4rem, 2.0vw, 0.8rem);
+    --tag-pill-font-size: clamp(0.25rem, 1.3vw, 0.6rem);
+    --tag-pill-padding-v: clamp(1px, 0.3vw, 2px);
+    --tag-pill-padding-h: clamp(2px, 0.8vw, 8px);
+    --tag-pill-bg: #f3f3f3;
+    --tag-pill-gap: clamp(2px, 0.5vw, 3px);
+    --icon-tags-margin-top: clamp(3px, 1vw, 6px);
+    --tag-filter-font-size: clamp(0.6rem, 1.8vw, 0.75rem);
+
+    /* Marginalia (News Section) */
+    --marginalia-label-font-size: clamp(0.65rem, 2.2vw, 1.0rem);
+    --marginalia-item-font-size: var(--publication-authors-font-size);
+    --marginalia-gap: clamp(3px, 2vw, 10px);
+    --marginalia-vspace: calc(var(--publication-vspace) * 2.5);
+
+    /* Layout */
+    --max-width: 750px;
+    --photo-size: clamp(55px, 18vw, 117px);
+    --icon-size: clamp(25px, 10vw, 80px);
+
+    /* Spacing */
+    --space-sm: 6px;
+    --space-md: 12px;
+    --space-lg: 18px;
+    --space-xl: 28px;
+    --space-2xl: 40px;
+    --publication-vspace: clamp(2px, 0.6vw, 5px);
+    --link-item-hspace: clamp(2px, 0.6vw, 5px);
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+}
+
+/* ==========================================================================
+   2. Reset & Base
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    visibility: hidden;
+}
+
+html.fonts-loaded {
+    visibility: visible;
+}
+
+/* Font loading fallback */
+@supports (animation: none) {
+    html {
+        animation: fonts-fallback 0s 0.3s forwards;
+    }
+    @keyframes fonts-fallback {
+        to { visibility: visible; }
+    }
+    html.fonts-loaded {
+        animation: none;
+    }
+}
+
+body {
+    margin: 0;
+    padding: var(--space-2xl) var(--space-lg);
+    background-color: var(--color-white);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    font-weight: 450;
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+}
+
+/* ==========================================================================
+   3. Typography
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    color: var(--color-black);
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+}
+
+p {
+    margin: 0 0 var(--space-sm) 0;
+    padding: 0;
+}
+
+a {
+    color: var(--color-black);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+/* ==========================================================================
+   4. Layout Containers
+   ========================================================================== */
+
+.container-fluid {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.content-section {
+    max-width: var(--max-width);
+    margin: 0 auto var(--space-lg) auto;
+    padding: var(--space-lg) 0;
+    background: var(--color-white);
+}
+
+.content-section a {
+    color: var(--color-ink);
+}
+
+.content-section a:hover {
+    color: var(--color-black);
+}
+
+/* ==========================================================================
+   5. Bio Card
+   ========================================================================== */
+
+.bio-card {
+    max-width: var(--max-width);
+    margin: 0 auto var(--space-xl) auto;
+    padding: var(--space-lg) 0 0 0;
+    background: var(--color-white);
+}
+
+.bio-name {
+    font-size: clamp(1.8rem, 6.4vw, 3.2rem);
+    line-height: 1.2;
+    color: var(--color-black);
+    font-weight: 600;
+    font-family: var(--font-display);
+    margin-bottom: var(--space-lg);
+    letter-spacing: -0.02em;
+}
+
+/* Bio Grid */
+.bio-grid {
+    display: grid;
+    grid-template-columns: var(--photo-size) 1fr;
+    gap: clamp(var(--space-md), 4vw, var(--space-xl));
+}
+
+/* Photo & Social */
+.bio-social,
+.bio-right {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    align-content: space-between;
+}
+
+.bio-social {
+    text-align: center;
+    padding-top: 2px;
+}
+
+.bio-social img {
+    width: var(--photo-size);
+    height: auto;
+    border-radius: 4px;
+    margin: 0 0 var(--space-sm) 0;
+    display: block;
+}
+
+.bio-social .social-links {
+    display: flex;
+    justify-content: center;
+    gap: clamp(5px, 1.8vw, 10px);
+    margin-top: auto;
+    padding-top: var(--space-md);
+}
+
+.bio-social .social-links a {
+    color: var(--color-gray);
+    font-size: clamp(0.5rem, 1.5vw, 0.75rem);
+    width: clamp(16px, 3.3vw, 26px);
+    height: clamp(16px, 3.3vw, 26px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-gray-pale);
+    border-radius: 50%;
+    transition: all var(--transition-fast);
+}
+
+.bio-social .social-links a:hover {
+    color: var(--color-black);
+    border-color: var(--color-black);
+}
+
+.bio-card .bio-right p {
+    font-size: var(--bio-font-size);
+    line-height: var(--bio-line-height);
+    font-weight: 500;
+    color: var(--color-ink);
+    margin: 0;
+    text-wrap: auto;
+}
+
+.bio-card .bio-right p a:not(.publication-links a):not(.contact-info a) {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-decoration-color: #c8c8c8;
+    text-underline-offset: 2px;
+    transition: text-decoration-color var(--transition-fast);
+}
+
+.bio-card .bio-right p a:not(.publication-links a):not(.contact-info a):hover {
+    text-decoration-color: #a0a0a0;
+}
+
+/* Contact Info */
+.contact-info {
+    margin-top: auto;
+    padding-top: var(--space-md);
+    font-size: var(--bio-contact-font-size);
+    font-weight: 500;
+}
+
+.contact-info i {
+    color: var(--color-gray);
+    margin-right: 4px;
+}
+
+.contact-info i + i,
+.contact-info a + i {
+    margin-left: 12px;
+}
+
+.contact-info a {
+    color: var(--color-black);
+    border-bottom: none;
+}
+
+.contact-info a:hover {
+    color: var(--color-gray-dark);
+}
+
+/* ==========================================================================
+   5a. Marginalia News
+   ========================================================================== */
+
+.marginalia-section {
+    max-width: var(--max-width);
+    margin: clamp(28px, 8vw, 56px) auto clamp(21px, 6vw, 42px) auto;
+}
+
+.marginalia-container {
+    display: flex;
+    gap: var(--marginalia-gap);
+    align-items: flex-start;
+}
+
+.marginalia-label {
+    font-family: var(--font-display);
+    font-size: var(--marginalia-label-font-size);
+    font-weight: 550;
+    font-style: italic;
+    color: var(--color-gray);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    padding-top: 0.15em;
+}
+
+.marginalia-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--marginalia-vspace);
+    border-left: 1px solid var(--color-gray-pale);
+    padding-left: var(--marginalia-gap);
+}
+
+.marginalia-item {
+    display: flex;
+    align-items: baseline;
+    gap: calc(var(--marginalia-gap) * 0.5);
+    font-size: var(--marginalia-item-font-size);
+    line-height: 1.4;
+}
+
+.marginalia-date {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-gray);
+    white-space: nowrap;
+    min-width: 3.0em;
+}
+
+.marginalia-text {
+    color: var(--color-gray-dark);
+    font-style: italic;
+}
+
+.marginalia-text a {
+    color: var(--color-gray-dark);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--color-gray-pale);
+    transition: border-color var(--transition-fast);
+}
+
+.marginalia-text a:hover {
+    border-color: var(--color-gray);
+}
+
+/* Subtle highlight for news items (uses same color as .highlight-organic) */
+.marginalia-highlight {
+    background: var(--highlight-gradient);
+    padding: 0.05em 0.2em;
+    margin: 0 -0.1em;
+    border-radius: 0.4em 0.2em;
+}
+
+/* Expandable News */
+.marginalia-items-wrapper {
+    position: relative;
+    flex: 1;
+}
+
+.marginalia-items-wrapper .marginalia-items {
+    overflow: hidden;
+}
+
+.marginalia-items-wrapper:not(.expanded) .marginalia-items > .marginalia-item:nth-child(3) {
+    opacity: 0.9;
+}
+
+.marginalia-items-wrapper:not(.expanded) .marginalia-items > .marginalia-item:nth-child(4) {
+    opacity: 0.8;
+}
+
+.marginalia-items-wrapper:not(.expanded) .marginalia-items > .marginalia-item:nth-child(5) {
+    opacity: 0.6;
+}
+
+.marginalia-items-wrapper:not(.expanded) .marginalia-items > .marginalia-item:nth-child(n+6) {
+    display: none;
+}
+
+.marginalia-items-wrapper.expanded .marginalia-items > .marginalia-item:nth-child(n+6) {
+    display: flex;
+}
+
+.marginalia-fade {
+    display: none;
+}
+
+.marginalia-toggle {
+    display: inline;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: var(--font-display);
+    font-size: var(--marginalia-item-font-size);
+    font-style: italic;
+    color: var(--color-gray);
+    cursor: pointer;
+    margin-top: calc(var(--publication-vspace) * 2);
+}
+
+.marginalia-toggle:hover {
+    color: var(--color-gray-dark);
+}
+
+/* Highlighter */
+.highlight-organic {
+    background: var(--highlight-gradient);
+    padding: 0.05em 0.25em;
+    margin: 0 -0.15em;
+    border-radius: 0.6em 0.25em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+/* ==========================================================================
+   6. Section Headers
+   ========================================================================== */
+
+.section-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--color-black);
+    margin-bottom: var(--space-lg);
+}
+
+.section-header {
+    font-size: clamp(1.1rem, 3.5vw, 1.7rem);
+    font-weight: 650;
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+
+/* ==========================================================================
+   7. Tag System
+   ========================================================================== */
+
+/* Base Tag Style (used in .icon-tags under publication thumbnails) */
+.tag {
+    display: inline-block;
+    font-size: var(--tag-pill-font-size);
+    font-weight: 500;
+    padding: var(--tag-pill-padding-v) var(--tag-pill-padding-h);
+    border-radius: 12px;
+    background-color: var(--tag-pill-bg);
+    color: var(--color-gray);
+    opacity: 0.8;
+}
+
+/* Filter Dropdown */
+.filter-dropdown {
+    position: relative;
+}
+
+.filter-toggle {
+    font-size: clamp(0.5rem, 1.6vw, 0.7rem);
+    font-weight: 500;
+    color: var(--color-gray-light);
+    cursor: pointer;
+    user-select: none;
+}
+
+.filter-toggle:hover {
+    color: var(--color-gray);
+}
+
+.filter-toggle i {
+    font-size: 0.8em;
+    margin-right: 3px;
+}
+
+.filter-dropdown.open .filter-toggle {
+    color: var(--color-gray-dark);
+}
+
+/* Filter Tags Container (Dropdown) */
+.tag-filters {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: var(--space-sm);
+    padding: 4px;
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-pale);
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    min-width: 60px;
+}
+
+.filter-dropdown.open .tag-filters {
+    display: flex;
+}
+
+/* Filter Tag Buttons */
+.tag-filter {
+    font-size: var(--tag-filter-font-size);
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background-color: transparent;
+    border: none;
+    color: var(--color-gray);
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    text-align: left;
+}
+
+.tag-filter:hover {
+    background-color: var(--color-gray-pale);
+    color: var(--color-gray-dark);
+}
+
+.tag-filter.active {
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
+/* Publication Icon Tags */
+.icon-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--tag-pill-gap);
+    margin-top: var(--icon-tags-margin-top);
+}
+
+/* ==========================================================================
+   8. Content Rows (Shared Styles)
+   ========================================================================== */
+
+/* Base row layout for publications, courses, and projects */
+.publication-row,
+.course-row {
+    display: grid;
+    grid-template-columns: var(--icon-size) 1fr;
+    gap: clamp(var(--space-md), 3vw, var(--space-lg));
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-lg);
+    padding-left: var(--space-md);
+    border-bottom: 1px solid var(--color-gray-pale);
+    align-items: start;
+}
+
+.publication-row:last-child,
+.course-row:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.row-icon,
+.row-content {
+    width: auto;
+    padding: 0;
+}
+
+.row-icon a {
+    display: block;
+}
+
+/* ==========================================================================
+   9. Publications
+   ========================================================================== */
+
+/* Publication row filter animation */
+.publication-row {
+    transition: opacity var(--transition-base),
+                transform var(--transition-base),
+                max-height 0.4s ease,
+                margin-bottom var(--transition-base),
+                padding-bottom var(--transition-base);
+    overflow: hidden;
+}
+
+.publication-row.filtered-out {
+    opacity: 0;
+    transform: translateY(-10px);
+    max-height: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+    pointer-events: none;
+}
+
+.publication-row.last-visible {
+    border-bottom: none;
+}
+
+/* Publication Icon/Thumbnail */
+.publication-icon {
+    width: 100%;
+    height: auto;
+    border-radius: 3px;
+    opacity: 0.55;
+    filter: grayscale(80%);
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.publication-row:hover .publication-icon {
+    opacity: 1;
+    filter: grayscale(50%);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+/* Publication Typography */
+.publication-title,
+.course-row h5 {
+    font-family: var(--font-body);
+    font-size: var(--publication-title-font-size);
+    line-height: 1.4;
+    color: var(--color-black);
+    margin-bottom: var(--publication-vspace);
+    text-wrap: auto;
+}
+
+.publication-authors,
+.teaching-position {
+    font-size: var(--publication-authors-font-size);
+    line-height: 1.4;
+    color: var(--color-gray-dark);
+    margin-bottom: var(--publication-vspace);
+    padding-left: var(--space-md);
+    text-wrap: auto;
+}
+
+.teaching-position {
+    font-style: italic;
+    color: var(--color-gray);
+}
+
+.author-self {
+    font-weight: 650;
+    color: var(--color-black);
+}
+
+.publication-journal {
+    font-size: var(--publication-venue-font-size);
+    line-height: 1.4;
+    color: var(--color-black);
+    margin-bottom: var(--publication-vspace);
+    padding-left: var(--space-md);
+    text-wrap: auto;
+}
+
+.publication-journal a {
+    color: var(--color-black);
+    font-weight: 650;
+}
+
+.journal-submitted,
+.journal-submitted a {
+    font-weight: 400;
+    color: var(--color-gray-dark);
+}
+
+/* Publication Description */
+.publication-description-wrapper {
+    padding-left: var(--space-md);
+    margin-bottom: var(--publication-vspace);
+    font-size: var(--publication-description-font-size);
+    line-height: 1.4;
+    color: var(--color-gray);
+    text-wrap: auto;
+}
+
+.publication-description-text {
+    display: block;
+}
+
+.publication-measure {
+    position: absolute;
+    visibility: hidden;
+    height: auto;
+    white-space: normal;
+    pointer-events: none;
+}
+
+.abstract-toggle {
+    color: var(--color-gray-light);
+    cursor: pointer;
+    user-select: none;
+    transition: color var(--transition-fast);
+}
+
+.abstract-toggle:hover {
+    color: var(--color-gray-dark);
+}
+
+/* Publication Links */
+.publication-links {
+    font-size: var(--publication-links-font-size);
+    color: var(--color-gray-dark);
+    padding-left: var(--space-md);
+    text-wrap: auto;
+}
+
+.publication-links .link-item {
+    display: inline-block;
+    white-space: nowrap;
+    margin-right: var(--link-item-hspace);
+}
+
+.publication-links .link-item:last-child {
+    margin-right: 0;
+}
+
+.publication-links i {
+    display: inline-block;
+    color: var(--color-gray-dark);
+    margin-right: 4px;
+}
+
+.publication-links a {
+    color: var(--color-gray-dark);
+}
+
+.publication-links a:hover {
+    color: var(--color-black);
+}
+
+/* Featured Links (uses highlight-organic for background) */
+.featured-wrap {
+    display: inline-block;
+    margin-right: 0.3em;
+}
+
+.publication-links .featured-wrap a {
+    color: var(--color-gray-dark);
+    font-weight: 550;
+    letter-spacing: -0.01em;
+}
+
+.publication-links .featured-wrap a:hover {
+    color: var(--color-black);
+}
+
+.publication-links .featured-wrap i {
+    color: var(--color-gray-dark);
+    margin-right: 4px;
+}
+
+/* ==========================================================================
+   10. Teaching
+   ========================================================================== */
+
+.course-row h5 a {
+    border: none;
+}
+
+/* ==========================================================================
+   11. Footer & Utilities
+   ========================================================================== */
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 40px;
+    height: 40px;
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-pale);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-base);
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: var(--color-black);
+    border-color: var(--color-black);
+}
+
+.back-to-top i {
+    font-size: 0.9rem;
+    color: var(--color-gray);
+    transition: color var(--transition-base);
+}
+
+.back-to-top:hover i {
+    color: var(--color-white);
+}
+
+.template-credit {
+    text-align: center;
+    margin: calc(var(--space-2xl) * 1.1) 0 var(--space-xl);
+    font-family: var(--font-body);
+    font-size: var(--publication-description-font-size);
+    font-style: normal;
+    color: var(--color-gray);
+    letter-spacing: 0;
+}
+
+.template-credit a {
+    color: var(--color-gray-dark);
+    border-bottom: 1px solid var(--color-gray-pale);
+}
+
+.template-credit a:hover {
+    color: var(--color-black);
+    border-color: var(--color-gray);
+}
+
+/* ==========================================================================
+   12. Responsive
+   ========================================================================== */
+
+/* Touch devices: always show interactive elements */
+@media (hover: none) {
+    .publication-icon {
+        opacity: 0.85;
+        filter: grayscale(50%);
+    }
+}
+
+/* Bio text line-height adjustment */
+@media (max-width: 650px) {
+    .bio-card .bio-right p {
+        line-height: var(--bio-line-height-compact);
+        text-wrap: auto;
+    }
+}
+
+@media (max-width: 400px) {
+    .bio-card .bio-right p {
+        line-height: var(--bio-line-height-compact-2);
+    }
+}
+
+/* Small screens */
+@media (max-width: 576px) {
+    body {
+        padding: var(--space-lg) var(--space-md);
+    }
+
+    .bio-card,
+    .content-section {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .section-header-row {
+        padding-bottom: var(--space-sm);
+    }
+
+    .publication-row,
+    .course-row {
+        padding-left: 0;
+        margin-bottom: var(--space-md);
+        padding-bottom: var(--space-md);
+    }
+
+    .publication-authors,
+    .teaching-position,
+    .publication-journal,
+    .publication-description-wrapper,
+    .publication-links {
+        padding-left: 8px;
+    }
+}
+
+/* ==========================================================================
+   13. Print
+   ========================================================================== */
+
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+
+    .bio-social a > i {
+        display: none;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    .back-to-top {
+        display: none !important;
+    }
+}
