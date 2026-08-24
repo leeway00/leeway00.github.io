@@ -1,0 +1,9 @@
+# Leftovers from the previous Jekyll (al-folio) setup — not used by this static site
+_site/
+_pages/
+.jekyll-cache/
+.tweet-cache/
+.ruby-version
+
+# macOS
+.DS_Store
