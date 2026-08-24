@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-r"""Assemble index.html from template.html and the fragments in sections/.
+r"""Assemble index.html from template.html and the fragments in _sections/.
 
 Works like \input in LaTeX: a line in template.html of the form
 
-    <!-- @include sections/bio.html -->
+    <!-- @include _sections/bio.html -->
 
 is replaced by the contents of that file, indented to match the include line.
-Includes may nest. Run after editing anything under sections/:
+Includes may nest. Run after editing anything under _sections/:
 
     python3 build.py
 """
@@ -24,7 +24,7 @@ INCLUDE_RE = re.compile(r"^([ \t]*)<!--\s*@include\s+(\S+)\s*-->[ \t]*$")
 BANNER = """<!--
 ================================================================================
 GENERATED FILE - DO NOT EDIT DIRECTLY.
-Edit template.html or the fragments in sections/, then run: python3 build.py
+Edit template.html or the fragments in _sections/, then run: python3 build.py
 ================================================================================
 -->
 """
