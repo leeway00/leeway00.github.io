@@ -15,7 +15,6 @@
  * SIZING:
  *   --max-width: Maximum content width (default: 750px)
  *   --photo-size: Profile photo size
- *   --icon-size: Publication icon size
  *
  * RESPONSIVE:
  *   All font sizes use clamp(min, preferred, max) for fluid scaling.
@@ -96,7 +95,6 @@
     /* Layout */
     --max-width: 750px;
     --photo-size: clamp(55px, 18vw, 117px);
-    --icon-size: clamp(25px, 10vw, 80px);
 
     /* Spacing */
     --space-sm: 6px;
@@ -578,13 +576,21 @@ a {
     color: var(--color-white);
 }
 
-/* Publication Icon Tags */
+/* Publication Tags */
 .icon-tags {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: var(--tag-pill-gap);
     margin-top: var(--icon-tags-margin-top);
+}
+
+/* Inside a content column the tags lead the row, so left-align them and put the
+   spacing below instead of above. */
+.row-content .icon-tags {
+    justify-content: flex-start;
+    margin-top: 0;
+    margin-bottom: calc(var(--publication-vspace) * 2);
 }
 
 /* ==========================================================================
@@ -595,7 +601,7 @@ a {
 .publication-row,
 .course-row {
     display: grid;
-    grid-template-columns: var(--icon-size) 1fr;
+    grid-template-columns: 1fr;
     gap: clamp(var(--space-md), 3vw, var(--space-lg));
     margin-bottom: var(--space-lg);
     padding-bottom: var(--space-lg);
@@ -610,14 +616,9 @@ a {
     margin-bottom: 0;
 }
 
-.row-icon,
 .row-content {
     width: auto;
     padding: 0;
-}
-
-.row-icon a {
-    display: block;
 }
 
 /* ==========================================================================
@@ -648,23 +649,6 @@ a {
     border-bottom: none;
 }
 
-/* Publication Icon/Thumbnail */
-.publication-icon {
-    width: 100%;
-    height: auto;
-    border-radius: 3px;
-    opacity: 0.55;
-    filter: grayscale(80%);
-    transition: all 0.25s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-}
-
-.publication-row:hover .publication-icon {
-    opacity: 1;
-    filter: grayscale(50%);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
-}
-
 /* Publication Typography */
 .publication-title,
 .course-row h5 {
@@ -689,6 +673,39 @@ a {
 .teaching-position {
     font-style: italic;
     color: var(--color-gray);
+}
+
+/* Teaching rows carry the term in a right-aligned column on the title line,
+   reusing the italic serif date treatment from the news list. */
+.course-row .publication-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-md);
+}
+
+.course-row {
+    margin-bottom: 0;
+    padding-bottom: var(--space-sm);
+    border-bottom: none;
+}
+
+.course-row .publication-title {
+    margin-bottom: 0;
+}
+
+.course-code {
+    font-weight: 600;
+    color: var(--color-black);
+    margin-right: 0.45em;
+}
+
+.course-term {
+    flex-shrink: 0;
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-gray);
+    white-space: nowrap;
 }
 
 .author-self {
@@ -806,10 +823,6 @@ a {
    10. Teaching
    ========================================================================== */
 
-.course-row h5 a {
-    border: none;
-}
-
 /* ==========================================================================
    11. Footer & Utilities
    ========================================================================== */
@@ -879,14 +892,6 @@ a {
    12. Responsive
    ========================================================================== */
 
-/* Touch devices: always show interactive elements */
-@media (hover: none) {
-    .publication-icon {
-        opacity: 0.85;
-        filter: grayscale(50%);
-    }
-}
-
 /* Bio text line-height adjustment */
 @media (max-width: 650px) {
     .bio-card .bio-right p {
@@ -924,11 +929,9 @@ a {
         padding-bottom: var(--space-md);
     }
 
-    .publication-authors,
-    .teaching-position,
-    .publication-journal,
-    .publication-description-wrapper,
-    .publication-links {
+    .course-row .teaching-position,
+    .course-row .publication-description-wrapper,
+    .course-row .publication-links {
         padding-left: 8px;
     }
 }
