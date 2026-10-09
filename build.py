@@ -9,8 +9,11 @@ is replaced by the contents of that file, indented to match the include line.
 Includes may nest. Run after editing anything under _sections/:
 
     python3 build.py
+
+Run after CSS changes as well to refresh the stylesheet version in index.html.
 """
 
+import hashlib
 import re
 import sys
 from pathlib import Path
@@ -58,6 +61,8 @@ def expand(path, stack):
 
 def main():
     body = expand(TEMPLATE, [])
+    css_version = hashlib.sha256((ROOT / "css/style.css").read_bytes()).hexdigest()[:12]
+    body = body.replace("{{CSS_VERSION}}", css_version)
     OUTPUT.write_text(BANNER + body.lstrip("\n").rstrip() + "\n", encoding="utf-8")
     print("build.py: wrote %s" % OUTPUT.relative_to(ROOT))
 
