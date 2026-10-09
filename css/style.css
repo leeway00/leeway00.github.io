@@ -733,24 +733,28 @@ a {
     color: var(--color-gray-dark);
 }
 
-/* Compact research entries: title, author/status line, then keywords. */
-#publications-section .publication-row {
+/* Compact research and project entries: title, metadata, then keywords. */
+#publications-section .publication-row,
+#projects-section .publication-row {
     margin-bottom: 20px;
     padding: 0;
     border-bottom: none;
 }
 
-#publications-section .publication-row:last-child {
+#publications-section .publication-row:last-child,
+#projects-section .publication-row:last-child {
     margin-bottom: 0;
 }
 
-#publications-section .publication-title {
+#publications-section .publication-title,
+#projects-section .publication-title {
     font-size: clamp(0.85rem, 2.1vw, 0.9rem);
     font-weight: 600;
     margin-bottom: 4px;
 }
 
-#publications-section .publication-meta {
+#publications-section .publication-meta,
+#projects-section .publication-meta {
     display: flex;
     align-items: baseline;
     gap: 12px;
@@ -758,7 +762,8 @@ a {
     line-height: 1.5;
 }
 
-#publications-section .publication-authors {
+#publications-section .publication-authors,
+#projects-section .publication-authors {
     flex: 1;
     min-width: 0;
     margin: 0;
@@ -784,21 +789,51 @@ a {
     color: var(--color-gray-dark);
 }
 
-#publications-section .publication-pdf {
+#publications-section .publication-pdf,
+#projects-section .publication-pdf {
     flex-shrink: 0;
     white-space: nowrap;
     color: var(--color-gray-dark);
 }
 
-#publications-section .icon-tags {
+#publications-section .icon-tags,
+#projects-section .icon-tags {
     margin-top: 6px;
     margin-bottom: 0;
     gap: 5px;
 }
 
-#publications-section .tag {
+#publications-section .tag,
+#projects-section .tag {
     font-size: 0.65rem;
     opacity: 1;
+}
+
+#projects-section .publication-meta {
+    flex-wrap: wrap;
+    row-gap: 4px;
+}
+
+#projects-section .publication-authors {
+    flex: 1 1 auto;
+}
+
+#projects-section .project-resources {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    margin-left: auto;
+}
+
+#projects-section .project-award {
+    background: var(--highlight-gradient);
+    color: var(--color-gray-dark);
+    font-weight: 600;
+}
+
+#projects-section a:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
 }
 
 /* Publication Description */
