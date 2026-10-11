@@ -292,6 +292,10 @@ a {
     text-wrap: auto;
 }
 
+.bio-card .bio-right > p:first-child {
+    font-size: clamp(0.85rem, 2.05vw, 0.9rem);
+}
+
 .bio-card .bio-right p a:not(.publication-links a):not(.contact-info a) {
     color: inherit;
     text-decoration: underline;
