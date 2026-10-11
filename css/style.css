@@ -675,13 +675,24 @@ a {
     color: var(--color-gray);
 }
 
-/* Teaching rows carry the term in a right-aligned column on the title line,
-   reusing the italic serif date treatment from the news list. */
+/* Keep the position beside the course title when it fits; move position and
+   term together to the next line when space runs out. */
 .course-row .publication-title {
     display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 var(--space-sm);
+    font-size: clamp(0.85rem, 2.1vw, 0.9rem);
+}
+
+.course-meta {
+    display: flex;
+    flex: 1 0 auto;
     justify-content: space-between;
     align-items: baseline;
-    gap: var(--space-md);
+    gap: var(--space-sm);
+    font-size: 0.78rem;
+    white-space: nowrap;
 }
 
 .course-row {
@@ -1032,10 +1043,28 @@ a {
         padding-bottom: var(--space-md);
     }
 
+    .course-row {
+        margin-bottom: 0;
+        padding-bottom: var(--space-sm);
+    }
+
     .course-row .teaching-position,
     .course-row .publication-description-wrapper,
     .course-row .publication-links {
         padding-left: 8px;
+    }
+
+    .course-row .publication-title {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .course-meta {
+        flex: none;
+        width: 100%;
+        padding-left: 8px;
+        white-space: normal;
     }
 }
 
